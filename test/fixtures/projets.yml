@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  projectname: MyString
+  projectdescription: MyText
+  colourcode: MyString
+  user: 
+  user: 
+  projecttype: 
+
+two:
+  projectname: MyString
+  projectdescription: MyText
+  colourcode: MyString
+  user: 
+  user: 
+  projecttype: 

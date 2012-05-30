@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  exptype: MyString
+  resultfile: MyString
+
+two:
+  exptype: MyString
+  resultfile: MyString

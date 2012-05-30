@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  experiment: 
+  elementnote: MyText
+  user: 
+  user: 
+  element: 
+
+two:
+  experiment: 
+  elementnote: MyText
+  user: 
+  user: 
+  element: 
