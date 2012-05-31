@@ -1,10 +1,14 @@
 Limsv1::Application.routes.draw do
+  
+  
   resources :elements
 
   resources :users
 
   resources :projects
-
+  resources :home
+  
+ 
   get "home/index"
 
   # The priority is based upon order of creation:

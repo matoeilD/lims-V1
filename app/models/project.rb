@@ -8,5 +8,5 @@ has_many :users, :through => :user_projects
 
   belongs_to :projecttype
   
-  attr_accessible :colourcode, :projectdescription, :projectname
+  attr_accessible :colourcode, :projectdescription, :user_id, :projectname, :projectheader, :projectmember, :projecttypename
 end
