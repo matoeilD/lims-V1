@@ -6,14 +6,10 @@ def up
       t.string :projectname
       t.text :projectdescription
       t.string :colourcode
-      t.references :user_id
-      t.references :projecttype_id      
-      t.timestamps
-      
+      t.string :projectheader
+      t.string :projectmember
+      t.string :projecttypename      
     end
-    add_index :projects, :projecttype_id
-  add_index :projects, :user_id
-
   end
   
   

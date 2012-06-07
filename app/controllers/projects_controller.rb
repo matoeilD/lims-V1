@@ -3,6 +3,9 @@ class ProjectsController < ApplicationController
   # GET /projects.json
   def index
     @projects = Project.all
+    @user_projects=UserProject.all
+    
+  
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,6 +17,9 @@ class ProjectsController < ApplicationController
   # GET /projects/1.json
   def show
     @project = Project.find(params[:id])
+    
+    # @users = @project.user_projects.find_all
+    
 
     respond_to do |format|
       format.html # show.html.erb
@@ -25,6 +31,18 @@ class ProjectsController < ApplicationController
   # GET /projects/new.json
   def new
     @project = Project.new
+    @user_project=UserProject.new
+    @user=User.all
+    
+    @user_lastnames = User.all.collect do |u| 
+      u.lastname
+    end
+   
+    #@selected = params[:selected]
+    
+  
+   #@project.projectmember = User.find(@params[:user_ids])
+
     
 
     respond_to do |format|
@@ -41,12 +59,21 @@ class ProjectsController < ApplicationController
   # POST /projects
   # POST /projects.json
   def create
-    @project = Project.new(params[:project])
-
+    @project = Project.new(params[:project])  
+ 
+    users = User.find(params[:project][:projectmember]) rescue []
+    @project.users = users    
+   
+  
+   
     respond_to do |format|
       if @project.save
         format.html { redirect_to @project, notice: 'Project was successfully created.' }
-        format.json { render json: @project, status: :created, location: @project }
+        format.json { render json: @project, status: :created, location: @project }         
+        
+       @user_project=UserProject.create(:project_id => @project.id, :user_id => @project.projectmember)
+        @user_project=UserProject.create(:project_id => @project.id, :user_id => @project.projectheader)
+        
       else
         format.html { render action: "new" }
         format.json { render json: @project.errors, status: :unprocessable_entity }
@@ -57,8 +84,11 @@ class ProjectsController < ApplicationController
   # PUT /projects/1
   # PUT /projects/1.json
   def update
-    @project = Project.find(params[:id])
-
+    @project = Project.find(params[:id])    
+  
+    users = User.find(params[:project][:projectmember]) rescue []
+    @project.users = users        
+    
     respond_to do |format|
       if @project.update_attributes(params[:project])
         format.html { redirect_to @project, notice: 'Project was successfully updated.' }

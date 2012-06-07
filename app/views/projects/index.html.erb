@@ -5,18 +5,29 @@
     <th>Projectname</th>
     <th>Projectdescription</th>
     <th>Colourcode</th>
+    <th>project header</th>
+    <th>project member</th>
+    <th>project typename</th>
    
     <th></th>
     <th></th>
     <th></th>
   </tr>
+  
+
 
 <% @projects.each do |project| %>
   <tr>
     <td><%= project.projectname %></td>
     <td><%= project.projectdescription %></td>
     <td><%= project.colourcode %></td>
+    <td><%= project.projectheader %></td>
+    <td><%= project.projectmember %></td>
+    <td><%= project.projecttypename %></td>
+    
 
+
+    
     <td><%= link_to 'Show', project %></td>
     <td><%= link_to 'Edit', edit_project_path(project) %></td>
     <td><%= link_to 'Destroy', project, confirm: 'Are you sure?', method: :delete %></td>

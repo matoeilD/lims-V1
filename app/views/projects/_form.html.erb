@@ -23,10 +23,25 @@
     <%= f.label :colourcode %><br />
     <%= f.text_field :colourcode %>
   </div>
+  <div class="field">
+    <%= f.label :projectheader %><br />
+    <%= select("project", "projectheader", User.all.collect {|u| [ u.lastname, u.id ] }, {:prompt => 'Select Person'})  %>      
+  </div>
+  
+ <div class="field">
+<%= fields_for :projectmember do |u| %> 
+      <%= u.label :projectmember %><br />
+       <%= select_tag :projectmember, options_for_select(User.all.collect {|u| [u.lastname, u.id]}),
+  :multiple => true, :prompt => 'Select Person', :name=>'project[projectmember][]' %>
+ <% end %>
+   </div>
+  
+  
 
-    <div class="field">
-    <%= f.label :user_id %><br />
-       <%= f.collection_select :user_id, User.all, :lastname, :lastname  %>
+   
+   <div class="field">
+    <%= f.label :projecttypename %><br />
+    <%= f.text_field :projecttypename %>
   </div>
  
   <div class="actions">

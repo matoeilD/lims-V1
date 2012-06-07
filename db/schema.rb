@@ -44,17 +44,13 @@ ActiveRecord::Schema.define(:version => 20120530102549) do
   end
 
   create_table "projects", :force => true do |t|
-    t.string   "projectname"
-    t.text     "projectdescription"
-    t.string   "colourcode"
-    t.integer  "user_id"
-    t.integer  "projecttype_id"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.string "projectname"
+    t.text   "projectdescription"
+    t.string "colourcode"
+    t.string "projectheader"
+    t.string "projectmember"
+    t.string "projecttypename"
   end
-
-  add_index "projects", ["projecttype_id"], :name => "index_projects_on_projecttype_id"
-  add_index "projects", ["user_id"], :name => "index_projects_on_user_id"
 
   create_table "projecttypes", :force => true do |t|
     t.string   "projecttypename"
@@ -68,6 +64,8 @@ ActiveRecord::Schema.define(:version => 20120530102549) do
   end
 
   create_table "user_projects", :force => true do |t|
+    t.integer  "project_id"
+    t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
