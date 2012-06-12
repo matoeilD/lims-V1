@@ -3,14 +3,11 @@ class CreateExperiments < ActiveRecord::Migration
     create_table :experiments do |t|
       t.string :exptype
       t.string :resultfile
-
+      t.integer :element_id
       t.timestamps
     end
+    add_index :experiments, :element_id
   end
   
-  def self.down
-    drop_table :experiments
-  end
-  
-  
+    
 end

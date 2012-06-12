@@ -1,22 +1,10 @@
-<%= form_for(@element) do |f| %>
-  <% if @element.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@element.errors.count, "error") %> prohibited this element from being saved:</h2>
+<%= semantic_form_for @element do |f| %>
+    <%= f.inputs :users%>
+    <!--<%= f.inputs :experiments%>   -->
+    <%= f.inputs :elementnote %> 
+    
+    
+    <%= f.actions :submit, :cancel %>
+    
 
-      <ul>
-      <% @element.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :elementnote %><br />
-    <%= f.text_area :elementnote %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>

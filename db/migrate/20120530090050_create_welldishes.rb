@@ -4,13 +4,9 @@ class CreateWelldishes < ActiveRecord::Migration
       t.string :welldishtype
       t.text :welldishnote
       t.string :welldishdimension
-
       t.timestamps
     end
   end
   
-  def self.down
-    drop_table :welldishes
-  end
   
 end

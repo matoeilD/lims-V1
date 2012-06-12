@@ -1,6 +1,6 @@
 class Projecttype < ActiveRecord::Base
   
- has_many :projects
+has_many :projects
  
-  attr_accessible :projecttypename
+attr_accessible :projecttypename
 end

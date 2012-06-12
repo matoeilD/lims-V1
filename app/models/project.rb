@@ -9,8 +9,6 @@ has_many :users, :through => :user_projects
 #,:foreign_key => "user_id",
 
 belongs_to :projecttype
-
-
   
-attr_accessible :colourcode, :projectdescription, :user_id, :projectname, :projectheader, :projectmember, :projecttypename
+attr_accessible :projectname, :projectdescription, :projecttype_id, :user_ids, :element_ids
 end

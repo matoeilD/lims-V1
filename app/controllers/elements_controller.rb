@@ -41,11 +41,13 @@ class ElementsController < ApplicationController
   # POST /elements.json
   def create
     @element = Element.new(params[:element])
+    
 
     respond_to do |format|
       if @element.save
         format.html { redirect_to @element, notice: 'Element was successfully created.' }
         format.json { render json: @element, status: :created, location: @element }
+       
       else
         format.html { render action: "new" }
         format.json { render json: @element.errors, status: :unprocessable_entity }

@@ -1,13 +1,13 @@
 class CreateElementElements < ActiveRecord::Migration
   def change
     create_table :element_elements do |t|
-
-      t.timestamps
+       t.integer :element_id
+       t.integer :element_id
+       t.timestamps
     end
-  end
+     add_index :element_elements, :element_id
   
-  def self.down
-    drop_table :element_elements
-  end
+  end  
+    
   
 end
