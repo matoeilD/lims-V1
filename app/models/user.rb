@@ -8,4 +8,9 @@ has_many :user_elements
 has_many :elements, :through => :user_elements
   
 attr_accessible :email, :firstname, :name, :password, :position, :project_ids
+
+def display_name
+  "#{name}"
+end
+
 end

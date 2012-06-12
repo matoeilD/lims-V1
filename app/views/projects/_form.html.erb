@@ -1,10 +1,12 @@
 <%= semantic_form_for @project do |f| %>
-    <%= f.inputs :projectname %>
-    <%= f.inputs :projectdescription %>     
-   <!-- <%= f.inputs :projecttype%>  
-    <%= f.inputs :users%> 
-    <%= f.inputs :elements %> -->
-    
+  <%= f.inputs do %>
+    <%= f.input :projectname %>
+    <%= f.input :projectdescription %>     
+    <%= f.input :projecttype, :as => :radio,       :collection => ["genomique", "transcriptomique"]%>  
+    <%= f.input :users, :label => "project header"%>
+    <%= f.input :users, :label => "project members"%> 
+    <%= f.input :elements %>
+  <% end %>
     
     <%= f.actions :submit, :cancel %>
     

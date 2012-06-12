@@ -1,6 +1,14 @@
 Limsv1::Application.routes.draw do
   
   
+ # get "experiment/edit"
+
+  #get "experiment/index"
+
+  #get "experiment/new"
+
+  #get "experiment/show"
+  resources :experiments
   resources :elements
 
   resources :users

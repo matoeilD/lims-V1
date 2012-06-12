@@ -11,4 +11,18 @@ has_many :users, :through => :user_projects
 belongs_to :projecttype
   
 attr_accessible :projectname, :projectdescription, :projecttype_id, :user_ids, :element_ids
+
+
+def display_name
+  "#{projectname}"
 end
+
+
+
+end
+
+
+
+
+
+

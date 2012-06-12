@@ -1,9 +1,14 @@
 <%= semantic_form_for @element do |f| %>
-    <%= f.inputs :users%>
-    <!--<%= f.inputs :experiments%>   -->
-    <%= f.inputs :elementnote %> 
     
+  <%= f.inputs do %>
+  
+    <%= f.input :projects, :label => "projet associé", :required => true%>
+    <%= f.input :experiments, :label => "type d'experience", :as => :radio,       :collection => Experiment.all, :required => true %>
+    <%= f.input :users, :label => "responsable"%>
+   
+    <%= f.input :elementnote %> 
     
+  <% end %>
     <%= f.actions :submit, :cancel %>
     
 
