@@ -3,17 +3,20 @@ class ElementsController < ApplicationController
   # GET /elements.json
   def index
     @elements = Element.all
-
+    @user_elements=UserElement.all
+  
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @elements }
     end
+   
   end
 
   # GET /elements/1
   # GET /elements/1.json
   def show
     @element = Element.find(params[:id])
+    @user= User.all
 
     respond_to do |format|
       format.html # show.html.erb

@@ -18,6 +18,18 @@ def display_name
 end
 
 
+def resp
+  
+ # @t=self.users
+ 
+#@l=User.where(  :name => @t.name).all
+
+   #@l= User.find_by_id(@t.id).name
+   @user_associated_id= UserProject.find_by_id(self.id).user_id
+  # @userassociename=User.find_by_id(@userassoscieid).name
+  
+end
+
 
 end
 

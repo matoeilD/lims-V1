@@ -1,5 +1,6 @@
 <h1>Listing projects</h1>
 
+
 <table>
   <tr>
 
@@ -17,9 +18,9 @@
     
     <td><%= project.projectname %></td>
     <td><%= project.projectdescription %></td>
-    <td><%= project.users %></td>
+    <td><%= project.users.collect { |a| a.name } %> </td>
     
-   
+
   
     <td><%= link_to 'Show', project %></td>
     <td><%= link_to 'Edit', edit_project_path(project) %></td>

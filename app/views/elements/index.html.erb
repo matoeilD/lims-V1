@@ -1,22 +1,26 @@
 <h1>Listing elements</h1>
 
+
+
+
 <table>
   <tr>
 
-    <th>Elementnote</th>
+    <th>Experiment</th>
   
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>project</th>
+    <th>users</th>
+    <th>date</th>
   </tr>
 
 <% @elements.each do |element| %>
   <tr>
     
-    <td><%= element.elementnote %></td>
-    <td><%= element.users %></td>
-   
+    <td><%= element.experiments.collect { |a| a.exptype } %></td>
   
+    <td><%= element.projects.collect { |a| a.projectname }%></td>
+    <td><%= element.users.collect { |a| a.name } %></td>
+    <td><%= element.created_at %></td>
     <td><%= link_to 'Show', element %></td>
     <td><%= link_to 'Edit', edit_element_path(element) %></td>
     <td><%= link_to 'Destroy', element, confirm: 'Are you sure?', method: :delete %></td>
@@ -26,4 +30,4 @@
 
 <br />
 
-<%= link_to 'New Element', new_element_path %>
+<%= link_to 'New Element', new_element_path %> 

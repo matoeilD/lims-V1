@@ -2,8 +2,8 @@
     
   <%= f.inputs do %>
   
-    <%= f.input :projects, :label => "projet associé", :required => true%>
-    <%= f.input :experiments, :label => "type d'experience", :as => :radio,       :collection => Experiment.all, :required => true %>
+    <%= f.input :projects, :label => "projet associé", :required => true, :label_method => :projectname%>
+    <%= f.input :experiments, :label => "type d'experience", :as => :radio,       :collection => Experiment.all, :member_label => :exptype, :required => true %>
     <%= f.input :users, :label => "responsable"%>
    
     <%= f.input :elementnote %> 

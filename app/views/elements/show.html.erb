@@ -3,11 +3,16 @@
 
 
 <p>
-  <b>Elementnote:</b>
-  <%= @element.elementnote %>
-  <%= @element.users %>
-  
+  <b>elementname:</b>
+  <%= @element.experiments.collect { |a| a.exptype } %>
 </p>
+
+<p>
+  <b>personne:</b>
+  <%= @element.users.collect { |a| a.name } %>
+</p>
+
+
 
 
 
