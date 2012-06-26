@@ -3,7 +3,23 @@
   <%= f.inputs do %>
   
     <%= f.input :projects, :label => "projet associé", :required => true, :label_method => :projectname%>
-    <%= f.input :experiments, :label => "type d'experience", :as => :radio,       :collection => Experiment.all, :member_label => :exptype, :required => true %>
+   <!-- <%= f.input :experiments, :label => "type d'experience", :as => :radio,       :collection => Experiment.all, :member_label => :exptype, :required => true %>
+    -->
+    
+     <%= f.input :experiments, :label => "type d'experience", :as => :radio, :remote_function(),      :collection => Experiment.all, :member_label => :exptype, :required => true %>
+    
+    
+
+ <!-- <%= form_remote_tag({ :controller =>
+'experiments', :action => 'new' } ) %>  -->
+    
+   <!-- <% f.inputs do %> 
+    
+    <%= submit_to_remote 'type dexpe', :collection => Experiment.all, :url => { :controller =>
+'experiments', :action => 'new' } %>
+      <%= f.commit_button %>
+  <% end %> -->
+    
     <%= f.input :users, :label => "responsable"%>
    
     <%= f.input :elementnote %> 

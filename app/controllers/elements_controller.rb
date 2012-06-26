@@ -4,6 +4,7 @@ class ElementsController < ApplicationController
   def index
     @elements = Element.all
     @user_elements=UserElement.all
+    #@u=User.test
   
     respond_to do |format|
       format.html # index.html.erb
@@ -44,6 +45,7 @@ class ElementsController < ApplicationController
   # POST /elements.json
   def create
     @element = Element.new(params[:element])
+   #@element.projectheader=Element.test
     
 
     respond_to do |format|

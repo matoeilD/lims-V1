@@ -4,6 +4,10 @@ class ProjectsController < ApplicationController
   def index
     
     @projects = Project.all
+    @user_projects=UserProject.all
+   # @t= Element.test
+    
+    
 
     respond_to do |format|
       format.html #index.html.erb
@@ -49,6 +53,8 @@ class ProjectsController < ApplicationController
   # POST /projects.json
   def create
     @project = Project.new(params[:project])
+    
+    
     
 
     respond_to do |format|

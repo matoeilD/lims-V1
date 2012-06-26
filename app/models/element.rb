@@ -10,7 +10,7 @@ has_many :projects, :through => :project_elements
   
 has_many :experiments
 
-attr_accessible :elementnote, :user_ids, :project_ids, :element_ids, :experiment_ids, 
+attr_accessible :elementnote, :user_ids, :project_ids, :element_ids, :experiment_ids
 
 #accepts_nested_attributes_for :elements
 

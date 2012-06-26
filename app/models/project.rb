@@ -20,15 +20,27 @@ end
 
 def resp
   
- # @t=self.users
- 
+@t=UserProject.find(:all, :conditions=> ["project_id= ?",self.id])
+@t=@t.first.user_id
+@t=User.find(:all, :conditions=>["id=?",@t])
+@t=@t.first.name
+  
+ # @t=self.users 
 #@l=User.where(  :name => @t.name).all
-
    #@l= User.find_by_id(@t.id).name
-   @user_associated_id= UserProject.find_by_id(self.id).user_id
+   #@project_id=self.id
+   #@user_associated_object= UserProject.find_by_id(@project_id)   
+  # if (UserProject[:project_id]=self.id)
+   #  read_attribute("id")
+   #end   
   # @userassociename=User.find_by_id(@userassoscieid).name
+  #def respo
+   # @project.write_attribute("projectheader","bl")
+#end
   
 end
+
+
 
 
 end

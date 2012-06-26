@@ -17,5 +17,16 @@ attr_accessible :email, :firstname, :name, :password, :position, :project_ids
 #scope :firstname
 
 
+ def getresponsableUser
+    array =Array.new
+    
+    User.all.each do |u|
+      if u.position == "responsable"
+         array.push(u.name)
+      end
+                  end
+  return array
+  end
+
 
 end
