@@ -11,8 +11,10 @@ class ElementsController < ApplicationController
       format.json { render json: @elements }
     end
    
+   
+   
   end
-
+  
   # GET /elements/1
   # GET /elements/1.json
   def show
@@ -41,16 +43,33 @@ class ElementsController < ApplicationController
     @element = Element.find(params[:id])
   end
 
+  
+  
+  
+  
   # POST /elements
   # POST /elements.json
   def create
-    @element = Element.new(params[:element])
-   #@element.projectheader=Element.test
-    
+    @element = Element.new(params[:element])    
+    #render :text => params    
+    if params[:element][:elementtype]=="1"
+        @element.save
+        redirect_to :controller => 'cultures', :action => 'new'
+    end
+    else if params[:element][:elementtype]=="2"
+        render :text => "cette page est en cours de construction"
+    end
+  
+  end
 
-    respond_to do |format|
-      if @element.save
-        format.html { redirect_to @element, notice: 'Element was successfully created.' }
+   def new_culture
+     @culture= Culture.new
+     @culture= Culture.new(params[:culture])
+     
+     respond_to do |format|
+      if @culture.save
+        @element.save
+        format.html { redirect_to @element, notice: 'element was successfully created.' }
         format.json { render json: @element, status: :created, location: @element }
        
       else
@@ -58,7 +77,7 @@ class ElementsController < ApplicationController
         format.json { render json: @element.errors, status: :unprocessable_entity }
       end
     end
-  end
+   end
 
   # PUT /elements/1
   # PUT /elements/1.json

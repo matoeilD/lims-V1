@@ -24,6 +24,13 @@ def resp
 @t=@t.first.user_id
 @t=User.find(:all, :conditions=>["id=?",@t])
 @t=@t.first.name
+
+
+def show_element
+    @element=Project.elements
+end
+
+
   
  # @t=self.users 
 #@l=User.where(  :name => @t.name).all

@@ -6,23 +6,19 @@
 <table>
   <tr>
   
-    <th>Experiment</th>
-  
-    <th>project</th>
-    <th>users</th>
-    <th>test</th>
+    <th>name</th>  
+    <th>associated project</th>
+    <th>users involved</th>
     <th>date</th>
   </tr>
+  
+  
 
 <% @elements.each do |element| %>
-  <tr>
-    
-    <td><%= element.experiments.collect { |a| a.exptype } %></td>
-  
+  <tr>    
+    <td><%= element.elementname %></td>  
     <td><%= element.projects.collect { |a| a.projectname }%></td>
-    <td><%= element.users.collect { |a| a.name }%></td>
-   
-   
+    <td><%= element.users.collect { |a| a.name }%></td>   
     <td><%= element.created_at %></td>
     <td><%= link_to 'Show', element %></td>
     <td><%= link_to 'Edit', edit_element_path(element) %></td>
@@ -30,6 +26,8 @@
   </tr>
 <% end %>
 </table>
+
+
 
 <br />
 

@@ -1,6 +1,14 @@
 Limsv1::Application.routes.draw do
   
   
+  resources :cultures
+  #do
+  #  resources :elements
+  # end
+  #get "elements/index"
+  
+  #map.resources :elements, :has_one => :culture
+  
  # get "experiment/edit"
 
   #get "experiment/index"
@@ -9,7 +17,7 @@ Limsv1::Application.routes.draw do
 
   #get "experiment/show"
   resources :experiments
-  resources :elements
+  resources :elements 
 
   resources :users
 

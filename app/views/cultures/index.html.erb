@@ -1,0 +1,23 @@
+<h1>Listing cultures</h1>
+
+<table>
+  <tr>
+    <th>Culturename</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @cultures.each do |culture| %>
+  <tr>
+    <td><%= culture.culturename %></td>
+    <td><%= link_to 'Show', culture %></td>
+    <td><%= link_to 'Edit', edit_culture_path(culture) %></td>
+    <td><%= link_to 'Destroy', culture, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Culture', new_culture_path %>

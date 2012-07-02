@@ -6,10 +6,9 @@
 
     <th>name</th>
     <th>description</th>
-    <th>responsable</th>
-  
+    <th>responsable</th>  
     <th>membres</th>
-    <th></th>
+ 
     <th></th>
   </tr>
 
@@ -20,17 +19,7 @@
     <td><%= project.projectdescription %></td>
     <td><%= project.resp %></td>
     <td><%= project.users.collect { |a| a.name } %> </td>
-     <!--<td><%= project.read_attribute("projectname") %> </td>
-    <td><%=getresponsableUser %> </td>
-    <td><%= project.users.collect { |a| a.name } %> </td>
    
-    
-    
-    
-  <td><%= @projects.each { | cle,valeur | chaine="#{cle}, #{valeur} "} %> </td>
-
- <td><%= @user_projects.each { | cle,valeur | chaine="#{cle}, #{valeur} "} %> </td>-->
- 
     <td><%= link_to 'Show', project %></td>
     <td><%= link_to 'Edit', edit_project_path(project) %></td>
     <td><%= link_to 'Destroy', project, confirm: 'Are you sure?', method: :delete %></td>

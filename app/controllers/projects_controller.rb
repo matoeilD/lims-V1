@@ -4,15 +4,11 @@ class ProjectsController < ApplicationController
   def index
     
     @projects = Project.all
-    @user_projects=UserProject.all
-   # @t= Element.test
-    
-    
+    @user_projects=UserProject.all      
 
     respond_to do |format|
       format.html #index.html.erb
-      format.json { render json: @projects }
-      
+      format.json { render json: @projects }      
       
     end
   end
@@ -22,6 +18,8 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
     @element=Element.all
+    
+    
 
     respond_to do |format|
       format.html # show.html.erb
@@ -42,20 +40,13 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1/edit
   def edit
-    @project = Project.find(params[:id])
-    
-
-    
-   
+    @project = Project.find(params[:id])   
   end
 
   # POST /projects
   # POST /projects.json
   def create
-    @project = Project.new(params[:project])
-    
-    
-    
+    @project = Project.new(params[:project])    
 
     respond_to do |format|
       if @project.save
@@ -69,6 +60,10 @@ class ProjectsController < ApplicationController
     end
   end
 
+  
+
+  
+  
   # PUT /projects/1
   # PUT /projects/1.json
   def update

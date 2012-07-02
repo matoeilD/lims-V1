@@ -9,10 +9,17 @@ has_many :project_elements
 has_many :projects, :through => :project_elements
   
 has_many :experiments
+has_one :culture
 
-attr_accessible :elementnote, :user_ids, :project_ids, :element_ids, :experiment_ids
+attr_accessible :elementnote, :user_ids, :project_ids, :element_ids, :experiment_ids, :elementname, :elementtype, :elt
 
-#accepts_nested_attributes_for :elements
+accepts_nested_attributes_for :experiments
+accepts_nested_attributes_for :culture
+
+
+
+  
+
 
 #def project_associe
     

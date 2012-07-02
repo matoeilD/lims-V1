@@ -5,6 +5,7 @@ gem 'sqlite3'
 gem 'jquery-rails'
 gem 'pry'
 gem 'formtastic'
+gem 'cocoon'
 
 # Gems used only for assets and not required
 # in production environments by default.

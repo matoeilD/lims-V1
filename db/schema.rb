@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120530102549) do
+ActiveRecord::Schema.define(:version => 20120628123954) do
+
+  create_table "cultures", :force => true do |t|
+    t.string   "culturename"
+    t.integer  "element_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "element_elements", :force => true do |t|
     t.integer  "element_id"
@@ -22,6 +29,8 @@ ActiveRecord::Schema.define(:version => 20120530102549) do
   add_index "element_elements", ["element_id"], :name => "index_element_elements_on_element_id"
 
   create_table "elements", :force => true do |t|
+    t.string   "elementname"
+    t.string   "elementtype"
     t.text     "elementnote"
     t.integer  "user_id"
     t.integer  "element_id"
