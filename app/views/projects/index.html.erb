@@ -18,7 +18,7 @@
     <td><%= project.projectname %></td>
     <td><%= project.projectdescription %></td>
     <td><%= project.resp %></td>
-    <td><%= project.users.collect { |a| a.name } %> </td>
+    <td><%= project.users.collect { |a| a.name }.join(",") %> </td>
    
     <td><%= link_to 'Show', project %></td>
     <td><%= link_to 'Edit', edit_project_path(project) %></td>

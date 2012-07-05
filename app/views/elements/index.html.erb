@@ -17,8 +17,8 @@
 <% @elements.each do |element| %>
   <tr>    
     <td><%= element.elementname %></td>  
-    <td><%= element.projects.collect { |a| a.projectname }%></td>
-    <td><%= element.users.collect { |a| a.name }%></td>   
+    <td><%= element.projects.collect { |a| a.projectname }.join(",")%></td>
+    <td><%= element.users.collect { |a| a.name }.join(",")%></td>   
     <td><%= element.created_at %></td>
     <td><%= link_to 'Show', element %></td>
     <td><%= link_to 'Edit', edit_element_path(element) %></td>

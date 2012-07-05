@@ -10,28 +10,26 @@ has_many :users, :through => :user_projects
 
 belongs_to :projecttype
   
-attr_accessible :projectname, :projectdescription, :projecttype_id, :user_ids, :element_ids
+attr_accessible :projectname, :projectdescription, :projecttype_id, :user_ids, :element_ids, :elementname
+
+
+
+validates_presence_of :projectname
+validates_uniqueness_of :projectname
+
 
 
 def display_name
   "#{projectname}"
 end
 
-
+#affiche le responsable du projet
 def resp
   
 @t=UserProject.find(:all, :conditions=> ["project_id= ?",self.id])
 @t=@t.first.user_id
 @t=User.find(:all, :conditions=>["id=?",@t])
-@t=@t.first.name
-
-
-def show_element
-    @element=Project.elements
-end
-
-
-  
+@t=@t.first.name  
  # @t=self.users 
 #@l=User.where(  :name => @t.name).all
    #@l= User.find_by_id(@t.id).name
@@ -48,6 +46,84 @@ end
 end
 
 
+#creer un tableau d'eltname associé pour l'affichage
+def elt_asso_name(*p)
+   @pe=ProjectElement.find(:all, :conditions=> ["project_id= ?",self.id])
+  
+  #elements id correspondant à ce projet
+     @t=@pe.collect do |el|
+         el.element_id
+         end
+     
+     #elements correspondant recuperés dans table element
+    @e= @t.collect do |e|
+        Element.find(:all, :conditions=>["id=?",e])     
+    end
+    
+    #cree une tableau d'eltname     
+    @name=@e.collect do |test|      
+     test.collect do |e|
+       e.elementname   
+      end    
+    end
+    
+    i=0
+    t=[]
+    @name.each do |n|
+        t[i]=n
+        i=i+1
+        end
+  
+  for i in 0...t.length
+      return *p[i]=t
+  end
+end
+
+#extrait l'id correspondant a l element pour faire un link_to ds la vue, avec id comme parametre transmis
+def detail_element
+    @pe=ProjectElement.find(:all, :conditions=> ["project_id= ?",self.id])
+  
+  #elements id correspondant à ce projet
+     @t=@pe.collect do |el|
+         el.element_id
+         end
+     
+     #elements correspondant recuperés dans table element
+    @e= @t.collect do |e|
+        Element.find(:all, :conditions=>["id=?",e])     
+    end
+    
+      
+    
+    @i=[]
+    @type=@e.collect do |test|      
+     test.collect do |e|
+       if e.elementtype =="1"
+         @i+=Culture.find(:all, :conditions=> ["element_id= ?",e.id] )
+       end
+             
+      end    
+    end    
+     
+       #elements id correspondant à ce projet
+     @t=@i.collect do |el|
+         el.id
+         end
+     @t
+ 
+          #cree une table cle, valeur => type d exp , id     
+    #@elt_asso=""
+    #@type=@e.collect do |test|      
+     #test.collect do |e|
+      # if e.elementtype =="1"
+       #  @i=Culture.find(:all, :conditions=> ["element_id= ?",e.id] )
+       #end
+        #  @elt_asso+="#{e.elementtype},#{@i}"    
+      #end    
+    #end    
+     # @elt_asso
+
+end
 
 
 end

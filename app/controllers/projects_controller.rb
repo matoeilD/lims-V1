@@ -18,7 +18,7 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
     @element=Element.all
-    
+     
     
 
     respond_to do |format|

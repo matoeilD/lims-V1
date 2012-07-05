@@ -1,32 +1,25 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Projectname:</b>
+  <b>Project name:</b>
   <%= @project.projectname %>
 </p>
 
 <p>
-  <b>Projectdescription:</b>
+  <b>Project description:</b>
   <%= @project.projectdescription %>
 </p>
 
-
 <p>
-  <b>Projectelement:</b>
+  <b>project elements:</b>
+  </br>  </br>
+  <% for i in 0..@project.elt_asso_name.length %>
+  <%= @project.elt_asso_name[i]%>
+  <%= link_to "afficher detail", :controller => 'cultures', :action => 'show', :id => @project.detail_element[i] %>
+  </br>  </br>
   
-  <%= @project.elements %>
-  
-  
-  
-
-  
-  
- 
-
-
+  <% end %>
 </p>
-
-
 
 
 

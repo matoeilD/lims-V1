@@ -4,12 +4,12 @@
 
 <p>
   <b>elementname:</b>
-  <%= @element.experiments.collect { |a| a.exptype } %>
+  <%= @element.experiments.collect { |a| a.exptype }.join(",") %>
 </p>
 
 <p>
   <b>personne:</b>
-  <%= @element.users.collect { |a| a.name } %>
+  <%= @element.users.collect { |a| a.name }.join(",") %>
 </p>
 
 
