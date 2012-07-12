@@ -2,32 +2,49 @@
 <html>
 <head>
   <title>Limsv1</title>
-  <%= stylesheet_link_tag    "application", 'formtastic', 'my_formtastic_changes', :media => "all" %>
-  <%= javascript_include_tag :defaults %>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+ 
   <%= javascript_include_tag "application" %>
-  <%= javascript_include_tag :cocoon %>  
+  
 
   
 
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div id="container" >
-      <% flash.each do |name, msg| %>
-      <%= content_tag :div, msg, :id => "flash_#{name}" %>
-      <% end %>
-        </div>
-  
-  <div id="side">
-    <strong>page</strong>    
-    <li><%= link_to "home", 'home#index' %></li>
+    <div class="container">
+    <div class="row">
+      <div class="span9"><%= yield %></div>
+      <div class="span3">
+        <h2>About Us</h2>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </div>
+    </div>
+  </div>
+    
+    <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <a class="brand" href="#">limsv1</a>
+        <div class="nav-collapse">
+          <ul class="nav">
+          <li><%= link_to "home", 'home#index' %></li>
     <li><%= link_to "projects", projects_path %></li>
     <li><%= link_to "users", users_path %></li>
     <li><%= link_to "elements", elements_path %></li>
     <li><%= link_to "experiments", experiments_path %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
   
-<%= yield %>
+ 
 
 </body>
 </html>
