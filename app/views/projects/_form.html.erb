@@ -1,15 +1,38 @@
-<%= semantic_form_for @project do |f| %>
-  <%= f.inputs do %>
-    <%= f.input :projectname %>
-    <%= f.input :projectdescription %>     
-    <%= f.input :projecttype, :as => :radio,       :collection => ["genomique", "transcriptomique"]%>  
-    <%= f.input :users, :label => "project header"%>
-    <%= f.input :users, :label => "project members"%> 
+<%= semantic_form_for @project, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
    
-  <% end %>
+    <div class="controls">
+    <%= f.input :projectname, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
     
-   <%= f.buttons do %>
-	  <%= f.commit_button :button_html => {:class => "primary"} %>
-	  <% end %>
+    <div class="controls">
+      <%= f.input :projectdescription, :class => 'text_area' %>
+    </div>
+  </div>
+  <div class="control-group">
+    
+    <div class="controls">
+      <%= f.input :projecttype, :as => :radio,       :collection => ["genomique", "transcriptomique"], :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+   
+    <div class="controls">
+      <%= f.input :users, :label => "project header", :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+  
+    <div class="controls">
+      <%= f.input :users, :label => "project members", :class => 'number_field' %>
+    </div>
+  </div>
 
-  <% end %>
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                projects_path, :class => 'btn' %>
+  </div>
+<% end %>
