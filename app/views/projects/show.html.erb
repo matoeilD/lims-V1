@@ -17,11 +17,12 @@
 <p>
   <b>project elements:</b>
   </br>  </br>
+  <% if @project.elt_asso_name.any? %>
   <% for i in 0..@project.elt_asso_name.length %>
-  <%= @project.elt_asso_name[i]%>
+  <%= @project.elt_asso_name[i].join("'") unless @project.elt_asso_name[i].nil? %>
   <%= link_to "afficher detail", :controller => 'cultures', :action => 'show', :id => @project.detail_element[i] %>
   </br>  </br>
-  
+<% end %>
   <% end %>
 </p>
 </dl>

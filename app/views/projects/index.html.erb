@@ -22,8 +22,8 @@
        <td><%= project.projectname %></td>
     <td><%= project.projectdescription %></td>
     <td><%= project.resp %></td>
-    <td><%= project.users.collect { |a| a.name }.join(",") %> </td>
-       
+    <% @a= project.users.collect { |a| a.name unless a.name == project.resp }.compact!%>
+       <td><%= @a.join(",") unless @a.nil? %></td>
         <td>
            <%= link_to t('.show', :default => t("helpers.links.show")),
                       project, :class => 'btn btn-mini' %>

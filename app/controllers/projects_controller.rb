@@ -12,6 +12,8 @@ class ProjectsController < ApplicationController
       
     end
   end
+  
+ 
 
   # GET /projects/1
   # GET /projects/1.json

@@ -27,9 +27,13 @@ end
 def resp
   
 @t=UserProject.find(:all, :conditions=> ["project_id= ?",self.id])
+unless @t.first.nil?
 @t=@t.first.user_id
+
 @t=User.find(:all, :conditions=>["id=?",@t])
-@t=@t.first.name  
+
+@t=@t.first.name
+end
  # @t=self.users 
 #@l=User.where(  :name => @t.name).all
    #@l= User.find_by_id(@t.id).name
