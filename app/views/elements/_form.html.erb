@@ -3,6 +3,9 @@
 <%= semantic_form_for @element do |f| %>
     
   <%= f.input :elementname, :label => "nom"%>
+  
+  
+   
      
   <%= f.input :elementtype, :label => "type d'experience", :as => :radio,       :collection => Experiment.all%>
   
@@ -13,6 +16,8 @@
   <%= f.input :elementnote %>
   
   <%= f.actions :submit, :cancel %>
+  
+
 
   <% end %>
  

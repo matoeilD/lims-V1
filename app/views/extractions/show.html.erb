@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Extractionname:</b>
+  <%= @extraction.extractionname %>
+</p>
+
+<p>
+  <b>Element:</b>
+  <%= @extraction.element_id %>
+</p>
+
+<p>
+  <b>Culture:</b>
+  <%= @extraction.culture_id %>
+</p>
+
+<p>
+  <b>Extractionnote:</b>
+  <%= @extraction.extractionnote %>
+</p>
+
+
+<%= link_to 'Edit', edit_extraction_path(@extraction) %> |
+<%= link_to 'Back', extractions_path %>

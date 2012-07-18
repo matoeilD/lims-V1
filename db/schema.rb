@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120628123954) do
+ActiveRecord::Schema.define(:version => 20120713134252) do
 
   create_table "cultures", :force => true do |t|
     t.string   "culturename"
@@ -52,6 +52,15 @@ ActiveRecord::Schema.define(:version => 20120628123954) do
   end
 
   add_index "experiments", ["element_id"], :name => "index_experiments_on_element_id"
+
+  create_table "extractions", :force => true do |t|
+    t.string   "extractionname"
+    t.integer  "element_id"
+    t.integer  "culture_id"
+    t.text     "extractionnote"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
 
   create_table "project_elements", :force => true do |t|
     t.integer  "project_id"

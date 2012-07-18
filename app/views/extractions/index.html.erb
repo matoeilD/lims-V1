@@ -1,0 +1,29 @@
+<h1>Listing extractions</h1>
+
+<table>
+  <tr>
+    <th>Extractionname</th>
+    <th>Element</th>
+    <th>Culture</th>
+    <th>Extractionnote</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @extractions.each do |extraction| %>
+  <tr>
+    <td><%= extraction.extractionname %></td>
+    <td><%= extraction.element_id %></td>
+    <td><%= extraction.culture_id %></td>
+    <td><%= extraction.extractionnote %></td>
+    <td><%= link_to 'Show', extraction %></td>
+    <td><%= link_to 'Edit', edit_extraction_path(extraction) %></td>
+    <td><%= link_to 'Destroy', extraction, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Extraction', new_extraction_path %>

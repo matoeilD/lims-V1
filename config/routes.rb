@@ -1,5 +1,7 @@
 Limsv1::Application.routes.draw do
   
+  resources :extractions
+
   get "cultures/show"
   
   resources :cultures

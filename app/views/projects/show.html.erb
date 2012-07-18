@@ -20,9 +20,12 @@
   <% if @project.elt_asso_name.any? %>
   <% for i in 0..@project.elt_asso_name.length %>
   <%= @project.elt_asso_name[i].join("'") unless @project.elt_asso_name[i].nil? %>
-  <%= link_to "afficher detail", :controller => 'cultures', :action => 'show', :id => @project.detail_element[i] %>
+  
+  
+ <%= link_to "afficher detail", :controller => @project.choix_controller[i] , :action => 'show', :id => @project.detail_element[i] unless @project.detail_element[i].nil?  %>
+ 
   </br>  </br>
-<% end %>
+  <% end %>
   <% end %>
 </p>
 </dl>

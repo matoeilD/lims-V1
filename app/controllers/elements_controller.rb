@@ -50,14 +50,23 @@ class ElementsController < ApplicationController
   # POST /elements
   # POST /elements.json
   def create
+  
     @element = Element.new(params[:element])    
     #render :text => params    
     if params[:element][:elementtype]=="1"
-        @element.save
+        @element.save         
         redirect_to :controller => 'cultures', :action => 'new'
-    end
-    else if params[:element][:elementtype]=="2"
+        
+   elsif params[:element][:elementtype]=="3"
+        @element.save
+        #permet de filtrer au moment de la creation d'extractions , les cultures associés au projet
+        @current_project_id=params[:element][:project_ids][1]
+        
+        redirect_to :controller => 'extractions', :action => 'new', :id => @current_project_id
+    
+    elsif params[:element][:elementtype]=="2"
         render :text => "cette page est en cours de construction"
+    else render :text => "cette page est en cours de construction"
     end
   
   end

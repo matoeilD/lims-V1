@@ -1,0 +1,20 @@
+<%= semantic_form_for @extraction do |f| %>
+  <%= f.inputs do %>
+    <%= f.input :extractionname %>
+    <%= f.input :element_id %>   
+    <%= f.input :culture_id,  :as => :radio,       :collection => Extraction.culture_associe(@project_associe_id)%>
+  
+    
+    
+    
+  
+    
+    <%= f.input :extractionnote %>
+  <% end %>
+
+  <%= f.actions do %>
+    <%= f.action :submit, :as => :input %>
+  <% end %>
+<% end %>
+
+

@@ -43,6 +43,7 @@ class CulturesController < ApplicationController
   #renseigne l'id de l element associé...si culture n est pas sauvé, l'element nouvellement cree est effacé
   def create
     @culture = Culture.new(params[:culture])
+    #permet d'associer elt a culture pour projet::detail elt
     @culture.element_id= Element.last.id
     
 

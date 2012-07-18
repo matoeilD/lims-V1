@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  extractionname: MyString
+  element_id: 1
+  culture_id: 1
+  extractionnote: MyText
+
+two:
+  extractionname: MyString
+  element_id: 1
+  culture_id: 1
+  extractionnote: MyText

@@ -23,6 +23,13 @@ def display_name
   "#{projectname}"
 end
 
+
+
+
+
+
+
+
 #affiche le responsable du projet
 def resp
   
@@ -103,7 +110,10 @@ def detail_element
     @type=@e.collect do |test|      
      test.collect do |e|
        if e.elementtype =="1"
-         @i+=Culture.find(:all, :conditions=> ["element_id= ?",e.id] )
+         @i+=Culture.find(:all, :conditions=> ["element_id= ?",e.id] )  #cf culture controller::create
+         
+       elsif e.elementtype =="3"
+          @i+=Extraction.find(:all, :conditions=> ["element_id= ?",e.id] ) #cf extraction controller::create
        end
              
       end    
@@ -114,6 +124,8 @@ def detail_element
          el.id
          end
      @t
+     
+  
  
           #cree une table cle, valeur => type d exp , id     
     #@elt_asso=""
@@ -127,6 +139,42 @@ def detail_element
     #end    
      # @elt_asso
 
+end
+
+# methode appelle dans project controller pour afficher le detail des elements associes
+def choix_controller
+     @pe=ProjectElement.find(:all, :conditions=> ["project_id= ?",self.id])
+  
+  #elements id correspondant à ce projet
+     @t=@pe.collect do |el|
+         el.element_id
+         end
+     
+     #elements correspondant recuperés dans table element
+    @e= @t.collect do |e|
+        Element.find(:all, :conditions=>["id=?",e])     
+    end
+    
+      
+    
+     @g=""
+    @type=@e.collect do |test|      
+     test.collect do |e|
+       if e.elementtype =="1"
+         @g+="cultures,"
+       elsif e.elementtype =="3"
+         @g+="extractions,"
+       else @g="je ne sais pas"
+       end
+     end
+    end
+    @g.split(",")
+
+    
+    
+   
+   
+         
 end
 
 
