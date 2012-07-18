@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Sequencing name:</b>
+  <%= @sequencing.sequencing_name %>
+</p>
+
+<p>
+  <b>Paired-end:</b>
+  <%= @sequencing.paired_end %>
+</p>
+
+<p>
+  <b>Distance cassure:</b>
+  <%= @sequencing.distance_cassure %>
+</p>
+
+
+
+
+<%= link_to 'Edit', edit_sequencing_path(@sequencing) %> |
+<%= link_to 'Back', sequencings_path %>

@@ -1,0 +1,14 @@
+<%= semantic_form_for @library do |f| %>
+  <%= f.inputs do %>
+    <%= f.input :library_name %>
+    <!--method ds helper -->
+    <%= f.input :extraction_id, :as => :radio, :collection => filtre_elt_associe(@project_associe_id,"extraction") %>
+    <%= f.input :fragmentation %>
+    <%= f.input :strategy %>
+    
+  <% end %>
+
+  <%= f.actions do %>
+    <%= f.action :submit, :as => :input %>
+  <% end %>
+<% end %>

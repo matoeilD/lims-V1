@@ -2,12 +2,9 @@
  
 <%= semantic_form_for @element do |f| %>
     
-  <%= f.input :elementname, :label => "nom"%>
-  
-  
-   
+  <%= f.input :elementname, :label => "nom", :hint => "Example: cult_md_15july2012,seq_gf_18july2012"%>   
      
-  <%= f.input :elementtype, :label => "type d'experience", :as => :radio,       :collection => Experiment.all%>
+  <%= f.input :elementtype, :label => "type d'experience", :as => :radio,       :collection => ["culture", "extraction","library","EM_PCR","sequencing","submission"]%>
   
   <%= f.input :projects, :label => "projet associé", :required => true %>     
        

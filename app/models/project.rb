@@ -10,7 +10,7 @@ has_many :users, :through => :user_projects
 
 belongs_to :projecttype
   
-attr_accessible :projectname, :projectdescription, :projecttype_id, :user_ids, :element_ids, :elementname
+attr_accessible :projectname, :projectdescription, :projecttype_id, :user_ids, :element_ids, :elementname, :numero_smartlab, :numero_id_interne
 
 
 
@@ -109,11 +109,25 @@ def detail_element
     @i=[]
     @type=@e.collect do |test|      
      test.collect do |e|
-       if e.elementtype =="1"
+       if e.elementtype =="culture"
          @i+=Culture.find(:all, :conditions=> ["element_id= ?",e.id] )  #cf culture controller::create
          
-       elsif e.elementtype =="3"
+       elsif e.elementtype =="extraction"
           @i+=Extraction.find(:all, :conditions=> ["element_id= ?",e.id] ) #cf extraction controller::create
+       
+        elsif e.elementtype =="library"
+          @i+=Library.find(:all, :conditions=> ["element_id= ?",e.id] ) #cf library controller::create
+       
+        elsif e.elementtype =="EM_PCR"
+          @i+=EmPcr.find(:all, :conditions=> ["element_id= ?",e.id] ) #cf EM-PCR controller::create
+       
+        elsif e.elementtype =="sequencing"
+          @i+=Sequencing.find(:all, :conditions=> ["element_id= ?",e.id] ) #cf sequencing controller::create
+       
+        elsif e.elementtype =="submission"
+          @i+=Submission.find(:all, :conditions=> ["element_id= ?",e.id] ) #cf submission controller::create
+              
+       else puts "probleme methode detail_element"
        end
              
       end    
@@ -160,11 +174,19 @@ def choix_controller
      @g=""
     @type=@e.collect do |test|      
      test.collect do |e|
-       if e.elementtype =="1"
+       if e.elementtype =="culture"
          @g+="cultures,"
-       elsif e.elementtype =="3"
+       elsif e.elementtype =="extraction"
          @g+="extractions,"
-       else @g="je ne sais pas"
+         elsif e.elementtype =="library"
+         @g+="libraries,"
+         elsif e.elementtype =="EM-PCR"
+         @g+="em_pcrs"
+         elsif e.elementtype =="sequencing"
+         @g+="sequencings,"
+         elsif e.elementtype =="submission"
+         @g+="submissions,"
+       else @g="probleme methode choix controller"
        end
      end
     end

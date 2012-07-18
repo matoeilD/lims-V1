@@ -1,0 +1,14 @@
+<%= semantic_form_for @submission do |f| %>
+  <%= f.inputs do %>
+    <%= f.input :submission_name %>
+     <!--method ds helper -->
+    <%= f.input :sequencing_id, :as => :radio, :collection => filtre_elt_associe(@project_associe_id,"sequencing") %>
+    <%= f.input :seize_s %>
+    <%= f.input :genbank_number %>
+
+  <% end %>
+
+  <%= f.actions do %>
+    <%= f.action :submit, :as => :input %>
+  <% end %>
+<% end %>

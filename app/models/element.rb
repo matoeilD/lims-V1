@@ -11,6 +11,10 @@ has_many :projects, :through => :project_elements
 has_many :experiments
 has_one :culture, :dependent => :destroy
 has_one :extraction, :dependent => :destroy
+has_one :library, :dependent => :destroy
+has_one :EM_PCR, :dependent => :destroy
+has_one :sequencing, :dependent => :destroy
+has_one :submission, :dependent => :destroy
 
 
 
@@ -23,15 +27,15 @@ accepts_nested_attributes_for :culture
 validates_presence_of :elementname
 validates_uniqueness_of :elementname
 
-def self.hello
-  puts "hello"
-  return "ca marche"
-  end
+#def self.hello
+ # puts "hello"
+  #return "ca marche"
+  #end
 
-  def self.project_culture_list
-    @current_project_id
+  #def self.project_culture_list
+  #  @current_project_id
     
-  end
+  #end
 
 
 #def project_associe

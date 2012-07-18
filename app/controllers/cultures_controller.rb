@@ -53,7 +53,7 @@ class CulturesController < ApplicationController
         format.json { render json: @culture, status: :created, location: @culture }
        
       else
-        Element.last.delete   
+        Element.last.destroy
         format.html { render action: "new" }
         format.json { render json: @culture.errors, status: :unprocessable_entity }
       end

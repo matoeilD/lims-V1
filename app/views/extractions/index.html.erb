@@ -13,10 +13,10 @@
 
 <% @extractions.each do |extraction| %>
   <tr>
-    <td><%= extraction.extractionname %></td>
+    <td><%= extraction.extraction_name %></td>
     <td><%= extraction.element_id %></td>
     <td><%= extraction.culture_id %></td>
-    <td><%= extraction.extractionnote %></td>
+    <td><%= extraction.extraction_note %></td>
     <td><%= link_to 'Show', extraction %></td>
     <td><%= link_to 'Edit', edit_extraction_path(extraction) %></td>
     <td><%= link_to 'Destroy', extraction, confirm: 'Are you sure?', method: :delete %></td>

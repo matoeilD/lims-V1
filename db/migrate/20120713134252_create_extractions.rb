@@ -1,10 +1,10 @@
 class CreateExtractions < ActiveRecord::Migration
   def change
     create_table :extractions do |t|
-      t.string :extractionname
+      t.string :extraction_name
       t.integer :element_id
       t.integer :culture_id
-      t.text :extractionnote
+      t.text :extraction_note
 
       t.timestamps
     end

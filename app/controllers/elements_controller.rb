@@ -53,40 +53,63 @@ class ElementsController < ApplicationController
   
     @element = Element.new(params[:element])    
     #render :text => params    
-    if params[:element][:elementtype]=="1"
+    if params[:element][:elementtype]=="culture"
         @element.save         
         redirect_to :controller => 'cultures', :action => 'new'
         
-   elsif params[:element][:elementtype]=="3"
+   elsif params[:element][:elementtype]=="extraction"
         @element.save
         #permet de filtrer au moment de la creation d'extractions , les cultures associés au projet
-        @current_project_id=params[:element][:project_ids][1]
-        
+        @current_project_id=params[:element][:project_ids][1]        
         redirect_to :controller => 'extractions', :action => 'new', :id => @current_project_id
-    
-    elsif params[:element][:elementtype]=="2"
-        render :text => "cette page est en cours de construction"
-    else render :text => "cette page est en cours de construction"
+        
+  elsif params[:element][:elementtype]=="library"
+        @element.save
+        #permet de filtrer au moment de la creation d'extractions , les cultures associés au projet
+        @current_project_id=params[:element][:project_ids][1]        
+        redirect_to :controller => 'libraries', :action => 'new', :id => @current_project_id
+        
+  elsif params[:element][:elementtype]=="EM_PCR"
+        @element.save
+        #permet de filtrer au moment de la creation d'extractions , les cultures associés au projet
+        @current_project_id=params[:element][:project_ids][1]        
+        redirect_to :controller => 'em_pcrs', :action => 'new', :id => @current_project_id
+        
+  elsif params[:element][:elementtype]=="sequencing"
+        @element.save
+        #permet de filtrer au moment de la creation d'extractions , les cultures associés au projet
+        @current_project_id=params[:element][:project_ids][1]        
+        redirect_to :controller => 'sequencings', :action => 'new', :id => @current_project_id
+        
+  elsif params[:element][:elementtype]=="submission"
+        @element.save
+        #permet de filtrer au moment de la creation d'extractions , les cultures associés au projet
+        @current_project_id=params[:element][:project_ids][1]        
+        redirect_to :controller => 'submissions', :action => 'new', :id => @current_project_id
+        
+ 
+
+    else render :text => "element type is needed"
     end
   
   end
 
-   def new_culture
-     @culture= Culture.new
-     @culture= Culture.new(params[:culture])
+   #def new_culture
+    # @culture= Culture.new
+    # @culture= Culture.new(params[:culture])
      
-     respond_to do |format|
-      if @culture.save
-        @element.save
-        format.html { redirect_to @element, notice: 'element was successfully created.' }
-        format.json { render json: @element, status: :created, location: @element }
+     #respond_to do |format|
+      #if @culture.save
+       # @element.save
+        #format.html { redirect_to @element, notice: 'element was successfully created.' }
+        #format.json { render json: @element, status: :created, location: @element }
        
-      else
-        format.html { render action: "new" }
-        format.json { render json: @element.errors, status: :unprocessable_entity }
-      end
-    end
-   end
+      #else
+       # format.html { render action: "new" }
+        #format.json { render json: @element.errors, status: :unprocessable_entity }
+     # end
+    #end
+   #end
 
   # PUT /elements/1
   # PUT /elements/1.json

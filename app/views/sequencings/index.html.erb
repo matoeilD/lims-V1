@@ -1,0 +1,29 @@
+<h1>Listing sequencings</h1>
+
+<table>
+  <tr>
+    <th>Sequencing name</th>
+    <th>Paired-end</th>
+    <th>Distance cassure</th>
+  
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @sequencings.each do |sequencing| %>
+  <tr>
+    <td><%= sequencing.sequencing_name %></td>
+    <td><%= sequencing.paired_end %></td>
+    <td><%= sequencing.distance_cassure %></td>
+   
+    <td><%= link_to 'Show', sequencing %></td>
+    <td><%= link_to 'Edit', edit_sequencing_path(sequencing) %></td>
+    <td><%= link_to 'Destroy', sequencing, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Sequencing', new_sequencing_path %>

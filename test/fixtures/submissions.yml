@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  submission_name: MyString
+  16s: MyString
+  genbank_number: MyString
+  element_id: 1
+  sequencing_id: 1
+
+two:
+  submission_name: MyString
+  16s: MyString
+  genbank_number: MyString
+  element_id: 1
+  sequencing_id: 1

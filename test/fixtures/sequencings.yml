@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  sequencing_name: MyString
+  paired-end: false
+  distance_cassure: MyString
+  element_id: 1
+  EM-PCR_id: 1
+
+two:
+  sequencing_name: MyString
+  paired-end: false
+  distance_cassure: MyString
+  element_id: 1
+  EM-PCR_id: 1

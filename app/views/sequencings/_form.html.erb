@@ -1,0 +1,14 @@
+<%= semantic_form_for @sequencing do |f| %>
+  <%= f.inputs do %>
+    <%= f.input :sequencing_name %>
+    <!--method ds helper -->
+    <%= f.input :empcr_id, :as => :radio, :collection => filtre_elt_associe(@project_associe_id,"EM_PCR") %>
+    <%= f.input :paired_end, :as => :radio, :collection => ["yes","no"] %>
+    <%= f.input :distance_cassure %>
+    
+  <% end %>
+
+  <%= f.actions do %>
+    <%= f.action :submit, :as => :input %>
+  <% end %>
+<% end %>

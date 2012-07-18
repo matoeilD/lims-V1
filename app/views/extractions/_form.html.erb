@@ -1,15 +1,9 @@
 <%= semantic_form_for @extraction do |f| %>
   <%= f.inputs do %>
-    <%= f.input :extractionname %>
-    <%= f.input :element_id %>   
-    <%= f.input :culture_id,  :as => :radio,       :collection => Extraction.culture_associe(@project_associe_id)%>
-  
-    
-    
-    
-  
-    
-    <%= f.input :extractionnote %>
+    <%= f.input :extraction_name %>
+    <!--method ds helper -->
+    <%= f.input :culture_id,  :as => :radio, :collection => filtre_elt_associe(@project_associe_id,"culture")%>
+    <%= f.input :extraction_note %>
   <% end %>
 
   <%= f.actions do %>

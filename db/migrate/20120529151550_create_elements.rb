@@ -1,9 +1,9 @@
 class CreateElements < ActiveRecord::Migration
   def change
     create_table :elements do |t|
-      t.string :elementname
-      t.string :elementtype
-      t.text :elementnote
+      t.string :element_name
+      t.string :element_type
+      t.text :element_note
       t.integer :user_id
       t.integer :element_id
       t.integer :project_id

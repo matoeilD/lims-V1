@@ -1,0 +1,29 @@
+<h1>Listing libraries</h1>
+
+<table>
+  <tr>
+    <th>Library name</th>
+    <th>Fragmentation</th>
+    <th>Strategy</th>
+  
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @libraries.each do |library| %>
+  <tr>
+    <td><%= library.library_name %></td>
+    <td><%= library.fragmentation %></td>
+    <td><%= library.strategy %></td>
+    
+    <td><%= link_to 'Show', library %></td>
+    <td><%= link_to 'Edit', edit_library_path(library) %></td>
+    <td><%= link_to 'Destroy', library, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Library', new_library_path %>

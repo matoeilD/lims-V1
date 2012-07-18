@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Library name:</b>
+  <%= @library.library_name %>
+</p>
+
+<p>
+  <b>Fragmentation:</b>
+  <%= @library.fragmentation %>
+</p>
+
+<p>
+  <b>Strategy:</b>
+  <%= @library.strategy %>
+</p>
+
+
+
+
+<%= link_to 'Edit', edit_library_path(@library) %> |
+<%= link_to 'Back', libraries_path %>

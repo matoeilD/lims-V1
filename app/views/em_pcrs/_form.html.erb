@@ -1,0 +1,14 @@
+<%= semantic_form_for @em_pcr do |f| %>
+  <%= f.inputs do %>
+    <%= f.input :EM_PCR_name %>
+    <!--method ds helper -->
+    <%= f.input :library_id, :as => :radio, :collection => filtre_elt_associe(@project_associe_id,"library") %>
+    <%= f.input :PCR_round, :as => :radio, :collection => ["1st round","2nd round"] %>
+   
+      
+  <% end %>
+
+  <%= f.actions do %>
+    <%= f.action :submit, :as => :input %>
+  <% end %>
+<% end %>

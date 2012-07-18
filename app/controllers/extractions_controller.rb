@@ -25,8 +25,7 @@ class ExtractionsController < ApplicationController
   # GET /extractions/new.json
   def new
     @extraction = Extraction.new
-    @project_associe_id=params[:id] # from redirect method of :controller =>elements :action => create
-    
+    @project_associe_id=params[:id] # from redirect method of :controller =>elements :action => create va servir ds extraction _form view
 
     respond_to do |format|
       format.html # new.html.erb
@@ -53,7 +52,7 @@ class ExtractionsController < ApplicationController
         format.html { redirect_to @extraction, notice: 'Extraction was successfully created.' }
         format.json { render json: @extraction, status: :created, location: @extraction }
       else
-        Element.last.delete
+        Element.last.destroy
         format.html { render action: "new" }
         format.json { render json: @extraction.errors, status: :unprocessable_entity }
       end

@@ -1,5 +1,13 @@
 Limsv1::Application.routes.draw do
   
+  resources :submissions
+
+  resources :sequencings
+
+  resources :em_pcrs
+
+  resources :libraries
+
   resources :extractions
 
   get "cultures/show"

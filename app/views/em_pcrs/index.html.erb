@@ -1,0 +1,27 @@
+<h1>Listing em_pcrs</h1>
+
+<table>
+  <tr>
+    <th>Em-pcr name</th>
+    <th>Pcr round</th>
+   
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @em_pcrs.each do |em_pcr| %>
+  <tr>
+    <td><%= em_pcr.EM_PCR_name %></td>
+    <td><%= em_pcr.PCR_round %></td>
+   
+    <td><%= link_to 'Show', em_pcr %></td>
+    <td><%= link_to 'Edit', edit_em_pcr_path(em_pcr) %></td>
+    <td><%= link_to 'Destroy', em_pcr, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Em pcr', new_em_pcr_path %>

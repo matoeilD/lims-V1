@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  library_name: MyString
+  fragmentation: MyText
+  strategy: MyText
+  element_id: 1
+  extraction_id: 1
+
+two:
+  library_name: MyString
+  fragmentation: MyText
+  strategy: MyText
+  element_id: 1
+  extraction_id: 1

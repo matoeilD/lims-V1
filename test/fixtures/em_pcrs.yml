@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  EM-PCR_name: MyString
+  PCR_round: false
+  element_id: 1
+  library_id: 1
+
+two:
+  EM-PCR_name: MyString
+  PCR_round: false
+  element_id: 1
+  library_id: 1

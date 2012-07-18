@@ -11,13 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120713134252) do
+ActiveRecord::Schema.define(:version => 20120718155838) do
 
   create_table "cultures", :force => true do |t|
-    t.string   "culturename"
+    t.string   "culture_name"
+    t.string   "host_strain"
     t.integer  "element_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.text     "culture_note"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "element_elements", :force => true do |t|
@@ -43,6 +45,15 @@ ActiveRecord::Schema.define(:version => 20120713134252) do
   add_index "elements", ["project_id"], :name => "index_elements_on_project_id"
   add_index "elements", ["user_id"], :name => "index_elements_on_user_id"
 
+  create_table "em_pcrs", :force => true do |t|
+    t.string   "EM_PCR_name"
+    t.boolean  "PCR_round"
+    t.integer  "element_id"
+    t.integer  "library_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "experiments", :force => true do |t|
     t.string   "exptype"
     t.string   "resultfile"
@@ -54,12 +65,22 @@ ActiveRecord::Schema.define(:version => 20120713134252) do
   add_index "experiments", ["element_id"], :name => "index_experiments_on_element_id"
 
   create_table "extractions", :force => true do |t|
-    t.string   "extractionname"
+    t.string   "extraction_name"
     t.integer  "element_id"
     t.integer  "culture_id"
-    t.text     "extractionnote"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.text     "extraction_note"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  create_table "libraries", :force => true do |t|
+    t.string   "library_name"
+    t.text     "fragmentation"
+    t.text     "strategy"
+    t.integer  "element_id"
+    t.integer  "extraction_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "project_elements", :force => true do |t|
@@ -75,6 +96,8 @@ ActiveRecord::Schema.define(:version => 20120713134252) do
   create_table "projects", :force => true do |t|
     t.string  "projectname"
     t.text    "projectdescription"
+    t.integer "numero_smartlab"
+    t.integer "numero_id_interne"
     t.integer "projecttype_id"
     t.integer "user_id"
     t.integer "element_id"
@@ -86,6 +109,26 @@ ActiveRecord::Schema.define(:version => 20120713134252) do
 
   create_table "projecttypes", :force => true do |t|
     t.string   "projecttypename"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  create_table "sequencings", :force => true do |t|
+    t.string   "sequencing_name"
+    t.boolean  "paired_end"
+    t.string   "distance_cassure"
+    t.integer  "element_id"
+    t.integer  "empcr_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  create_table "submissions", :force => true do |t|
+    t.string   "submission_name"
+    t.string   "seize_s"
+    t.string   "genbank_number"
+    t.integer  "element_id"
+    t.integer  "sequencing_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
   end

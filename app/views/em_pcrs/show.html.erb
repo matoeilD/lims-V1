@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Em-pcr name:</b>
+  <%= @em_pcr.EM_PCR_name %>
+</p>
+
+<p>
+  <b>Pcr round:</b>
+  <%= @em_pcr.PCR_round %>
+</p>
+
+<p>
+  <b>Element:</b>
+  <%= @em_pcr.element_id %>
+</p>
+
+<p>
+  <b>Library:</b>
+  <%= @em_pcr.library_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_em_pcr_path(@em_pcr) %> |
+<%= link_to 'Back', em_pcrs_path %>
