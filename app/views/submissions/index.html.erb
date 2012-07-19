@@ -1,29 +1,44 @@
-<h1>Listing submissions</h1>
-
-<table>
-  <tr>
-    <th>Submission name</th>
-    <th>16s</th>
-    <th>Genbank number</th>
-  
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @submissions.each do |submission| %>
-  <tr>
-    <td><%= submission.submission_name %></td>
-    <td><%= submission.seize_s %></td>
-    <td><%= submission.genbank_number %></td>
-  
-    <td><%= link_to 'Show', submission %></td>
-    <td><%= link_to 'Edit', edit_submission_path(submission) %></td>
-    <td><%= link_to 'Destroy', submission, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
+<%- model_class = Submission.new.class -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:submission_name) %></th>
+      <th><%= model_class.human_attribute_name(:seize_s) %></th>
+      <th><%= model_class.human_attribute_name(:genbank_number) %></th>
+      <th><%= model_class.human_attribute_name(:element_id) %></th>
+      <th><%= model_class.human_attribute_name(:sequencing_id) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @submissions.each do |submission| %>
+      <tr>
+        <td><%= link_to submission.id, submission_path(submission) %></td>
+        <td><%= submission.submission_name %></td>
+        <td><%= submission.seize_s %></td>
+        <td><%= submission.genbank_number %></td>
+        <td><%= submission.element_id %></td>
+        <td><%= submission.sequencing_id %></td>
+        <td><%=l submission.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_submission_path(submission), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      submission_path(submission),
+                      :method => :delete,
+                      :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
-<br />
-
-<%= link_to 'New Submission', new_submission_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_submission_path,
+            :class => 'btn btn-primary' %>

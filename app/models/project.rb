@@ -180,17 +180,18 @@ def choix_controller
          @g+="extractions,"
          elsif e.elementtype =="library"
          @g+="libraries,"
-         elsif e.elementtype =="EM-PCR"
-         @g+="em_pcrs"
+         elsif e.elementtype =="EM_PCR"
+         @g+="em_pcrs,"
          elsif e.elementtype =="sequencing"
          @g+="sequencings,"
          elsif e.elementtype =="submission"
          @g+="submissions,"
-       else @g="probleme methode choix controller"
+       else @g="probleme_methode_choix_controller"
        end
      end
     end
     @g.split(",")
+
 
     
     

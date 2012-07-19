@@ -1,10 +1,27 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = @culture.class -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+</div>
 
-<p>
-  <b>Culturename:</b>
-  <%= @culture.culture_name %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:culture_name) %>:</strong></dt>
+  <dd><%= @culture.culture_name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:host_strain) %>:</strong></dt>
+  <dd><%= @culture.host_strain %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:element_id) %>:</strong></dt>
+  <dd><%= @culture.element_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:culture_note) %>:</strong></dt>
+  <dd><%= @culture.culture_note %></dd>
+</dl>
 
-
-<%= link_to 'Edit', edit_culture_path(@culture) %> |
-<%= link_to 'Back', cultures_path %>
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              cultures_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_culture_path(@culture), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              culture_path(@culture),
+              :method => 'delete',
+              :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
+              :class => 'btn btn-danger' %>
+</div>

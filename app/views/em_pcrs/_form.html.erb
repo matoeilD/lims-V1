@@ -1,14 +1,28 @@
-<%= semantic_form_for @em_pcr do |f| %>
-  <%= f.inputs do %>
-    <%= f.input :EM_PCR_name %>
-    <!--method ds helper -->
+<%= semantic_form_for @em_pcr, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    
+    <div class="controls">
+       <%= f.input :EM_PCR_name %>
+    </div>
+  </div>
+  <div class="control-group">
+  
+    <div class="controls">
+       <!--method ds helper -->
     <%= f.input :library_id, :as => :radio, :collection => filtre_elt_associe(@project_associe_id,"library") %>
-    <%= f.input :PCR_round, :as => :radio, :collection => ["1st round","2nd round"] %>
-   
-      
-  <% end %>
+    </div>
+  </div>
+  <div class="control-group">
+    
+    <div class="controls">
+      <%= f.input :PCR_round, :as => :radio, :collection => ["1st round","2nd round"] %>
+    </div>
+  </div>
 
-  <%= f.actions do %>
-    <%= f.action :submit, :as => :input %>
-  <% end %>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                em_pcrs_path, :class => 'btn' %>
+  </div>
 <% end %>

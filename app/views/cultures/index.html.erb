@@ -1,23 +1,42 @@
-<h1>Listing cultures</h1>
-
-<table>
-  <tr>
-    <th>Culturename</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @cultures.each do |culture| %>
-  <tr>
-    <td><%= culture.culturename %></td>
-    <td><%= link_to 'Show', culture %></td>
-    <td><%= link_to 'Edit', edit_culture_path(culture) %></td>
-    <td><%= link_to 'Destroy', culture, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
+<%- model_class = Culture.new.class -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:culture_name) %></th>
+      <th><%= model_class.human_attribute_name(:host_strain) %></th>
+      <th><%= model_class.human_attribute_name(:element_id) %></th>
+      <th><%= model_class.human_attribute_name(:culture_note) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @cultures.each do |culture| %>
+      <tr>
+        <td><%= link_to culture.id, culture_path(culture) %></td>
+        <td><%= culture.culture_name %></td>
+        <td><%= culture.host_strain %></td>
+        <td><%= culture.element_id %></td>
+        <td><%= culture.culture_note %></td>
+        <td><%=l culture.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_culture_path(culture), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      culture_path(culture),
+                      :method => :delete,
+                      :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
-<br />
-
-<%= link_to 'New Culture', new_culture_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_culture_path,
+            :class => 'btn btn-primary' %>

@@ -1,14 +1,30 @@
-<%= semantic_form_for @extraction do |f| %>
-  <%= f.inputs do %>
-    <%= f.input :extraction_name %>
-    <!--method ds helper -->
+<%= semantic_form_for @extraction, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+   
+    <div class="controls">
+      <%= f.input :extraction_name %>
+    </div>
+  </div>
+  <div class="control-group">
+    
+    <div class="controls">
+      <!--method ds helper -->
     <%= f.input :culture_id,  :as => :radio, :collection => filtre_elt_associe(@project_associe_id,"culture")%>
-    <%= f.input :extraction_note %>
-  <% end %>
+    </div>
+  </div>
+  <div class="control-group">
+    
+    <div class="controls">
+      <%= f.input :extraction_note %>
+    </div>
+  </div>
 
-  <%= f.actions do %>
-    <%= f.action :submit, :as => :input %>
-  <% end %>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                extractions_path, :class => 'btn' %>
+  </div>
 <% end %>
 
 

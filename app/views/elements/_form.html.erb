@@ -1,20 +1,44 @@
-
- 
-<%= semantic_form_for @element do |f| %>
-    
-  <%= f.input :elementname, :label => "nom", :hint => "Example: cult_md_15july2012,seq_gf_18july2012"%>   
-     
-  <%= f.input :elementtype, :label => "type d'experience", :as => :radio,       :collection => ["culture", "extraction","library","EM_PCR","sequencing","submission"]%>
-  
-  <%= f.input :projects, :label => "projet associé", :required => true %>     
-       
-  <%= f.input :users, :label => "responsable"%>
+<%= semantic_form_for @element, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
    
-  <%= f.input :elementnote %>
+    <div class="controls">
+      <%= f.input :elementname, :class => 'text_field',:label => "nom", :hint => "Example: cult_md_15july2012,seq_gf_18july2012" %>
+    </div>
+  </div>
   
-  <%= f.actions :submit, :cancel %>
+  <div class="control-group">
+    
+    <div class="controls">
+      <%= f.input :elementtype, :class => 'text_field',:label => "type", :as => :radio,       :collection => ["culture", "extraction","library","EM_PCR","sequencing","submission"]%>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    
+    <div class="controls">
+      <%= f.input :projects, :label => "projet associé", :required => true %> 
+    </div>
+  </div>
+  
+  <div class="control-group">
+   
+    <div class="controls">
+      <%= f.input :users, :label => "responsable"%>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    
+    <div class="controls">
+      <%= f.input :elementnote %>
+    </div>
+  </div>
   
 
 
-  <% end %>
- 
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                elements_path, :class => 'btn' %>
+  </div>
+<% end %>

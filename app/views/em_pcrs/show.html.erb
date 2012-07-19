@@ -1,25 +1,27 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = @em_pcr.class -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+</div>
 
-<p>
-  <b>Em-pcr name:</b>
-  <%= @em_pcr.EM_PCR_name %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:EM_PCR_name) %>:</strong></dt>
+  <dd><%= @em_pcr.EM_PCR_name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:PCR_round) %>:</strong></dt>
+  <dd><%= @em_pcr.PCR_round %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:element_id) %>:</strong></dt>
+  <dd><%= @em_pcr.element_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:library_id) %>:</strong></dt>
+  <dd><%= @em_pcr.library_id %></dd>
+</dl>
 
-<p>
-  <b>Pcr round:</b>
-  <%= @em_pcr.PCR_round %>
-</p>
-
-<p>
-  <b>Element:</b>
-  <%= @em_pcr.element_id %>
-</p>
-
-<p>
-  <b>Library:</b>
-  <%= @em_pcr.library_id %>
-</p>
-
-
-<%= link_to 'Edit', edit_em_pcr_path(@em_pcr) %> |
-<%= link_to 'Back', em_pcrs_path %>
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              em_pcrs_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_em_pcr_path(@em_pcr), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              em_pcr_path(@em_pcr),
+              :method => 'delete',
+              :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
+              :class => 'btn btn-danger' %>
+</div>

@@ -1,14 +1,34 @@
-<%= semantic_form_for @submission do |f| %>
-  <%= f.inputs do %>
-    <%= f.input :submission_name %>
-     <!--method ds helper -->
+<%= semantic_form_for @submission , :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+   
+    <div class="controls">
+     <%= f.input :submission_name %>
+    </div>
+  </div>
+  <div class="control-group">
+
+    <div class="controls">
+        <!--method ds helper -->
     <%= f.input :sequencing_id, :as => :radio, :collection => filtre_elt_associe(@project_associe_id,"sequencing") %>
+       </div>
+  </div>
+  <div class="control-group">
+   
+    <div class="controls">
     <%= f.input :seize_s %>
-    <%= f.input :genbank_number %>
+    </div>
+  </div>
+  <div class="control-group">
+   
+    <div class="controls">
+     <%= f.input :genbank_number %>
+    </div>
+  </div>
+ 
 
-  <% end %>
-
-  <%= f.actions do %>
-    <%= f.action :submit, :as => :input %>
-  <% end %>
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                submissions_path, :class => 'btn' %>
+  </div>
 <% end %>

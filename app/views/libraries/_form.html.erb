@@ -1,14 +1,34 @@
-<%= semantic_form_for @library do |f| %>
-  <%= f.inputs do %>
-    <%= f.input :library_name %>
-    <!--method ds helper -->
+<%= semantic_form_for @library, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+   
+    <div class="controls">
+      <%= f.input :library_name %>
+    </div>
+  </div>
+  <div class="control-group">
+   
+    <div class="controls">
+       <!--method ds helper -->
     <%= f.input :extraction_id, :as => :radio, :collection => filtre_elt_associe(@project_associe_id,"extraction") %>
-    <%= f.input :fragmentation %>
-    <%= f.input :strategy %>
+       </div>
+  </div>
+  <div class="control-group">
     
-  <% end %>
+    <div class="controls">
+      <%= f.input :fragmentation %>
+    </div>
+  </div>
+  <div class="control-group">
+    
+    <div class="controls">
+      <%= f.input :strategy %>
+    </div>
+  </div>
 
-  <%= f.actions do %>
-    <%= f.action :submit, :as => :input %>
-  <% end %>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                libraries_path, :class => 'btn' %>
+  </div>
 <% end %>

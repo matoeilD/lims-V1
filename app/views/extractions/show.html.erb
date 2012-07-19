@@ -1,20 +1,27 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = @extraction.class -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+</div>
 
-<p>
-  <b>Extraction_name:</b>
-  <%= @extraction.extraction_name %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:extraction_name) %>:</strong></dt>
+  <dd><%= @extraction.extraction_name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:element_id) %>:</strong></dt>
+  <dd><%= @extraction.element_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:culture_id) %>:</strong></dt>
+  <dd><%= @extraction.culture_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:extraction_note) %>:</strong></dt>
+  <dd><%= @extraction.extraction_note %></dd>
+</dl>
 
-<p>
-  <b>Culture associée:</b>
-  <%= @extraction.element_id %>
-</p>
-
-<p>
-  <b>Extraction_note:</b>
-  <%= @extraction.extraction_note %>
-</p>
-
-
-<%= link_to 'Edit', edit_extraction_path(@extraction) %> |
-<%= link_to 'Back', extractions_path %>
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              extractions_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_extraction_path(@extraction), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              extraction_path(@extraction),
+              :method => 'delete',
+              :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
+              :class => 'btn btn-danger' %>
+</div>

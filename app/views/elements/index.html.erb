@@ -1,34 +1,46 @@
-<h1>Listing elements</h1>
-
-
-
-
-<table>
-  <tr>
-  
-    <th>name</th>  
-    <th>associated project</th>
-    <th>users involved</th>
-    <th>date</th>
-  </tr>
-  
-  
-
-<% @elements.each do |element| %>
-  <tr>    
-    <td><%= element.elementname %></td>  
-    <td><%= element.projects.collect { |a| a.projectname }.join(",")%></td>
-    <td><%= element.users.collect { |a| a.name }.join(",")%></td>   
-    <td><%= element.created_at %></td>
-    <td><%= link_to 'Show', element %></td>
-    <td><%= link_to 'Edit', edit_element_path(element) %></td>
-    <td><%= link_to 'Destroy', element, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
+<%- model_class = Element.new.class -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:elementname) %></th>
+      <th><%= model_class.human_attribute_name(:elementtype) %></th>
+      <th><%= model_class.human_attribute_name(:elementnote) %></th>
+      <th><%= model_class.human_attribute_name(:user_id) %></th>
+      <th><%= model_class.human_attribute_name(:element_id) %></th>
+      <th><%= model_class.human_attribute_name(:project_id) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @elements.each do |element| %>
+      <tr>
+        <td><%= link_to element.id, element_path(element) %></td>
+        <td><%= element.elementname %></td>
+        <td><%= element.elementtype %></td>
+        <td><%= element.elementnote %></td>
+        <td><%= element.user_id %></td>
+        <td><%= element.element_id %></td>
+        <td><%= element.project_id %></td>
+        <td><%=l element.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_element_path(element), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      element_path(element),
+                      :method => :delete,
+                      :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
-
-
-<br />
-
-<%= link_to 'New Element', new_element_path %> 
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_element_path,
+            :class => 'btn btn-primary' %>

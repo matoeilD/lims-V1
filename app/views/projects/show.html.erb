@@ -4,18 +4,13 @@
 </div>
 
 <dl class="dl-horizontal">
-  <p>
-  <b>Project name:</b>
-  <%= @project.projectname %>
-</p>
-
-<p>
-  <b>Project description:</b>
-  <%= @project.projectdescription %>
-</p>
-
-<p>
-  <b>project elements:</b>
+  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+  <dd><%= @project.projectname %></dd>
+  
+  <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
+  <dd><%= @project.projectdescription %></dd>
+ <dt><strong><%= model_class.human_attribute_name(:elements) %>:</strong></dt>
+  <dd>
   </br>  </br>
   <% if @project.elt_asso_name.any? %>
   <% for i in 0..@project.elt_asso_name.length %>
@@ -27,7 +22,7 @@
   </br>  </br>
   <% end %>
   <% end %>
-</p>
+  </dd>
 </dl>
 
 <div class="form-actions">
