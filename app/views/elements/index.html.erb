@@ -6,12 +6,12 @@
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:elementname) %></th>
-      <th><%= model_class.human_attribute_name(:elementtype) %></th>
-      <th><%= model_class.human_attribute_name(:elementnote) %></th>
-      <th><%= model_class.human_attribute_name(:user_id) %></th>
-      <th><%= model_class.human_attribute_name(:element_id) %></th>
-      <th><%= model_class.human_attribute_name(:project_id) %></th>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:type) %></th>
+  
+      <th><%= model_class.human_attribute_name(:experimentator) %></th>
+
+      <th><%= model_class.human_attribute_name(:project) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -22,12 +22,14 @@
         <td><%= link_to element.id, element_path(element) %></td>
         <td><%= element.elementname %></td>
         <td><%= element.elementtype %></td>
-        <td><%= element.elementnote %></td>
-        <td><%= element.user_id %></td>
-        <td><%= element.element_id %></td>
-        <td><%= element.project_id %></td>
+        
+        <td><%= element.users.collect { |a| a.name }.join(",") %></td>
+       
+        <td><%= element.projects.collect { |a| a.projectname }.join(",") %></td>
         <td><%=l element.created_at %></td>
         <td>
+          <%= link_to t('.show', :default => t("helpers.links.show")),
+                      element, :class => 'btn btn-mini' %>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_element_path(element), :class => 'btn btn-mini' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),

@@ -1,9 +1,27 @@
 <%- model_class = @em_pcr.class -%>
+
+
+    <div class="alert alert-success"  id="notice">
+    <button class="close" data-dismiss="alert">×</button>
+    <strong>Well done!</strong> <%= notice %>
+    </div>
+
+
+
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human %></h1>
 </div>
 
 <dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+  <dd><%= Element.find(@em_pcr.element_id).elementname %></dd>
+  
+  <dt><strong><%= model_class.human_attribute_name(:projet_associé) %>:</strong></dt>
+  <dd><%= Element.find(@em_pcr.element_id).projects.collect { |a| a.projectname  }.join(",") %></dd>
+  
+   <dt><strong><%= model_class.human_attribute_name(:experimentator) %>:</strong></dt>
+  <dd><%= Element.find(@em_pcr.element_id).users.collect { |a| a.name  }.join(",") %></dd>
+  
   <dt><strong><%= model_class.human_attribute_name(:EM_PCR_name) %>:</strong></dt>
   <dd><%= @em_pcr.EM_PCR_name %></dd>
   <dt><strong><%= model_class.human_attribute_name(:PCR_round) %>:</strong></dt>
@@ -16,12 +34,8 @@
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
-              em_pcrs_path, :class => 'btn'  %>
+              elements_path, :class => 'btn'  %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
               edit_em_pcr_path(@em_pcr), :class => 'btn' %>
-  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              em_pcr_path(@em_pcr),
-              :method => 'delete',
-              :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
-              :class => 'btn btn-danger' %>
+ 
 </div>

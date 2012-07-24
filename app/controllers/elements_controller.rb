@@ -19,13 +19,58 @@ class ElementsController < ApplicationController
   # GET /elements/1.json
   def show
     @element = Element.find(params[:id])
-    @user= User.all
+  
+    
+     #redirige vers la methode show approprie
+    if @element.elementtype =="culture"
+      @c=Culture.find(:all, :conditions=> ["element_id= ?",@element.id] )     
+       
+        redirect_to :controller => 'cultures', :action => 'show', :id => @c[0].id
+      
+      
+        
+   elsif @element.elementtype=="extraction"
+      
+           @c=Extraction.find(:all, :conditions=> ["element_id= ?",@element.id] )     
+       
+        redirect_to :controller => 'extractions', :action => 'show', :id => @c[0].id
+        
+  elsif @element.elementtype=="library"
+        
+           @c=Library.find(:all, :conditions=> ["element_id= ?",@element.id] )     
+       
+        redirect_to :controller => 'libraries', :action => 'show', :id => @c[0].id
+        
+  elsif @element.elementtype=="EM_PCR"
+       
+           @c=EmPcr.find(:all, :conditions=> ["element_id= ?",@element.id] )     
+       
+        redirect_to :controller => 'em_pcrs', :action => 'show', :id => @c[0].id
+        
+  elsif @element.elementtype=="sequencing"
+        
+       @c=Sequencing.find(:all, :conditions=> ["element_id= ?",@element.id] )     
+       
+        redirect_to :controller => 'sequencings', :action => 'show', :id => @c[0].id
+        
+  elsif @element.elementtype=="submission"
+        
+         @c=Submission.find(:all, :conditions=> ["element_id= ?",@element.id] )     
+       
+        redirect_to :controller => 'submissions', :action => 'show', :id => @c[0].id
+        
+ 
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @element }
+    else redirect_to :action => 'index', :notice => "element type has not been found"
     end
+  
   end
+    
+    
+    
+    
+    
+    
 
   # GET /elements/new
   # GET /elements/new.json
@@ -54,8 +99,11 @@ class ElementsController < ApplicationController
     @element = Element.new(params[:element])    
     #render :text => params    
     if params[:element][:elementtype]=="culture"
-        @element.save         
+         @element.save
+       
         redirect_to :controller => 'cultures', :action => 'new'
+      
+      
         
    elsif params[:element][:elementtype]=="extraction"
         @element.save
@@ -89,7 +137,7 @@ class ElementsController < ApplicationController
         
  
 
-    else render :text => "element type is needed"
+    else redirect_to :action => 'new', :notice => "element type is needed"
     end
   
   end

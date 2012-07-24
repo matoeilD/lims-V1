@@ -10,21 +10,27 @@
       <th><%= model_class.human_attribute_name(:projectdescription) %></th>
       <th><%= model_class.human_attribute_name(:projectresp) %></th>
       <th><%= model_class.human_attribute_name(:projetuser) %></th>
+      <th><%= model_class.human_attribute_name(:progression) %></th>
       
       
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
-    <% @projects.each do |project| %>
+      <% @projects.each do |project| %>
       <tr>
         <td><%= link_to project.id, project_path(project) %></td>
-       <td><%= project.projectname %></td>
-    <td><%= project.projectdescription %></td>
-    <td><%= project.resp %></td>
-    <% @a= project.users.collect { |a| a.name unless a.name == project.resp }.compact!%>
-       <td><%= @a.join(",") unless @a.nil? %></td>
-        <td>
+        <td><%= project.projectname %></td>
+        <td><%= project.projectdescription %></td>
+        <td><%= project.resp %></td>
+         <% @a= project.users.collect { |a| a.name unless a.name == project.resp }.compact!%>
+         <td><%= @a.join(",") unless @a.nil? %></td>
+         <td>    <div class="progress progress-striped">
+                  <div class="bar" style="width: 20%;"></div>
+                </div></td>
+        
+        
+         <td>
            <%= link_to t('.show', :default => t("helpers.links.show")),
                       project, :class => 'btn btn-mini' %>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),

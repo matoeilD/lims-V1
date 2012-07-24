@@ -1,28 +1,60 @@
 <%- model_class = @project.class -%>
+
+
+    <div class="alert alert-success"  id="notice">
+    <button class="close" data-dismiss="alert">×</button>
+    <strong>Well done!</strong> <%= notice %>
+    </div>
+
+
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human %></h1>
 </div>
 
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
-  <dd><%= @project.projectname %></dd>
-  
+  <dd><%= @project.projectname %></dd></br>  
   <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
-  <dd><%= @project.projectdescription %></dd>
- <dt><strong><%= model_class.human_attribute_name(:elements) %>:</strong></dt>
-  <dd>
-  </br>  </br>
-  <% if @project.elt_asso_name.any? %>
-  <% for i in 0..@project.elt_asso_name.length %>
-  <%= @project.elt_asso_name[i].join("'") unless @project.elt_asso_name[i].nil? %>
+  <dd><%= @project.projectdescription %></dd></br></br>
+  <dt><strong><%= model_class.human_attribute_name(:elements) %>:</strong></dt></br>
   
   
- <%= link_to "afficher detail", :controller => @project.choix_controller[i] , :action => 'show', :id => @project.detail_element[i] unless @project.detail_element[i].nil?  %>
- 
-  </br>  </br>
-  <% end %>
-  <% end %>
-  </dd>
+  
+  <table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:type) %></th>
+      <th><%= model_class.human_attribute_name(:date) %></th>
+           
+      
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for i in 0..@project.elt_associe(1).length %>
+      <tr>
+        <td> <%= @project.elt_associe(1)[i].join("'") unless @project.elt_associe(1)[i].nil? %></td>
+       <td> <%= @project.elt_associe(2)[i].join("'")  unless @project.elt_associe(2)[i].nil? %></td>
+    <td><%= @project.elt_associe(3)[i].join("'")  unless @project.elt_associe(3)[i].nil? %></td>
+    
+    
+        <td>
+          
+          <%= link_to "afficher detail", :controller => @project.choix_controller[i] , :action => 'show', :id => @project.detail_element[i] unless @project.detail_element[i].nil?  %>
+       
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+  
+  
+  <%= link_to t('.add_new_element', :default => t("helpers.links.add_new_element")),
+            new_element_path,
+            :class => 'btn btn-primary' %>
+  
+  
 </dl>
 
 <div class="form-actions">

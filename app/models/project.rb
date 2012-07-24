@@ -57,8 +57,9 @@ end
 end
 
 
-#creer un tableau d'eltname associé pour l'affichage
-def elt_asso_name(*p)
+#creer un tableau d'elt associé pour l'affichage et display les attributs qu on veut
+def elt_associe(x)
+  @name=nil
    @pe=ProjectElement.find(:all, :conditions=> ["project_id= ?",self.id])
   
   #elements id correspondant à ce projet
@@ -74,20 +75,26 @@ def elt_asso_name(*p)
     #cree une tableau d'eltname     
     @name=@e.collect do |test|      
      test.collect do |e|
-       e.elementname   
+       if x==1
+         e.elementname
+       elsif x==2
+         e.elementtype
+          elsif x==3
+         e.created_at
+          elsif x==4
+         e.users
+       
+       end
+       
+        
       end    
     end
     
-    i=0
-    t=[]
-    @name.each do |n|
-        t[i]=n
-        i=i+1
-        end
-  
-  for i in 0...t.length
-      return *p[i]=t
-  end
+     
+
+    
+ 
+   
 end
 
 #extrait l'id correspondant a l element pour faire un link_to ds la vue, avec id comme parametre transmis

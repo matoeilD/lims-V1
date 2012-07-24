@@ -90,6 +90,11 @@ def filtre_elt_associe(project_associe_id,elt_type)
      @t
      
 end
+
+def empty_string #so that nil objject do not mess up the views
+  @s=" "
+end
+
  
   
 end

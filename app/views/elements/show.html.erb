@@ -19,8 +19,13 @@
 </dl>
 
 <div class="form-actions">
+  
+  
   <%= link_to t('.back', :default => t("helpers.links.back")),
-              elements_path, :class => 'btn'  %>
+              cultures_path, :class => 'btn'  %>
+              
+              
+              
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
               edit_element_path(@element), :class => 'btn' %>
   <%= link_to t('.destroy', :default => t("helpers.links.destroy")),

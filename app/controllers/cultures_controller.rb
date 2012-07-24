@@ -49,7 +49,11 @@ class CulturesController < ApplicationController
 
     respond_to do |format|
       if @culture.save
-        format.html { redirect_to :controller => 'elements', :action => 'index', notice: 'element culture was successfully created.' }
+        
+             
+        #format.html { redirect_to :controller => 'elements', :action => 'index', notice: 'element culture was successfully created.' }
+        
+        format.html { redirect_to @culture, notice: 'culture was successfully created.' }
         format.json { render json: @culture, status: :created, location: @culture }
        
       else
