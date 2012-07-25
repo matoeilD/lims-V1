@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  data_name: MyString
+  data_file: MyText
+  sequencing_id: 1
+
+two:
+  data_name: MyString
+  data_file: MyText
+  sequencing_id: 1

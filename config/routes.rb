@@ -1,5 +1,15 @@
 Limsv1::Application.routes.draw do
   
+  resources :rnaseqs
+
+  resources :seizespyros
+
+  resources :metagenomes
+
+  resources :genomes
+
+  resources :data
+
   resources :submissions
 
   resources :sequencings

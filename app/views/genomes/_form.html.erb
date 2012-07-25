@@ -1,0 +1,69 @@
+<%= form_for @genome, :html => { :class => 'form-horizontal' } do |f| %>
+ 
+  <div class="control-group">
+    <%= f.label :data_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :data_id, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :genome_type, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :genome_type, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :genome_ref, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :genome_ref, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :genome_params, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :genome_params, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :genome_annotateur, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :genome_annotateur, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :genome_nbcontigs, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :genome_nbcontigs, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :genome_nbscaffold, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :genome_nbscaffold, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :genome_coverage, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :genome_coverage, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :genome_ncinquante, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :genome_ncinquante, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :genome_size, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :genome_size, :class => 'text_field' %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                genomes_path, :class => 'btn' %>
+  </div>
+<% end %>

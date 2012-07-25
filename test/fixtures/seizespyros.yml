@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  seize_name: MyString
+  data_id: 1
+  seize_tools: MyString
+  seize_params: MyString
+  seize_output: MyText
+
+two:
+  seize_name: MyString
+  data_id: 1
+  seize_tools: MyString
+  seize_params: MyString
+  seize_output: MyText

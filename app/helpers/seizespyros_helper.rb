@@ -1,0 +1,2 @@
+module SeizespyrosHelper
+end

@@ -2,14 +2,21 @@
   <div class="control-group">
    
     <div class="controls">
-      <%= f.input :elementname, :class => 'text_field',:label => "nom", :hint => "Example: cult_md_15july2012,seq_gf_18july2012" %>
+      <%= f.input :element_name, :class => 'text_field',:label => "nom", :hint => "Example: cult_md_15july2012,seq_gf_18july2012" %>
     </div>
   </div>
   
   <div class="control-group">
     
-    <div class="controls">
-      <%= f.input :elementtype, :class => 'text_field',:label => "type", :as => :radio,       :collection => ["culture", "extraction","library","EM_PCR","sequencing","submission"]%>
+     <div class="controls">
+      <%= f.input :element_date,:label => "date manip", :hint => "as written down in lab book" %>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    
+    <div class="controls" >
+      <%= f.input :element_type,:label => "type", :as => :radio,       :collection => ["culture", "extraction","library","EM_PCR","sequencing","submission","data","genome","metagenome","16s_pyro","RNAseq"]%>
     </div>
   </div>
   
@@ -30,7 +37,7 @@
   <div class="control-group">
     
     <div class="controls">
-      <%= f.input :elementnote %>
+      <%= f.input :element_note %>
     </div>
   </div>
   

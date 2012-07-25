@@ -10,7 +10,7 @@ has_many :users, :through => :user_projects
 
 belongs_to :projecttype
   
-attr_accessible :projectname, :projectdescription, :projecttype_id, :user_ids, :element_ids, :elementname, :numero_smartlab, :numero_id_interne
+attr_accessible :projectname, :projectdescription, :projecttype_id, :user_ids, :element_ids, :element_name, :numero_smartlab, :numero_id_interne
 
 
 
@@ -57,7 +57,7 @@ end
 end
 
 
-#creer un tableau d'elt associé pour l'affichage et display les attributs qu on veut
+#creer un tableau d'elt associé pour l'affichage et display les attributs qu on veut ds projet.show
 def elt_associe(x)
   @name=nil
    @pe=ProjectElement.find(:all, :conditions=> ["project_id= ?",self.id])
@@ -76,9 +76,9 @@ def elt_associe(x)
     @name=@e.collect do |test|      
      test.collect do |e|
        if x==1
-         e.elementname
+         e.element_name
        elsif x==2
-         e.elementtype
+         e.element_type
           elsif x==3
          e.created_at
           elsif x==4
@@ -116,23 +116,38 @@ def detail_element
     @i=[]
     @type=@e.collect do |test|      
      test.collect do |e|
-       if e.elementtype =="culture"
+       if e.element_type =="culture"
          @i+=Culture.find(:all, :conditions=> ["element_id= ?",e.id] )  #cf culture controller::create
          
-       elsif e.elementtype =="extraction"
+       elsif e.element_type =="extraction"
           @i+=Extraction.find(:all, :conditions=> ["element_id= ?",e.id] ) #cf extraction controller::create
        
-        elsif e.elementtype =="library"
+        elsif e.element_type =="library"
           @i+=Library.find(:all, :conditions=> ["element_id= ?",e.id] ) #cf library controller::create
        
-        elsif e.elementtype =="EM_PCR"
+        elsif e.element_type =="EM_PCR"
           @i+=EmPcr.find(:all, :conditions=> ["element_id= ?",e.id] ) #cf EM-PCR controller::create
        
-        elsif e.elementtype =="sequencing"
+        elsif e.element_type =="sequencing"
           @i+=Sequencing.find(:all, :conditions=> ["element_id= ?",e.id] ) #cf sequencing controller::create
        
-        elsif e.elementtype =="submission"
-          @i+=Submission.find(:all, :conditions=> ["element_id= ?",e.id] ) #cf submission controller::create
+        elsif e.element_type =="submission"
+          @i+=Submission.find(:all, :conditions=> ["element_id= ?",e.id] ) #cf submission controller::create          
+          
+        elsif e.element_type =="data"
+          @i+=Datum.find(:all, :conditions=> ["element_id= ?",e.id] ) #cf data controller::create
+          
+        elsif e.element_type =="genome"
+          @i+=Genome.find(:all, :conditions=> ["element_id= ?",e.id] ) #cf genome controller::create
+        
+        elsif e.element_type =="metagenome"
+          @i+=Metagenome.find(:all, :conditions=> ["element_id= ?",e.id] ) #cf metagenome controller::create
+          
+        elsif e.element_type =="16s_pyro"
+          @i+=Seizespyro.find(:all, :conditions=> ["element_id= ?",e.id] ) #cf seizespyro controller::create
+          
+        elsif e.element_type =="RNAseq"
+          @i+=Rnaseq.find(:all, :conditions=> ["element_id= ?",e.id] ) #cf rnaseq controller::create
               
        else puts "probleme methode detail_element"
        end
@@ -181,18 +196,28 @@ def choix_controller
      @g=""
     @type=@e.collect do |test|      
      test.collect do |e|
-       if e.elementtype =="culture"
+       if e.element_type =="culture"
          @g+="cultures,"
-       elsif e.elementtype =="extraction"
+       elsif e.element_type =="extraction"
          @g+="extractions,"
-         elsif e.elementtype =="library"
+         elsif e.element_type =="library"
          @g+="libraries,"
-         elsif e.elementtype =="EM_PCR"
+         elsif e.element_type =="EM_PCR"
          @g+="em_pcrs,"
-         elsif e.elementtype =="sequencing"
+         elsif e.element_type =="sequencing"
          @g+="sequencings,"
-         elsif e.elementtype =="submission"
-         @g+="submissions,"
+         elsif e.element_type =="submission"
+         @g+="submissions,"         
+         elsif e.element_type =="data"
+         @g+="data,"
+         elsif e.element_type =="genome"
+         @g+="genomes,"
+         elsif e.element_type =="metagenome"
+         @g+="metagenomes,"
+         elsif e.element_type =="16s_pyro"
+         @g+="seizespyros,"
+         elsif e.element_type =="RNAseq"
+         @g+="rnaseqs,"        
        else @g="probleme_methode_choix_controller"
        end
      end

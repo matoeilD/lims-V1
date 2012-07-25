@@ -16,16 +16,22 @@ has_one :em_pcr, :dependent => :destroy
 has_one :sequencing, :dependent => :destroy
 has_one :submission, :dependent => :destroy
 
+has_one :data, :dependent => :destroy
+has_one :genome, :dependent => :destroy
+has_one :metagenome, :dependent => :destroy
+has_one :seizespyro, :dependent => :destroy
+has_one :rnaseq, :dependent => :destroy
 
 
-attr_accessible :elementnote, :user_ids, :project_ids, :element_ids, :experiment_ids, :elementname, :elementtype, :elt
+
+attr_accessible :element_note, :user_ids, :project_ids, :element_ids, :experiment_ids, :element_name, :element_type, :elt
 
 accepts_nested_attributes_for :experiments
 accepts_nested_attributes_for :culture
 
 
-validates_presence_of :elementname
-validates_uniqueness_of :elementname
+validates_presence_of :element_name
+validates_uniqueness_of :element_name
 
 #recupere le id 
 #def get_id

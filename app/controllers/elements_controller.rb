@@ -22,42 +22,72 @@ class ElementsController < ApplicationController
   
     
      #redirige vers la methode show approprie
-    if @element.elementtype =="culture"
+    if @element.element_type =="culture"
       @c=Culture.find(:all, :conditions=> ["element_id= ?",@element.id] )     
        
         redirect_to :controller => 'cultures', :action => 'show', :id => @c[0].id
       
       
         
-   elsif @element.elementtype=="extraction"
+   elsif @element.element_type=="extraction"
       
            @c=Extraction.find(:all, :conditions=> ["element_id= ?",@element.id] )     
        
         redirect_to :controller => 'extractions', :action => 'show', :id => @c[0].id
         
-  elsif @element.elementtype=="library"
+  elsif @element.element_type=="library"
         
            @c=Library.find(:all, :conditions=> ["element_id= ?",@element.id] )     
        
         redirect_to :controller => 'libraries', :action => 'show', :id => @c[0].id
         
-  elsif @element.elementtype=="EM_PCR"
+  elsif @element.element_type=="EM_PCR"
        
            @c=EmPcr.find(:all, :conditions=> ["element_id= ?",@element.id] )     
        
         redirect_to :controller => 'em_pcrs', :action => 'show', :id => @c[0].id
         
-  elsif @element.elementtype=="sequencing"
+  elsif @element.element_type=="sequencing"
         
        @c=Sequencing.find(:all, :conditions=> ["element_id= ?",@element.id] )     
        
         redirect_to :controller => 'sequencings', :action => 'show', :id => @c[0].id
         
-  elsif @element.elementtype=="submission"
+  elsif @element.element_type=="submission"
         
          @c=Submission.find(:all, :conditions=> ["element_id= ?",@element.id] )     
        
-        redirect_to :controller => 'submissions', :action => 'show', :id => @c[0].id
+        redirect_to :controller => 'submissions', :action => 'show', :id => @c[0].id       
+        
+  elsif @element.element_type=="data"
+        
+         @c=Datum.find(:all, :conditions=> ["element_id= ?",@element.id] )     
+       
+        redirect_to :controller => 'data', :action => 'show', :id => @c[0].id
+  
+  elsif @element.element_type=="genome"
+        
+         @c=Genome.find(:all, :conditions=> ["element_id= ?",@element.id] )     
+       
+        redirect_to :controller => 'genomes', :action => 'show', :id => @c[0].id
+        
+  elsif @element.element_type=="metagenome"
+        
+         @c=Metagenome.find(:all, :conditions=> ["element_id= ?",@element.id] )     
+       
+        redirect_to :controller => 'metagenomes', :action => 'show', :id => @c[0].id
+        
+  elsif @element.element_type=="16s_pyro"
+        
+         @c=Seizespyro.find(:all, :conditions=> ["element_id= ?",@element.id] )     
+       
+        redirect_to :controller => 'seizespyros', :action => 'show', :id => @c[0].id
+        
+  elsif @element.element_type=="RNAseq"
+        
+         @c=Rnaseq.find(:all, :conditions=> ["element_id= ?",@element.id] )     
+       
+        redirect_to :controller => 'rnaseqs', :action => 'show', :id => @c[0].id
         
  
 
@@ -98,43 +128,72 @@ class ElementsController < ApplicationController
   
     @element = Element.new(params[:element])    
     #render :text => params    
-    if params[:element][:elementtype]=="culture"
+    if params[:element][:element_type]=="culture"
          @element.save
        
         redirect_to :controller => 'cultures', :action => 'new'
       
       
         
-   elsif params[:element][:elementtype]=="extraction"
+   elsif params[:element][:element_type]=="extraction"
         @element.save
         #permet de filtrer au moment de la creation d'extractions , les cultures associés au projet
         @current_project_id=params[:element][:project_ids][1]        
         redirect_to :controller => 'extractions', :action => 'new', :id => @current_project_id
         
-  elsif params[:element][:elementtype]=="library"
+  elsif params[:element][:element_type]=="library"
         @element.save
-        #permet de filtrer au moment de la creation d'extractions , les cultures associés au projet
+        #permet de filtrer au moment de la creation de lib , les extract associés au projet
         @current_project_id=params[:element][:project_ids][1]        
         redirect_to :controller => 'libraries', :action => 'new', :id => @current_project_id
         
-  elsif params[:element][:elementtype]=="EM_PCR"
+  elsif params[:element][:element_type]=="EM_PCR"
         @element.save
-        #permet de filtrer au moment de la creation d'extractions , les cultures associés au projet
+        #permet de filtrer au moment de la creation d'pcr , les lib associés au projet
         @current_project_id=params[:element][:project_ids][1]        
         redirect_to :controller => 'em_pcrs', :action => 'new', :id => @current_project_id
         
-  elsif params[:element][:elementtype]=="sequencing"
+  elsif params[:element][:element_type]=="sequencing"
         @element.save
-        #permet de filtrer au moment de la creation d'extractions , les cultures associés au projet
+        #permet de filtrer au moment de la creation d'sq , les pcr associés au projet
         @current_project_id=params[:element][:project_ids][1]        
         redirect_to :controller => 'sequencings', :action => 'new', :id => @current_project_id
         
-  elsif params[:element][:elementtype]=="submission"
+  elsif params[:element][:element_type]=="submission"
         @element.save
-        #permet de filtrer au moment de la creation d'extractions , les cultures associés au projet
+        #permet de filtrer au moment de la creation de submis , les seq associés au projet
         @current_project_id=params[:element][:project_ids][1]        
-        redirect_to :controller => 'submissions', :action => 'new', :id => @current_project_id
+        redirect_to :controller => 'submissions', :action => 'new', :id => @current_project_id       
         
+   elsif params[:element][:element_type]=="data"
+        @element.save
+        #permet de filtrer au moment de la creation d'data , les seq associés au projet
+        @current_project_id=params[:element][:project_ids][1]        
+        redirect_to :controller => 'data', :action => 'new', :id => @current_project_id
+        
+   elsif params[:element][:element_type]=="genome"
+        @element.save
+        #permet de filtrer au moment de la creation d'genom , les datas associés au projet
+        @current_project_id=params[:element][:project_ids][1]        
+        redirect_to :controller => 'genomes', :action => 'new', :id => @current_project_id
+        
+   elsif params[:element][:element_type]=="metagenome"
+        @element.save
+        #permet de filtrer au moment de la creation d'metag , les datas associés au projet
+        @current_project_id=params[:element][:project_ids][1]        
+        redirect_to :controller => 'metagenomes', :action => 'new', :id => @current_project_id
+        
+   elsif params[:element][:element_type]=="16s_pyro"
+        @element.save
+        #permet de filtrer au moment de la creation d'seizespyro , les datas associés au projet
+        @current_project_id=params[:element][:project_ids][1]        
+        redirect_to :controller => 'seizespyros', :action => 'new', :id => @current_project_id
+        
+   elsif params[:element][:element_type]=="RNAseq"
+        @element.save
+        #permet de filtrer au moment de la creation d'rnaseq , les datas associés au projet
+        @current_project_id=params[:element][:project_ids][1]        
+        redirect_to :controller => 'rnaseqs', :action => 'new', :id => @current_project_id     
  
 
     else redirect_to :action => 'new', :notice => "element type is needed"

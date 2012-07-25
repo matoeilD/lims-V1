@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120718155838) do
+ActiveRecord::Schema.define(:version => 20120725095219) do
 
   create_table "cultures", :force => true do |t|
     t.string   "culture_name"
@@ -20,6 +20,15 @@ ActiveRecord::Schema.define(:version => 20120718155838) do
     t.text     "culture_note"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+  end
+
+  create_table "data", :force => true do |t|
+    t.string   "data_name"
+    t.text     "data_file"
+    t.integer  "sequencing_id"
+    t.integer  "element_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "element_elements", :force => true do |t|
@@ -31,14 +40,15 @@ ActiveRecord::Schema.define(:version => 20120718155838) do
   add_index "element_elements", ["element_id"], :name => "index_element_elements_on_element_id"
 
   create_table "elements", :force => true do |t|
-    t.string   "elementname"
-    t.string   "elementtype"
-    t.text     "elementnote"
+    t.string   "element_name"
+    t.string   "element_type"
+    t.text     "element_note"
     t.integer  "user_id"
     t.integer  "element_id"
     t.integer  "project_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.date     "element_date"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   add_index "elements", ["element_id"], :name => "index_elements_on_element_id"
@@ -73,6 +83,23 @@ ActiveRecord::Schema.define(:version => 20120718155838) do
     t.datetime "updated_at",      :null => false
   end
 
+  create_table "genomes", :force => true do |t|
+    t.string   "genome_name"
+    t.integer  "data_id"
+    t.string   "genome_type"
+    t.string   "genome_ref"
+    t.string   "genome_params"
+    t.string   "genome_annotateur"
+    t.integer  "genome_nbcontigs"
+    t.integer  "genome_nbscaffold"
+    t.string   "genome_coverage"
+    t.string   "genome_ncinquante"
+    t.string   "genome_size"
+    t.integer  "element_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
   create_table "libraries", :force => true do |t|
     t.string   "library_name"
     t.text     "fragmentation"
@@ -81,6 +108,17 @@ ActiveRecord::Schema.define(:version => 20120718155838) do
     t.integer  "extraction_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+  end
+
+  create_table "metagenomes", :force => true do |t|
+    t.string   "meta_name"
+    t.integer  "data_id"
+    t.string   "meta_tools"
+    t.string   "meta_params"
+    t.text     "meta_output"
+    t.integer  "element_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "project_elements", :force => true do |t|
@@ -113,6 +151,30 @@ ActiveRecord::Schema.define(:version => 20120718155838) do
     t.datetime "updated_at",      :null => false
   end
 
+  create_table "rnaseqs", :force => true do |t|
+    t.string   "rnaseq_name"
+    t.integer  "data_id"
+    t.string   "rnaseq_tools"
+    t.string   "rnaseq_params"
+    t.text     "rnaseq_output"
+    t.string   "rnaseq_ref"
+    t.string   "rnaseq_tablecount"
+    t.integer  "element_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  create_table "seizespyros", :force => true do |t|
+    t.string   "seize_name"
+    t.integer  "data_id"
+    t.string   "seize_tools"
+    t.string   "seize_params"
+    t.text     "seize_output"
+    t.integer  "element_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
   create_table "sequencings", :force => true do |t|
     t.string   "sequencing_name"
     t.boolean  "paired_end"
@@ -124,13 +186,16 @@ ActiveRecord::Schema.define(:version => 20120718155838) do
   end
 
   create_table "submissions", :force => true do |t|
-    t.string   "submission_name"
-    t.string   "seize_s"
-    t.string   "genbank_number"
+    t.integer  "submission_number"
+    t.string   "submission_center"
+    t.string   "submission_type"
+    t.string   "accession_number"
+    t.string   "bioproject_id"
     t.integer  "element_id"
     t.integer  "sequencing_id"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.text     "submission_note"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
   end
 
   create_table "user_elements", :force => true do |t|

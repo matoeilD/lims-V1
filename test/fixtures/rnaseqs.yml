@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  rnaseq_name: MyString
+  data_id: 1
+  rnaseq_tools: MyString
+  rnaseq_params: MyString
+  rnaseq_output: MyText
+  rnaseq_ref: MyString
+  rnaseq_tablecount: MyString
+
+two:
+  rnaseq_name: MyString
+  data_id: 1
+  rnaseq_tools: MyString
+  rnaseq_params: MyString
+  rnaseq_output: MyText
+  rnaseq_ref: MyString
+  rnaseq_tablecount: MyString

@@ -7,6 +7,7 @@ class CreateElements < ActiveRecord::Migration
       t.integer :user_id
       t.integer :element_id
       t.integer :project_id
+      t.date :element_date
       t.timestamps
     end
       add_index :elements, :user_id

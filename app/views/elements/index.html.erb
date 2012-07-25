@@ -20,8 +20,8 @@
     <% @elements.each do |element| %>
       <tr>
         <td><%= link_to element.id, element_path(element) %></td>
-        <td><%= element.elementname %></td>
-        <td><%= element.elementtype %></td>
+        <td><%= element.element_name %></td>
+        <td><%= element.element_type %></td>
         
         <td><%= element.users.collect { |a| a.name }.join(",") %></td>
        

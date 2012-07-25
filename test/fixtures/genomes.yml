@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  genome_name: MyString
+  data_id: 1
+  genome_type: MyString
+  genome_ref: MyString
+  genome_params: MyString
+  genome_annotateur: MyString
+  genome_nbcontigs: 1
+  genome_nbscaffold: 1
+  genome_coverage: MyString
+  genome_ncinquante: MyString
+  genome_size: MyString
+
+two:
+  genome_name: MyString
+  data_id: 1
+  genome_type: MyString
+  genome_ref: MyString
+  genome_params: MyString
+  genome_annotateur: MyString
+  genome_nbcontigs: 1
+  genome_nbscaffold: 1
+  genome_coverage: MyString
+  genome_ncinquante: MyString
+  genome_size: MyString
