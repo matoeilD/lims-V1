@@ -1,63 +1,60 @@
-<%= form_for @genome, :html => { :class => 'form-horizontal' } do |f| %>
+<%= semantic_form_for @genome, :html => { :class => 'form-horizontal' } do |f| %>
  
   <div class="control-group">
-    <%= f.label :data_id, :class => 'control-label' %>
     <div class="controls">
-      <%= f.number_field :data_id, :class => 'number_field' %>
+        <!--method ds helper -->
+    <%= f.input :data_id, :as => :radio, :collection => filtre_elt_associe(@project_associe_id,"data") %>
+       </div>
+  </div>
+  
+  <div class="control-group">
+    <div class="controls">
+      <%= f.input :data_id, :class => 'number_field' %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :genome_type, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :genome_type, :class => 'text_field' %>
+      <%= f.input :genome_type, :class => 'text_field' %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :genome_ref, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :genome_ref, :class => 'text_field' %>
+     <div class="controls">
+      <%= f.input :genome_ref, :class => 'text_field' %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :genome_params, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :genome_params, :class => 'text_field' %>
+      <%= f.input :genome_params, :class => 'text_field' %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :genome_annotateur, :class => 'control-label' %>
-    <div class="controls">
+     <div class="controls">
       <%= f.text_field :genome_annotateur, :class => 'text_field' %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :genome_nbcontigs, :class => 'control-label' %>
     <div class="controls">
-      <%= f.number_field :genome_nbcontigs, :class => 'number_field' %>
+      <%= f.input :genome_nbcontigs, :class => 'number_field' %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :genome_nbscaffold, :class => 'control-label' %>
     <div class="controls">
-      <%= f.number_field :genome_nbscaffold, :class => 'number_field' %>
+      <%= f.input :genome_nbscaffold, :class => 'number_field' %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :genome_coverage, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :genome_coverage, :class => 'text_field' %>
+      <%= f.input :genome_coverage, :class => 'text_field' %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :genome_ncinquante, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :genome_ncinquante, :class => 'text_field' %>
+      <%= f.input :genome_ncinquante, :class => 'text_field' %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :genome_size, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :genome_size, :class => 'text_field' %>
+      <%= f.input :genome_size, :class => 'text_field' %>
     </div>
   </div>
 

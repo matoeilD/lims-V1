@@ -26,16 +26,23 @@
   <dd><%= Element.find(@submission.element_id).users.collect { |a| a.name  }.join(",") %></dd>
   
   <dt><strong><%= model_class.human_attribute_name(:submission_name) %>:</strong></dt>
-  <dd><%= @submission.submission_name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:seize_s) %>:</strong></dt>
-  <dd><%= @submission.seize_s %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:genbank_number) %>:</strong></dt>
-  <dd><%= @submission.genbank_number %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:element_id) %>:</strong></dt>
-  <dd><%= @submission.element_id %></dd>
+  <dd><%= @submission.submission_number %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:submission_center ) %>:</strong></dt>
+  <dd><%= @submission.submission_center %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:submission_type) %>:</strong></dt>
+  <dd><%= @submission.submission_type %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:accession_number) %>:</strong></dt>
+  <dd><%= @submission.accession_number %></dd>
   <dt><strong><%= model_class.human_attribute_name(:sequencing_id) %>:</strong></dt>
   <dd><%= @submission.sequencing_id %></dd>
+   <dt><strong><%= model_class.human_attribute_name(:bioproject_id) %>:</strong></dt>
+  <dd><%= @submission.bioproject_id %></dd>
+    <dt><strong><%= model_class.human_attribute_name(:submission_note) %>:</strong></dt>
+  <dd><%= @submission.submission_note %></dd>
+  
 </dl>
+
+
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),

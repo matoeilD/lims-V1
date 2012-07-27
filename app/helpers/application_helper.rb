@@ -112,6 +112,17 @@ def filtre_elt_associe(project_associe_id,elt_type)
 end
 
 
+def display_fields_on_views(obj)
+  
+  if obj.empty?
+   @z="</br>"
+   raw @z
+  else
+   return obj
+  end
+end
+  
+
 
 #def empty_string #so that nil objject do not mess up the views
 #  @s=" "

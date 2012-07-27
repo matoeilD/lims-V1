@@ -22,16 +22,16 @@
   <dd><%= Element.find(@culture.element_id).element_date %></dd>
   
   <dt><strong><%= model_class.human_attribute_name(:projet_associé) %>:</strong></dt>
-  <dd><%= Element.find(@culture.element_id).projects.collect { |a| a.projectname  }.join(",") %></dd>
+  <dd><%= display_fields_on_views(Element.find(@culture.element_id).projects.collect { |a| a.projectname  }.join(",")) %></dd>
   
    <dt><strong><%= model_class.human_attribute_name(:experimentator) %>:</strong></dt>
-  <dd><%= Element.find(@culture.element_id).users.collect { |a| a.name  }.join(",") %></dd>
+  <dd><%= display_fields_on_views(Element.find(@culture.element_id).users.collect { |a| a.name  }.join(",")) %></dd>
   
   <dt><strong><%= model_class.human_attribute_name(:host_strain) %>:</strong></dt>
-  <%if @culture.host_strain.empty?%>  <dd><%= @d="nil"  %></dd>  <% else %>  <%=@culture.host_strain %><% end %> 
+ <dd><%= display_fields_on_views(@culture.host_strain)%></dd>
  
   <dt><strong><%= model_class.human_attribute_name(:culture_note) %>:</strong></dt>
-  <%if @culture.culture_note.empty?%>  <dd><%= @d="nil"  %></dd>  <% else %>  <%=@culture.culture_note %><% end %> 
+    <dd><%= display_fields_on_views(@culture.culture_note)%></dd>
 </dl>
 
 <div class="form-actions">
@@ -41,3 +41,6 @@
               edit_culture_path(@culture), :class => 'btn' %>
  
 </div>
+
+
+

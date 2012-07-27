@@ -54,7 +54,7 @@ class SubmissionsController < ApplicationController
      @elt=flash[:elt]
     @element = Element.new(@elt)
     @element.save    
-    @submission.submission_name=flash[:elt][:element_name] 
+    
        #permet d'associer elt a sub pour projet::detail elt
     @submission.element_id= Element.last.id
 

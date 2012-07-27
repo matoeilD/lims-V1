@@ -12,7 +12,7 @@
       <th><%= model_class.human_attribute_name(:experimentator) %></th>
 
       <th><%= model_class.human_attribute_name(:project) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%= model_class.human_attribute_name(:exp_date) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -26,7 +26,7 @@
         <td><%= element.users.collect { |a| a.name }.join(",") %></td>
        
         <td><%= element.projects.collect { |a| a.projectname }.join(",") %></td>
-        <td><%=l element.created_at %></td>
+        <td><%= element.element_date %></td>
         <td>
           <%= link_to t('.show', :default => t("helpers.links.show")),
                       element, :class => 'btn btn-mini' %>

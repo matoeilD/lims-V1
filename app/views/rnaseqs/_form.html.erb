@@ -1,11 +1,14 @@
-<%= form_for @rnaseq, :html => { :class => 'form-horizontal' } do |f| %>
+<%= semantic_form_for @rnaseq, :html => { :class => 'form-horizontal' } do |f| %>
   
-  <div class="control-group">
-    <%= f.label :data_id, :class => 'control-label' %>
+  
+    <div class="control-group">     
     <div class="controls">
-      <%= f.number_field :data_id, :class => 'number_field' %>
-    </div>
+        <!--method ds helper -->
+    <%= f.input :data_id, :as => :radio, :collection => filtre_elt_associe(@project_associe_id,"data") %>
+       </div>
   </div>
+  
+  
   <div class="control-group">
     <%= f.label :rnaseq_tools, :class => 'control-label' %>
     <div class="controls">

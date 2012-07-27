@@ -1,6 +1,7 @@
 class Extraction < ActiveRecord::Base
   
-  belongs_to :element 
+  belongs_to :element
+  belongs_to :culture
   attr_accessible :culture_id, :element_id, :extraction_name, :extraction_note
   
   # deplace ds helper

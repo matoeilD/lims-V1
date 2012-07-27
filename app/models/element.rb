@@ -24,7 +24,7 @@ has_one :rnaseq, :dependent => :destroy
 
 
 
-attr_accessible :element_note, :user_ids, :project_ids, :element_ids, :experiment_ids, :element_name, :element_type, :elt
+attr_accessible :element_note, :user_ids, :project_ids, :element_name, :element_type, :element_date
 
 accepts_nested_attributes_for :experiments
 accepts_nested_attributes_for :culture
