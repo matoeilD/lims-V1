@@ -26,8 +26,11 @@ class GenomesController < ApplicationController
   def new
     @genome = Genome.new
     
-     @project_associe_id=params[:id] # from redirect method of :controller =>elements :action => create va servir ds genomen _form view
-
+       #params :elt from elementcontroller
+     @project_associe_id=params[:elt][:cp]  # va servir ds extraction _form view
+      @e=params[:elt] 
+      @e.delete(:cp)      
+    flash[:elt]=@e  #from elementcontroller used for next action :create
 
     respond_to do |format|
       format.html # new.html.erb
@@ -47,6 +50,11 @@ class GenomesController < ApplicationController
   def create
     @genome = Genome.new(params[:genome])
     
+    
+     @elt=flash[:elt]
+    @element = Element.new(@elt)
+    @element.save    
+    @genome.genome_name=flash[:elt][:element_name] 
      #permet d'associer elt a genome pour projet::detail elt
     @genome.element_id= Element.last.id
 

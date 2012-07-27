@@ -26,8 +26,15 @@ class DataController < ApplicationController
   def new
     @datum = Datum.new
     
-     @project_associe_id=params[:id] # from redirect method of :controller =>elements :action => create va servir ds datas _form view
-
+     #params :elt from elementcontroller
+     @project_associe_id=params[:elt][:cp]  # va servir ds extraction _form view
+      @e=params[:elt] 
+      @e.delete(:cp)
+      
+    flash[:elt]=@e  #from elementcontroller used for next action :create
+    
+    
+    
 
     respond_to do |format|
       format.html # new.html.erb
@@ -46,6 +53,12 @@ class DataController < ApplicationController
   #renseigne l'id de l element associé...si data n est pas sauvé, l'element nouvellement cree est effacé
   def create
     @datum = Datum.new(params[:datum])
+    
+     @elt=flash[:elt]
+    @element = Element.new(@elt)
+    @element.save    
+    @datum.data_name=flash[:elt][:element_name] 
+    
     
      #permet d'associer elt a data pour projet::detail elt
     @datum.element_id= Element.last.id

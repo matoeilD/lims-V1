@@ -25,8 +25,14 @@ class LibrariesController < ApplicationController
   # GET /libraries/new.json
   def new
     @library = Library.new
-    @project_associe_id=params[:id] #  from redirect method of :controller =>elements :action => create va servir ds library _form view
+    
 
+   #params :elt from elementcontroller
+     @project_associe_id=params[:elt][:cp]  # va servir ds extraction _form view
+      @e=params[:elt] 
+      @e.delete(:cp)      
+    flash[:elt]=@e  #from elementcontroller used for next action :create
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @library }
@@ -51,6 +57,10 @@ class LibrariesController < ApplicationController
   
   def create
     @library = Library.new(params[:library])
+     @elt=flash[:elt]
+    @element = Element.new(@elt)
+    @element.save    
+    @library.library_name=flash[:elt][:element_name] 
     #permet d'associer elt a em_pcr pour projet::detail elt
     @library.element_id= Element.last.id
 

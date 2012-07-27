@@ -5,16 +5,16 @@
 
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
-  <dd><%= Element.find(@submission.element_id).element_name %></dd>
+  <dd><%= Element.find(@metagenome.element_id).element_name %></dd>
   
   <dt><strong><%= model_class.human_attribute_name(:date) %>:</strong></dt>
-  <dd><%= Element.find(@culture.element_id).element_date %></dd>
+  <dd><%= Element.find(@metagenome.element_id).element_date %></dd>
   
   <dt><strong><%= model_class.human_attribute_name(:projet_associé) %>:</strong></dt>
-  <dd><%= Element.find(@submission.element_id).projects.collect { |a| a.projectname  }.join(",") %></dd>
+  <dd><%= Element.find(@metagenome.element_id).projects.collect { |a| a.projectname  }.join(",") %></dd>
   
    <dt><strong><%= model_class.human_attribute_name(:experimentator) %>:</strong></dt>
-  <dd><%= Element.find(@submission.element_id).users.collect { |a| a.name  }.join(",") %></dd>
+  <dd><%= Element.find(@metagenome.element_id).users.collect { |a| a.name  }.join(",") %></dd>
   
   <dt><strong><%= model_class.human_attribute_name(:meta_name) %>:</strong></dt>
   <dd><%= @metagenome.meta_name %></dd>

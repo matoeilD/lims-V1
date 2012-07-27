@@ -25,8 +25,12 @@ class EmPcrsController < ApplicationController
   # GET /em_pcrs/new.json
   def new
     @em_pcr = EmPcr.new
-     @project_associe_id=params[:id] # from redirect method of :controller =>elements :action => create va servir ds element _form view
-
+    
+      #params :elt from elementcontroller
+     @project_associe_id=params[:elt][:cp]  # va servir ds extraction _form view
+      @e=params[:elt] 
+      @e.delete(:cp)      
+    flash[:elt]=@e  #from elementcontroller used for next action :create
 
     respond_to do |format|
       format.html # new.html.erb
@@ -47,6 +51,16 @@ class EmPcrsController < ApplicationController
   
   def create
     @em_pcr = EmPcr.new(params[:em_pcr])
+    
+    
+    @elt=flash[:elt]
+    @element = Element.new(@elt)
+    @element.save    
+    @em_pcr.EM_PCR_name=flash[:elt][:element_name] 
+    
+    
+    
+    
      #permet d'associer elt a em_pcr pour projet::detail elt
     @em_pcr.element_id= Element.last.id
 

@@ -25,7 +25,16 @@ class ExtractionsController < ApplicationController
   # GET /extractions/new.json
   def new
     @extraction = Extraction.new
-    @project_associe_id=params[:id] # from redirect method of :controller =>elements :action => create va servir ds extraction _form view
+    
+       #params :elt from elementcontroller
+     @project_associe_id=params[:elt][:cp]  # va servir ds extraction _form view
+     #@el=params[:elt][:element_name].merge!([:elt][:element_name]).merge!([:elt][:element_name]).merge!([:elt][:element_name]).merge!([:elt][:element_name]).merge!([:elt][:element_name])
+      @e=params[:elt] 
+      @e.delete(:cp)
+      
+    flash[:elt]=@e  #from elementcontroller used for next action :create
+    
+   
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,11 +50,21 @@ class ExtractionsController < ApplicationController
   # POST /extractions
   # POST /extractions.json
   
-  #renseigne l'id de l element associé...si extraction n est pas sauvé, l'element nouvellement cree est effacé
+   #recupere les params de l elt associe pour le sauver en parallele
   def create
     @extraction = Extraction.new(params[:extraction])
+    
+    
+    
+     @elt=flash[:elt]
+    @element = Element.new(@elt)
+    @element.save    
+    @extraction.extraction_name=flash[:elt][:element_name] 
+    
+    
      #permet d'associer elt a extraction pour projet::detail elt
     @extraction.element_id= Element.last.id
+  
 
     respond_to do |format|
       if @extraction.save

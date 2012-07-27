@@ -25,8 +25,12 @@ class SequencingsController < ApplicationController
   # GET /sequencings/new.json
   def new
     @sequencing = Sequencing.new
-     @project_associe_id=params[:id] # from redirect method of :controller =>elements :action => create va servir ds seq _form view
-
+     
+   #params :elt from elementcontroller
+     @project_associe_id=params[:elt][:cp]  # va servir ds extraction _form view
+      @e=params[:elt] 
+      @e.delete(:cp)      
+    flash[:elt]=@e  #from elementcontroller used for next action :create
 
     respond_to do |format|
       format.html # new.html.erb
@@ -47,6 +51,11 @@ class SequencingsController < ApplicationController
   
   def create
     @sequencing = Sequencing.new(params[:sequencing])
+    
+     @elt=flash[:elt]
+    @element = Element.new(@elt)
+    @element.save    
+    @sequencing.sequencing_name=flash[:elt][:element_name] 
     #permet d'associer elt a seq pour projet::detail elt
     @sequencing.element_id= Element.last.id
 

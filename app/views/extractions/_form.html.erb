@@ -1,13 +1,13 @@
 <%= semantic_form_for @extraction, :html => { :class => 'form-horizontal' } do |f| %>
   
-    
+    <div class="control-group">
     <div class="controls">
-      <!--method ds helper -->
+      <!--method ds helper et ds extraction controller -->
     <%= f.input :culture_id,  :as => :radio, :collection => filtre_elt_associe(@project_associe_id,"culture")%>
     </div>
   </div>
-  <div class="control-group">
     
+  <div class="control-group">    
     <div class="controls">
       <%= f.input :extraction_note %>
     </div>

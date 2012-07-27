@@ -25,7 +25,13 @@ class CulturesController < ApplicationController
   # GET /cultures/new.json
  def new
     @culture = Culture.new
+    
+    flash[:elt]=params[:elt]  #from elementcontroller
+  
 
+
+    
+   
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @culture }
@@ -40,15 +46,26 @@ class CulturesController < ApplicationController
   # POST /cultures
   # POST /cultures.json
   
-  #renseigne l'id de l element associé...si culture n est pas sauvé, l'element nouvellement cree est effacé
+  #recupere les params de l elt associe pour le sauver en parallele
   def create
     @culture = Culture.new(params[:culture])
+    @elt=flash[:elt]
+    @element = Element.new(@elt)
+    @element.save
+   
+    
+    
+    
+    @culture.culture_name=flash[:elt][:element_name]
     #permet d'associer elt a culture pour projet::detail elt
     @culture.element_id= Element.last.id
-    
-
+ 
     respond_to do |format|
       if @culture.save
+        
+    
+       
+         
         
              
         #format.html { redirect_to :controller => 'elements', :action => 'index', notice: 'element culture was successfully created.' }

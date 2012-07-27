@@ -126,74 +126,58 @@ class ElementsController < ApplicationController
   # POST /elements.json
   def create
   
-    @element = Element.new(params[:element])    
-    #render :text => params    
-    if params[:element][:element_type]=="culture"
-         @element.save
-       
-        redirect_to :controller => 'cultures', :action => 'new'
-      
-      
+    @element = Element.new(params[:element])
+     @e=params[:element]   #pour sauver elt later uniquement si culture ou extract...est sauvé egalement
+     
+      #permet de filtrer au moment de la creation d'extractions/seq/... , les cultures/ext/... associés au projet
+     @current_project_id=params[:element][:project_ids][1]
+     @z=@e
         
-   elsif params[:element][:element_type]=="extraction"
-        @element.save
-        #permet de filtrer au moment de la creation d'extractions , les cultures associés au projet
-        @current_project_id=params[:element][:project_ids][1]        
-        redirect_to :controller => 'extractions', :action => 'new', :id => @current_project_id
+    
+    
+    if params[:element][:element_type]=="culture"
+      
+        redirect_to :controller => 'cultures', :action => 'new', :elt => @e 
+        
+   elsif params[:element][:element_type]=="extraction"       
+       @z.merge!(:cp => @current_project_id) #because only one possible redirect and two symbols to pass over
+        redirect_to :controller => 'extractions', :action => 'new', :elt => @z        
         
   elsif params[:element][:element_type]=="library"
-        @element.save
-        #permet de filtrer au moment de la creation de lib , les extract associés au projet
-        @current_project_id=params[:element][:project_ids][1]        
-        redirect_to :controller => 'libraries', :action => 'new', :id => @current_project_id
+         @z.merge!(:cp => @current_project_id) #because only one possible redirect and two symbols to pass over    
+        redirect_to :controller => 'libraries', :action => 'new', :elt => @z
         
   elsif params[:element][:element_type]=="EM_PCR"
-        @element.save
-        #permet de filtrer au moment de la creation d'pcr , les lib associés au projet
-        @current_project_id=params[:element][:project_ids][1]        
-        redirect_to :controller => 'em_pcrs', :action => 'new', :id => @current_project_id
+          @z.merge!(:cp => @current_project_id) #because only one possible redirect and two symbols to pass over      
+        redirect_to :controller => 'em_pcrs', :action => 'new', :elt => @z
         
   elsif params[:element][:element_type]=="sequencing"
-        @element.save
-        #permet de filtrer au moment de la creation d'sq , les pcr associés au projet
-        @current_project_id=params[:element][:project_ids][1]        
-        redirect_to :controller => 'sequencings', :action => 'new', :id => @current_project_id
+          @z.merge!(:cp => @current_project_id) #because only one possible redirect and two symbols to pass over   
+        redirect_to :controller => 'sequencings', :action => 'new', :elt => @z
         
   elsif params[:element][:element_type]=="submission"
-        @element.save
-        #permet de filtrer au moment de la creation de submis , les seq associés au projet
-        @current_project_id=params[:element][:project_ids][1]        
-        redirect_to :controller => 'submissions', :action => 'new', :id => @current_project_id       
+           @z.merge!(:cp => @current_project_id) #because only one possible redirect and two symbols to pass over    
+        redirect_to :controller => 'submissions', :action => 'new', :elt => @z      
         
    elsif params[:element][:element_type]=="data"
-        @element.save
-        #permet de filtrer au moment de la creation d'data , les seq associés au projet
-        @current_project_id=params[:element][:project_ids][1]        
-        redirect_to :controller => 'data', :action => 'new', :id => @current_project_id
+          @z.merge!(:cp => @current_project_id) #because only one possible redirect and two symbols to pass over     
+        redirect_to :controller => 'data', :action => 'new', :elt => @z
         
    elsif params[:element][:element_type]=="genome"
-        @element.save
-        #permet de filtrer au moment de la creation d'genom , les datas associés au projet
-        @current_project_id=params[:element][:project_ids][1]        
-        redirect_to :controller => 'genomes', :action => 'new', :id => @current_project_id
+           @z.merge!(:cp => @current_project_id) #because only one possible redirect and two symbols to pass over  
+        redirect_to :controller => 'genomes', :action => 'new', :elt => @z
         
    elsif params[:element][:element_type]=="metagenome"
-        @element.save
-        #permet de filtrer au moment de la creation d'metag , les datas associés au projet
-        @current_project_id=params[:element][:project_ids][1]        
-        redirect_to :controller => 'metagenomes', :action => 'new', :id => @current_project_id
+            @z.merge!(:cp => @current_project_id) #because only one possible redirect and two symbols to pass over  
+        redirect_to :controller => 'metagenomes', :action => 'new', :elt => @z
         
    elsif params[:element][:element_type]=="16s_pyro"
-        @element.save
-        #permet de filtrer au moment de la creation d'seizespyro , les datas associés au projet
-        @current_project_id=params[:element][:project_ids][1]        
-        redirect_to :controller => 'seizespyros', :action => 'new', :id => @current_project_id
+            @z.merge!(:cp => @current_project_id) #because only one possible redirect and two symbols to pass over  
+        redirect_to :controller => 'seizespyros', :action => 'new', :elt => @z
         
    elsif params[:element][:element_type]=="RNAseq"
-        @element.save
-        #permet de filtrer au moment de la creation d'rnaseq , les datas associés au projet
-        @current_project_id=params[:element][:project_ids][1]        
-        redirect_to :controller => 'rnaseqs', :action => 'new', :id => @current_project_id     
+           @z.merge!(:cp => @current_project_id) #because only one possible redirect and two symbols to pass over    
+        redirect_to :controller => 'rnaseqs', :action => 'new', :elt => @z     
  
 
     else redirect_to :action => 'new', :notice => "element type is needed"
@@ -201,22 +185,7 @@ class ElementsController < ApplicationController
   
   end
 
-   #def new_culture
-    # @culture= Culture.new
-    # @culture= Culture.new(params[:culture])
-     
-     #respond_to do |format|
-      #if @culture.save
-       # @element.save
-        #format.html { redirect_to @element, notice: 'element was successfully created.' }
-        #format.json { render json: @element, status: :created, location: @element }
-       
-      #else
-       # format.html { render action: "new" }
-        #format.json { render json: @element.errors, status: :unprocessable_entity }
-     # end
-    #end
-   #end
+   
 
   # PUT /elements/1
   # PUT /elements/1.json

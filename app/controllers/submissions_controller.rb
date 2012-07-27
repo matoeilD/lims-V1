@@ -25,8 +25,12 @@ class SubmissionsController < ApplicationController
   # GET /submissions/new.json
   def new
     @submission = Submission.new
-     @project_associe_id=params[:id] # from redirect method of :controller =>elements :action => create va servir ds submission _form view
-
+     
+   #params :elt from elementcontroller
+     @project_associe_id=params[:elt][:cp]  # va servir ds extraction _form view
+      @e=params[:elt] 
+      @e.delete(:cp)      
+    flash[:elt]=@e  #from elementcontroller used for next action :create
 
     respond_to do |format|
       format.html # new.html.erb
@@ -46,6 +50,11 @@ class SubmissionsController < ApplicationController
   
   def create
     @submission = Submission.new(params[:submission])
+    
+     @elt=flash[:elt]
+    @element = Element.new(@elt)
+    @element.save    
+    @submission.submission_name=flash[:elt][:element_name] 
        #permet d'associer elt a sub pour projet::detail elt
     @submission.element_id= Element.last.id
 

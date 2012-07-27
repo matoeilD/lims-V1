@@ -5,6 +5,8 @@ class Culture < ActiveRecord::Base
   #accepts_nested_attributes_for :element
 
 
-
+def self.eltpara
+  hello
+end
   
 end

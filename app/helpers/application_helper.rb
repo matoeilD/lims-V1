@@ -30,9 +30,20 @@ module ApplicationHelper
         elsif elt_type=="EM_PCR"
         @z=EmPcr
         elsif elt_type=="sequencing"
-        @z=Sequencing
+        @z=Sequencing        
         elsif elt_type=="submission"
-        @z=Submission        
+        @z=Submission
+        
+         elsif elt_type=="data"
+        @z=Datum
+         elsif elt_type=="genome"
+        @z=Genome
+         elsif elt_type=="metagenome"
+        @z=Metagenome
+         elsif elt_type=="16s_pyro"
+        @z=Seizespyro
+         elsif elt_type=="RNAseq"
+        @z=Rnaseq
       else @z="probleme method to_tablename"
       end
        @z
@@ -62,13 +73,12 @@ def filtre_elt_associe(project_associe_id,elt_type)
      
     @type=@e.collect do |test|      
      test.collect do |e|
-       if e.elementtype ==elt_type
+       if e.element_type ==elt_type
          @i+=@g.find(:all, :conditions=> ["element_id= ?",e.id] )
        end
           
       end    
-    end
-      
+    end      
      
        #elements name correspondant à ce projet
      @t=@i.collect do |el|
@@ -83,7 +93,17 @@ def filtre_elt_associe(project_associe_id,elt_type)
        elsif elt_type == "sequencing"
           el.sequencing_name
        elsif elt_type == "submission"
-          el.submission_name
+          el.submission_name          
+       elsif elt_type == "data"
+          el.data_name
+       elsif elt_type == "genome"
+          el.genome_name
+       elsif elt_type == "metagenome"
+          el.meta_name
+       elsif elt_type == "16s_pyro"
+          el.seize_name
+       elsif elt_type == "RNAseq"
+          el.rnaseq_name
        else "error method filtre elt associe"
          end
          end
@@ -91,9 +111,11 @@ def filtre_elt_associe(project_associe_id,elt_type)
      
 end
 
-def empty_string #so that nil objject do not mess up the views
-  @s=" "
-end
+
+
+#def empty_string #so that nil objject do not mess up the views
+#  @s=" "
+#end
 
  
   
