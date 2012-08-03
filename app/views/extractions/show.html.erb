@@ -11,28 +11,23 @@
 </div>
 
 <dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
-  <dd><%= Element.find(@extraction.element_id).element_name %></dd>
-  
-  <dt><strong><%= model_class.human_attribute_name(:date) %>:</strong></dt>
-  <dd><%= Element.find(@extraction.element_id).element_date %></dd>
-  
-  <dt><strong><%= model_class.human_attribute_name(:projet_associé) %>:</strong></dt>
-  <dd><%= Element.find(@extraction.element_id).projects.collect { |a| a.projectname  }.join(",") %></dd>
-  
-   <dt><strong><%= model_class.human_attribute_name(:experimentator) %>:</strong></dt>
-  <dd><%= Element.find(@extraction.element_id).users.collect { |a| a.name  }.join(",") %></dd>
-  
   <dt><strong><%= model_class.human_attribute_name(:extraction_name) %>:</strong></dt>
   <dd><%= @extraction.extraction_name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:element_id) %>:</strong></dt>
-  <dd><%= @extraction.element_id %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:culture_id) %>:</strong></dt>
-  <dd><%= @extraction.culture_id %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:extraction_note) %>:</strong></dt>
-  <dd><%= @extraction.extraction_note %></dd>
+  
+  <dt><strong><%= model_class.human_attribute_name(:date) %>:</strong></dt>
+  <dd><%= display_fields_on_views(Element.find(@extraction.element_id).element_date) %></dd>
+  
+  <dt><strong><%= model_class.human_attribute_name(:projet_associé) %>:</strong></dt>
+  <dd><%= display_fields_on_views(Element.find(@extraction.element_id).projects.collect { |a| a.projectname  }.join(",")) %></dd>
+  
+   <dt><strong><%= model_class.human_attribute_name(:experimentator) %>:</strong></dt>
+  <dd><%= display_fields_on_views(Element.find(@extraction.element_id).users.collect { |a| a.name  }.join(",")) %></dd>
+  
   <dt><strong><%= model_class.human_attribute_name(:culture_associe) %>:</strong></dt>
-  <dd><%= @extraction.culture %></dd>
+  <dd><%= display_fields_on_views(@extraction.culture_assoc) %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:extraction_note) %>:</strong></dt>
+  <dd><%= display_fields_on_views(@extraction.extraction_note) %></dd>
+  
 </dl>
 
 <div class="form-actions">

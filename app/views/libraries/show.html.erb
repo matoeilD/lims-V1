@@ -13,28 +13,26 @@
 </div>
 
 <dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
-  <dd><%= Element.find(@library.element_id).element_name %></dd>
+   
+  <dt><strong><%= model_class.human_attribute_name(:library_name) %>:</strong></dt>
+  <dd><%= display_fields_on_views(@library.library_name) %></dd>
   
   <dt><strong><%= model_class.human_attribute_name(:date) %>:</strong></dt>
-  <dd><%= Element.find(@library.element_id).element_date %></dd>
+  <dd><%= display_fields_on_views(Element.find(@library.element_id).element_date) %></dd>
   
   <dt><strong><%= model_class.human_attribute_name(:projet_associé) %>:</strong></dt>
-  <dd><%= Element.find(@library.element_id).projects.collect { |a| a.projectname  }.join(",") %></dd>
+  <dd><%= display_fields_on_views(Element.find(@library.element_id).projects.collect { |a| a.projectname  }.join(",")) %></dd>
   
    <dt><strong><%= model_class.human_attribute_name(:experimentator) %>:</strong></dt>
-  <dd><%= Element.find(@library.element_id).users.collect { |a| a.name  }.join(",") %></dd>
-  
-  <dt><strong><%= model_class.human_attribute_name(:library_name) %>:</strong></dt>
-  <dd><%= @library.library_name %></dd>
+  <dd><%= display_fields_on_views(Element.find(@library.element_id).users.collect { |a| a.name  }.join(",")) %></dd>
+
   <dt><strong><%= model_class.human_attribute_name(:fragmentation) %>:</strong></dt>
-  <dd><%= @library.fragmentation %></dd>
+  <dd><%= display_fields_on_views(@library.fragmentation) %></dd>
   <dt><strong><%= model_class.human_attribute_name(:strategy) %>:</strong></dt>
-  <dd><%= @library.strategy %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:element_id) %>:</strong></dt>
-  <dd><%= @library.element_id %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:extraction_id) %>:</strong></dt>
-  <dd><%= @library.extraction_id %></dd>
+  <dd><%= display_fields_on_views(@library.strategy )%></dd>
+ 
+  <dt><strong><%= model_class.human_attribute_name(:extraction_associé) %>:</strong></dt>
+  <dd><%= display_fields_on_views(@library.extraction_assoc) %></dd>
 </dl>
 
 <div class="form-actions">

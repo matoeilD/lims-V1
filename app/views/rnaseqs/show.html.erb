@@ -1,35 +1,42 @@
 <%- model_class = @rnaseq.class -%>
+
+
+<div class="alert alert-success"  id="notice">
+    <button class="close" data-dismiss="alert">×</button>
+    <strong>Well done!</strong> <%= notice %>
+    </div>
+
+
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human %></h1>
 </div>
 
 <dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
-  <dd><%= Element.find(@rnaseq.element_id).element_name %></dd>
+    <dt><strong><%= model_class.human_attribute_name(:rnaseq_name) %>:</strong></dt>
+  <dd><%= @rnaseq.rnaseq_name %></dd>
   
   <dt><strong><%= model_class.human_attribute_name(:date) %>:</strong></dt>
-  <dd><%= Element.find(@rnaseq.element_id).element_date %></dd>
+  <dd><%= display_fields_on_views(Element.find(@rnaseq.element_id).element_date) %></dd>
   
   <dt><strong><%= model_class.human_attribute_name(:projet_associé) %>:</strong></dt>
-  <dd><%= Element.find(@rnaseq.element_id).projects.collect { |a| a.projectname  }.join(",") %></dd>
+  <dd><%=display_fields_on_views( Element.find(@rnaseq.element_id).projects.collect { |a| a.projectname  }.join(",")) %></dd>
   
    <dt><strong><%= model_class.human_attribute_name(:experimentator) %>:</strong></dt>
-  <dd><%= Element.find(@rnaseq.element_id).users.collect { |a| a.name  }.join(",") %></dd>
+  <dd><%= display_fields_on_views(Element.find(@rnaseq.element_id).users.collect { |a| a.name  }.join(",")) %></dd>
   
-  <dt><strong><%= model_class.human_attribute_name(:rnaseq_name) %>:</strong></dt>
-  <dd><%= @rnaseq.rnaseq_name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:data_id) %>:</strong></dt>
-  <dd><%= @rnaseq.data_id %></dd>
+
+  <dt><strong><%= model_class.human_attribute_name(:data_associé) %>:</strong></dt>
+  <dd><%= display_fields_on_views(@rnaseq.data_assoc )%></dd>
   <dt><strong><%= model_class.human_attribute_name(:rnaseq_tools) %>:</strong></dt>
-  <dd><%= @rnaseq.rnaseq_tools %></dd>
+  <dd><%= display_fields_on_views(@rnaseq.rnaseq_tools) %></dd>
   <dt><strong><%= model_class.human_attribute_name(:rnaseq_params) %>:</strong></dt>
-  <dd><%= @rnaseq.rnaseq_params %></dd>
+  <dd><%= display_fields_on_views(@rnaseq.rnaseq_params) %></dd>
   <dt><strong><%= model_class.human_attribute_name(:rnaseq_output) %>:</strong></dt>
-  <dd><%= @rnaseq.rnaseq_output %></dd>
+  <dd><%= display_fields_on_views(@rnaseq.rnaseq_output )%></dd>
   <dt><strong><%= model_class.human_attribute_name(:rnaseq_ref) %>:</strong></dt>
-  <dd><%= @rnaseq.rnaseq_ref %></dd>
+  <dd><%= display_fields_on_views(@rnaseq.rnaseq_ref) %></dd>
   <dt><strong><%= model_class.human_attribute_name(:rnaseq_tablecount) %>:</strong></dt>
-  <dd><%= @rnaseq.rnaseq_tablecount %></dd>
+  <dd><%= display_fields_on_views(@rnaseq.rnaseq_tablecount) %></dd>
 </dl>
 
 <div class="form-actions">

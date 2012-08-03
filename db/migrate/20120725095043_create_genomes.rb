@@ -2,7 +2,7 @@ class CreateGenomes < ActiveRecord::Migration
   def change
     create_table :genomes do |t|
       t.string :genome_name
-      t.integer :data_id
+      t.string :data_assoc
       t.string :genome_type
       t.string :genome_ref
       t.string :genome_params

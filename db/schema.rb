@@ -11,12 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120725095219) do
+ActiveRecord::Schema.define(:version => 20120730142844) do
 
   create_table "cultures", :force => true do |t|
     t.string   "culture_name"
     t.string   "host_strain"
     t.integer  "element_id"
+    t.text     "contaminants"
     t.text     "culture_note"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
@@ -25,10 +26,10 @@ ActiveRecord::Schema.define(:version => 20120725095219) do
   create_table "data", :force => true do |t|
     t.string   "data_name"
     t.text     "data_file"
-    t.integer  "sequencing_id"
+    t.string   "sequencing_assoc"
     t.integer  "element_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   create_table "element_elements", :force => true do |t|
@@ -57,11 +58,11 @@ ActiveRecord::Schema.define(:version => 20120725095219) do
 
   create_table "em_pcrs", :force => true do |t|
     t.string   "EM_PCR_name"
-    t.boolean  "PCR_round"
+    t.string   "PCR_round"
     t.integer  "element_id"
-    t.integer  "library_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.string   "library_assoc"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "experiments", :force => true do |t|
@@ -77,7 +78,7 @@ ActiveRecord::Schema.define(:version => 20120725095219) do
   create_table "extractions", :force => true do |t|
     t.string   "extraction_name"
     t.integer  "element_id"
-    t.integer  "culture_id"
+    t.string   "culture_assoc"
     t.text     "extraction_note"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
@@ -85,7 +86,7 @@ ActiveRecord::Schema.define(:version => 20120725095219) do
 
   create_table "genomes", :force => true do |t|
     t.string   "genome_name"
-    t.integer  "data_id"
+    t.string   "data_assoc"
     t.string   "genome_type"
     t.string   "genome_ref"
     t.string   "genome_params"
@@ -105,14 +106,14 @@ ActiveRecord::Schema.define(:version => 20120725095219) do
     t.text     "fragmentation"
     t.text     "strategy"
     t.integer  "element_id"
-    t.integer  "extraction_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.string   "extraction_assoc"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   create_table "metagenomes", :force => true do |t|
     t.string   "meta_name"
-    t.integer  "data_id"
+    t.string   "data_assoc"
     t.string   "meta_tools"
     t.string   "meta_params"
     t.text     "meta_output"
@@ -153,7 +154,7 @@ ActiveRecord::Schema.define(:version => 20120725095219) do
 
   create_table "rnaseqs", :force => true do |t|
     t.string   "rnaseq_name"
-    t.integer  "data_id"
+    t.string   "data_assoc"
     t.string   "rnaseq_tools"
     t.string   "rnaseq_params"
     t.text     "rnaseq_output"
@@ -166,7 +167,7 @@ ActiveRecord::Schema.define(:version => 20120725095219) do
 
   create_table "seizespyros", :force => true do |t|
     t.string   "seize_name"
-    t.integer  "data_id"
+    t.string   "data_assoc"
     t.string   "seize_tools"
     t.string   "seize_params"
     t.text     "seize_output"
@@ -177,22 +178,38 @@ ActiveRecord::Schema.define(:version => 20120725095219) do
 
   create_table "sequencings", :force => true do |t|
     t.string   "sequencing_name"
-    t.boolean  "paired_end"
+    t.string   "paired_end"
     t.string   "distance_cassure"
     t.integer  "element_id"
-    t.integer  "empcr_id"
+    t.string   "empcr_assoc"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
   end
 
+  create_table "spectros", :force => true do |t|
+    t.string   "spectro_name"
+    t.string   "culture_assoc"
+    t.integer  "element_id"
+    t.integer  "probe_number"
+    t.string   "analyse_type"
+    t.string   "sample_type"
+    t.text     "attached_files"
+    t.integer  "samples_number"
+    t.integer  "gel_number"
+    t.text     "procedure"
+    t.text     "comments"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
   create_table "submissions", :force => true do |t|
-    t.integer  "submission_number"
+    t.string   "submission_name"
     t.string   "submission_center"
     t.string   "submission_type"
     t.string   "accession_number"
     t.string   "bioproject_id"
     t.integer  "element_id"
-    t.integer  "sequencing_id"
+    t.string   "sequencing_assoc"
     t.text     "submission_note"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false

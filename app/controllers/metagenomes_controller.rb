@@ -52,8 +52,9 @@ class MetagenomesController < ApplicationController
     
      @elt=flash[:elt]
     @element = Element.new(@elt)
+    @element.element_name= @metagenome.meta_name
     @element.save    
-    @metagenome.meta_name=flash[:elt][:element_name] 
+    #@metagenome.meta_name=flash[:elt][:element_name] 
     
      #permet d'associer elt a metagenome pour projet::detail elt
     @metagenome.element_id= Element.last.id
@@ -63,7 +64,7 @@ class MetagenomesController < ApplicationController
         format.html { redirect_to @metagenome, notice: 'Metagenome was successfully created.' }
         format.json { render json: @metagenome, status: :created, location: @metagenome }
       else
-        Element.last.destroy
+   
         format.html { render action: "new" }
         format.json { render json: @metagenome.errors, status: :unprocessable_entity }
       end

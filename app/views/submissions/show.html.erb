@@ -13,32 +13,31 @@
 </div>
 
 <dl class="dl-horizontal">
-   <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
-  <dd><%= Element.find(@submission.element_id).element_name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:submission_name) %>:</strong></dt>
+  <dd><%= display_fields_on_views(@submission.submission_name) %></dd>
   
   <dt><strong><%= model_class.human_attribute_name(:date) %>:</strong></dt>
-  <dd><%= Element.find(@submission.element_id).element_date %></dd>
+  <dd><%= display_fields_on_views(Element.find(@submission.element_id).element_date) %></dd>
   
   <dt><strong><%= model_class.human_attribute_name(:projet_associé) %>:</strong></dt>
-  <dd><%= Element.find(@submission.element_id).projects.collect { |a| a.projectname  }.join(",") %></dd>
+  <dd><%= display_fields_on_views(Element.find(@submission.element_id).projects.collect { |a| a.projectname  }.join(",")) %></dd>
   
    <dt><strong><%= model_class.human_attribute_name(:experimentator) %>:</strong></dt>
-  <dd><%= Element.find(@submission.element_id).users.collect { |a| a.name  }.join(",") %></dd>
+  <dd><%= display_fields_on_views(Element.find(@submission.element_id).users.collect { |a| a.name  }.join(",") )%></dd>
   
-  <dt><strong><%= model_class.human_attribute_name(:submission_name) %>:</strong></dt>
-  <dd><%= @submission.submission_number %></dd>
+  
   <dt><strong><%= model_class.human_attribute_name(:submission_center ) %>:</strong></dt>
-  <dd><%= @submission.submission_center %></dd>
+  <dd><%=display_fields_on_views( @submission.submission_center) %></dd>
   <dt><strong><%= model_class.human_attribute_name(:submission_type) %>:</strong></dt>
-  <dd><%= @submission.submission_type %></dd>
+  <dd><%= display_fields_on_views(@submission.submission_type) %></dd>
   <dt><strong><%= model_class.human_attribute_name(:accession_number) %>:</strong></dt>
-  <dd><%= @submission.accession_number %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:sequencing_id) %>:</strong></dt>
-  <dd><%= @submission.sequencing_id %></dd>
+  <dd><%= display_fields_on_views(@submission.accession_number) %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:sequencing_associé) %>:</strong></dt>
+  <dd><%= display_fields_on_views(@submission.sequencing_assoc) %></dd>
    <dt><strong><%= model_class.human_attribute_name(:bioproject_id) %>:</strong></dt>
-  <dd><%= @submission.bioproject_id %></dd>
+  <dd><%= display_fields_on_views(@submission.bioproject_id )%></dd>
     <dt><strong><%= model_class.human_attribute_name(:submission_note) %>:</strong></dt>
-  <dd><%= @submission.submission_note %></dd>
+  <dd><%= display_fields_on_views(@submission.submission_note) %></dd>
   
 </dl>
 

@@ -56,8 +56,9 @@ class DataController < ApplicationController
     
      @elt=flash[:elt]
     @element = Element.new(@elt)
+     @element.element_name=@datum.data_name
     @element.save    
-    @datum.data_name=flash[:elt][:element_name] 
+   # @datum.data_name=flash[:elt][:element_name] 
     
     
      #permet d'associer elt a data pour projet::detail elt
@@ -68,7 +69,7 @@ class DataController < ApplicationController
         format.html { redirect_to @datum, notice: 'Datum was successfully created.' }
         format.json { render json: @datum, status: :created, location: @datum }
       else
-        Element.last.destroy
+      
         format.html { render action: "new" }
         format.json { render json: @datum.errors, status: :unprocessable_entity }
       end

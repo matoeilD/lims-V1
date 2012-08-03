@@ -52,8 +52,9 @@ class RnaseqsController < ApplicationController
     
      @elt=flash[:elt]
     @element = Element.new(@elt)
+        @element.element_name= @rnaseq.rnaseq_name
     @element.save    
-    @rnaseq.rnaseq_name=flash[:elt][:element_name] 
+    #@rnaseq.rnaseq_name=flash[:elt][:element_name] 
     
     #permet d'associer elt a rnaseq pour projet::detail elt
     @rnaseq.element_id= Element.last.id
@@ -63,7 +64,7 @@ class RnaseqsController < ApplicationController
         format.html { redirect_to @rnaseq, notice: 'Rnaseq was successfully created.' }
         format.json { render json: @rnaseq, status: :created, location: @rnaseq }
       else
-        Element.last.destroy
+    
         format.html { render action: "new" }
         format.json { render json: @rnaseq.errors, status: :unprocessable_entity }
       end

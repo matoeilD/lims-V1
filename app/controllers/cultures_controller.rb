@@ -51,22 +51,19 @@ class CulturesController < ApplicationController
     @culture = Culture.new(params[:culture])
     @elt=flash[:elt]
     @element = Element.new(@elt)
-    @element.save
-   
+    @element.element_name=@culture.culture_name
+   @element.save
+  
     
     
     
-    @culture.culture_name=flash[:elt][:element_name]
+    #@culture.culture_name=flash[:elt][:element_name]
     #permet d'associer elt a culture pour projet::detail elt
     @culture.element_id= Element.last.id
+  
  
     respond_to do |format|
-      if @culture.save
-        
-    
-       
-         
-        
+      if @culture.save     
              
         #format.html { redirect_to :controller => 'elements', :action => 'index', notice: 'element culture was successfully created.' }
         
@@ -74,7 +71,7 @@ class CulturesController < ApplicationController
         format.json { render json: @culture, status: :created, location: @culture }
        
       else
-        Element.last.destroy
+        
         format.html { render action: "new" }
         format.json { render json: @culture.errors, status: :unprocessable_entity }
       end

@@ -1,27 +1,34 @@
 <%- model_class = @datum.class -%>
+
+
+<div class="alert alert-success"  id="notice">
+    <button class="close" data-dismiss="alert">×</button>
+    <strong>Well done!</strong> <%= notice %>
+    </div>
+
+
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human %></h1>
 </div>
 
 <dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
-  <dd><%= Element.find(@datum.element_id).element_name %></dd>
+   <dt><strong><%= model_class.human_attribute_name(:data_name) %>:</strong></dt>
+  <dd><%= @datum.data_name %></dd>
   
   <dt><strong><%= model_class.human_attribute_name(:date) %>:</strong></dt>
-  <dd><%= Element.find(@datum.element_id).element_date %></dd>
+  <dd><%= display_fields_on_views(Element.find(@datum.element_id).element_date) %></dd>
   
   <dt><strong><%= model_class.human_attribute_name(:projet_associé) %>:</strong></dt>
-  <dd><%= Element.find(@datum.element_id).projects.collect { |a| a.projectname  }.join(",") %></dd>
+  <dd><%= display_fields_on_views(Element.find(@datum.element_id).projects.collect { |a| a.projectname  }.join(",")) %></dd>
   
    <dt><strong><%= model_class.human_attribute_name(:experimentator) %>:</strong></dt>
-  <dd><%= Element.find(@datum.element_id).users.collect { |a| a.name  }.join(",") %></dd>
+  <dd><%=display_fields_on_views( Element.find(@datum.element_id).users.collect { |a| a.name  }.join(",") )%></dd>
   
-  <dt><strong><%= model_class.human_attribute_name(:data_name) %>:</strong></dt>
-  <dd><%= @datum.data_name %></dd>
+ 
   <dt><strong><%= model_class.human_attribute_name(:data_file) %>:</strong></dt>
-  <dd><%= @datum.data_file %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:sequencing_id) %>:</strong></dt>
-  <dd><%= @datum.sequencing_id %></dd>
+  <dd><%= display_fields_on_views(@datum.data_file) %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:sequencing_associé) %>:</strong></dt>
+  <dd><%= display_fields_on_views(@datum.sequencing_assoc )%></dd>
 </dl>
 
 <div class="form-actions">

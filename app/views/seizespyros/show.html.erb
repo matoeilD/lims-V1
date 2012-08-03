@@ -1,31 +1,38 @@
 <%- model_class = @seizespyro.class -%>
+
+
+<div class="alert alert-success"  id="notice">
+    <button class="close" data-dismiss="alert">×</button>
+    <strong>Well done!</strong> <%= notice %>
+    </div>
+
+
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human %></h1>
 </div>
 
 <dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
-  <dd><%= Element.find(@seizespyro.element_id).element_name %></dd>
-  
-  <dt><strong><%= model_class.human_attribute_name(:date) %>:</strong></dt>
-  <dd><%= Element.find(@seizespyro.element_id).element_date %></dd>
-  
-  <dt><strong><%= model_class.human_attribute_name(:projet_associé) %>:</strong></dt>
-  <dd><%= Element.find(@seizespyro.element_id).projects.collect { |a| a.projectname  }.join(",") %></dd>
-  
-   <dt><strong><%= model_class.human_attribute_name(:experimentator) %>:</strong></dt>
-  <dd><%= Element.find(@seizespyro.element_id).users.collect { |a| a.name  }.join(",") %></dd>
-  
   <dt><strong><%= model_class.human_attribute_name(:seize_name) %>:</strong></dt>
   <dd><%= @seizespyro.seize_name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:data_id) %>:</strong></dt>
-  <dd><%= @seizespyro.data_id %></dd>
+  
+  <dt><strong><%= model_class.human_attribute_name(:date) %>:</strong></dt>
+  <dd><%= display_fields_on_views(Element.find(@seizespyro.element_id).element_date) %></dd>
+  
+  <dt><strong><%= model_class.human_attribute_name(:projet_associé) %>:</strong></dt>
+  <dd><%= display_fields_on_views(Element.find(@seizespyro.element_id).projects.collect { |a| a.projectname  }.join(",")) %></dd>
+  
+   <dt><strong><%= model_class.human_attribute_name(:experimentator) %>:</strong></dt>
+  <dd><%= display_fields_on_views(Element.find(@seizespyro.element_id).users.collect { |a| a.name  }.join(",")) %></dd>
+  
+
+  <dt><strong><%= model_class.human_attribute_name(:data_associé) %>:</strong></dt>
+  <dd><%= display_fields_on_views(@seizespyro.data_assoc) %></dd>
   <dt><strong><%= model_class.human_attribute_name(:seize_tools) %>:</strong></dt>
-  <dd><%= @seizespyro.seize_tools %></dd>
+  <dd><%= display_fields_on_views(@seizespyro.seize_tools) %></dd>
   <dt><strong><%= model_class.human_attribute_name(:seize_params) %>:</strong></dt>
-  <dd><%= @seizespyro.seize_params %></dd>
+  <dd><%= display_fields_on_views(@seizespyro.seize_params) %></dd>
   <dt><strong><%= model_class.human_attribute_name(:seize_output) %>:</strong></dt>
-  <dd><%= @seizespyro.seize_output %></dd>
+  <dd><%= display_fields_on_views(@seizespyro.seize_output) %></dd>
 </dl>
 
 <div class="form-actions">

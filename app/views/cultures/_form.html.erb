@@ -1,5 +1,13 @@
 <%= form_for @culture, :html => { :class => 'form-horizontal' } do |f| %>
  
+  
+  <div class="control-group">
+    <%= f.label :culture_name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :culture_name, :class => 'text_field'  %>
+    </div>
+  </div>
+  
   <div class="control-group">
     <%= f.label :host_strain, :class => 'control-label' %>
     <div class="controls">
@@ -7,12 +15,22 @@
     </div>
   </div>
   
+    <div class="control-group">
+    <%= f.label :possible_contaminants, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :contaminants, :class => 'text_area' %>
+    </div>
+  </div>
+
+  
   <div class="control-group">
     <%= f.label :culture_note, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_area :culture_note, :class => 'text_area' %>
     </div>
   </div>
+  
+  
 
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>

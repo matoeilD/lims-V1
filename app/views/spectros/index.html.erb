@@ -1,0 +1,56 @@
+<%- model_class = Spectro.new.class -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:spectro_name) %></th>
+      <th><%= model_class.human_attribute_name(:culture_id) %></th>
+      <th><%= model_class.human_attribute_name(:element_id) %></th>
+      <th><%= model_class.human_attribute_name(:probe_number) %></th>
+      <th><%= model_class.human_attribute_name(:analyse_type) %></th>
+      <th><%= model_class.human_attribute_name(:sample_type) %></th>
+      <th><%= model_class.human_attribute_name(:attached_files) %></th>
+      <th><%= model_class.human_attribute_name(:samples_number) %></th>
+      <th><%= model_class.human_attribute_name(:gel_number) %></th>
+      <th><%= model_class.human_attribute_name(:procedure) %></th>
+      <th><%= model_class.human_attribute_name(:comments) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @spectros.each do |spectro| %>
+      <tr>
+        <td><%= link_to spectro.id, spectro_path(spectro) %></td>
+        <td><%= spectro.spectro_name %></td>
+        <td><%= spectro.culture_id %></td>
+        <td><%= spectro.element_id %></td>
+        <td><%= spectro.probe_number %></td>
+        <td><%= spectro.analyse_type %></td>
+        <td><%= spectro.sample_type %></td>
+        <td><%= spectro.attached_files %></td>
+        <td><%= spectro.samples_number %></td>
+        <td><%= spectro.gel_number %></td>
+        <td><%= spectro.procedure %></td>
+        <td><%= spectro.comments %></td>
+        <td><%=l spectro.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_spectro_path(spectro), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      spectro_path(spectro),
+                      :method => :delete,
+                      :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_spectro_path,
+            :class => 'btn btn-primary' %>

@@ -1,0 +1,74 @@
+<%= semantic_form_for @spectro, :html => { :class => 'form-horizontal' } do |f| %>
+
+  
+ <div class="control-group">
+    <%= f.label :spectro_name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :spectro_name, :class => 'text_field'  %>
+    </div>
+  </div>
+ 
+ 
+  <div class="control-group">    
+    <div class="controls">
+     <!--method ds helper -->
+    <%= f.input :culture_assoc, :as => :radio, :collection => filtre_elt_associe(@project_associe_id,"culture") %>       
+    </div>
+  </div>
+ 
+ 
+  <div class="control-group">
+    <%= f.label :probe_number, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :probe_number, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :analyse_type, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :analyse_type, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :sample_type, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :sample_type, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :attached_files, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :attached_files, :class => 'text_area' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :samples_number, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :samples_number, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :gel_number, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :gel_number, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :procedure, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :procedure, :class => 'text_area' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :comments, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :comments, :class => 'text_area' %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                spectros_path, :class => 'btn' %>
+  </div>
+<% end %>

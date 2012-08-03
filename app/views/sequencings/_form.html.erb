@@ -1,21 +1,33 @@
 <%= semantic_form_for @sequencing , :html => { :class => 'form-horizontal' } do |f| %>
   
   <div class="control-group">
-    
+    <%= f.label :sequencing_name, :class => 'control-label' %>
     <div class="controls">
-     <!--method ds helper -->
-    <%= f.input :empcr_id, :as => :radio, :collection => filtre_elt_associe(@project_associe_id,"EM_PCR") %>
-       
+      <%= f.text_field :sequencing_name, :class => 'text_field'  %>
     </div>
   </div>
-  <div class="control-group">
   
+  <div class="control-group">
+    <%= f.label :culture_name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :culture_name, :class => 'text_field'  %>
+    </div>
+  </div>
+  
+  <div class="control-group">    
+    <div class="controls">
+     <!--method ds helper -->
+    <%= f.input :empcr_assoc, :as => :radio, :collection => filtre_elt_associe(@project_associe_id,"EM_PCR") %>       
+    </div>
+  </div>
+  
+  <div class="control-group">  
     <div class="controls">
     <%= f.input :paired_end, :as => :radio, :collection => ["yes","no"] %>
     </div>
   </div>
-  <div class="control-group">
-    
+  
+  <div class="control-group">    
     <div class="controls">
          <%= f.input :distance_cassure %>
     </div>

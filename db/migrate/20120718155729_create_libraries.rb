@@ -5,7 +5,7 @@ class CreateLibraries < ActiveRecord::Migration
       t.text :fragmentation
       t.text :strategy
       t.integer :element_id
-      t.integer :extraction_id
+      t.string :extraction_assoc
 
       t.timestamps
     end

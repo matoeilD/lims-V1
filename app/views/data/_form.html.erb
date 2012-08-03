@@ -2,10 +2,17 @@
  
   
   <div class="control-group">
+    <%= f.label :data_name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :data_name, :class => 'text_field'  %>
+    </div>
+  </div>
+  
+  <div class="control-group">
    
     <div class="controls">
        <!--method ds helper -->
-    <%= f.input :sequencing_id, :as => :radio, :collection => filtre_elt_associe(@project_associe_id,"sequencing") %>
+    <%= f.input :sequencing_assoc, :as => :radio, :collection => filtre_elt_associe(@project_associe_id,"sequencing") %>
        </div>
   </div>
   

@@ -1,15 +1,16 @@
 <%= semantic_form_for @submission , :html => { :class => 'form-horizontal' } do |f| %>
  
-    <div class="control-group">   
+    <div class="control-group">
+    <%= f.label :submission_name, :class => 'control-label' %>
     <div class="controls">
-    <%= f.input :submission_number %>
+      <%= f.text_field :submission_name, :class => 'text_field'  %>
     </div>
   </div>
   
   <div class="control-group">
     <div class="controls">
         <!--method ds helper -->
-    <%= f.input :sequencing_id, :as => :radio, :collection => filtre_elt_associe(@project_associe_id,"sequencing") %>
+    <%= f.input :sequencing_assoc, :as => :radio, :collection => filtre_elt_associe(@project_associe_id,"sequencing") %>
        </div>
   </div>
   

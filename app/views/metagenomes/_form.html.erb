@@ -1,11 +1,19 @@
 <%= semantic_form_for @metagenome, :html => { :class => 'form-horizontal' } do |f| %>
  
   
+  <div class="control-group">
+    <%= f.label :meta_name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :meta_name, :class => 'text_field'  %>
+    </div>
+  </div>
+  
+  
    <div class="control-group">
      
     <div class="controls">
         <!--method ds helper -->
-    <%= f.input :data_id, :as => :radio, :collection => filtre_elt_associe(@project_associe_id,"data") %>
+    <%= f.input :data_assoc, :as => :radio, :collection => filtre_elt_associe(@project_associe_id,"data") %>
        </div>
   </div>
 

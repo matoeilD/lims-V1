@@ -58,20 +58,21 @@ class ExtractionsController < ApplicationController
     
      @elt=flash[:elt]
     @element = Element.new(@elt)
+    @element.element_name=@extraction.extraction_name
     @element.save    
-    @extraction.extraction_name=flash[:elt][:element_name] 
+   # @extraction.extraction_name=flash[:elt][:element_name] 
     
     
      #permet d'associer elt a extraction pour projet::detail elt
     @extraction.element_id= Element.last.id
-  
+
 
     respond_to do |format|
       if @extraction.save
         format.html { redirect_to @extraction, notice: 'Extraction was successfully created.' }
         format.json { render json: @extraction, status: :created, location: @extraction }
       else
-        Element.last.destroy
+       
         format.html { render action: "new" }
         format.json { render json: @extraction.errors, status: :unprocessable_entity }
       end

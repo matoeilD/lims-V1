@@ -89,6 +89,12 @@ class ElementsController < ApplicationController
        
         redirect_to :controller => 'rnaseqs', :action => 'show', :id => @c[0].id
         
+   elsif @element.element_type=="mass_spectro"
+        
+         @c=Spectro.find(:all, :conditions=> ["element_id= ?",@element.id] )     
+       
+        redirect_to :controller => 'spectros', :action => 'show', :id => @c[0].id
+        
  
 
     else redirect_to :action => 'index', :notice => "element type has not been found"
@@ -116,6 +122,9 @@ class ElementsController < ApplicationController
   # GET /elements/1/edit
   def edit
     @element = Element.find(params[:id])
+    @culture = Culture.find(params[:id])
+    
+ 
   end
 
   
@@ -178,7 +187,9 @@ class ElementsController < ApplicationController
    elsif params[:element][:element_type]=="RNAseq"
            @z.merge!(:cp => @current_project_id) #because only one possible redirect and two symbols to pass over    
         redirect_to :controller => 'rnaseqs', :action => 'new', :elt => @z     
- 
+   elsif params[:element][:element_type]=="mass_spectro"
+           @z.merge!(:cp => @current_project_id) #because only one possible redirect and two symbols to pass over    
+        redirect_to :controller => 'spectros', :action => 'new', :elt => @z  
 
     else redirect_to :action => 'new', :notice => "element type is needed"
     end
@@ -207,6 +218,7 @@ class ElementsController < ApplicationController
   # DELETE /elements/1.json
   def destroy
     @element = Element.find(params[:id])
+
     @element.destroy
 
     respond_to do |format|

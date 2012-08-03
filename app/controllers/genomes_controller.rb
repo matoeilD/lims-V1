@@ -53,8 +53,10 @@ class GenomesController < ApplicationController
     
      @elt=flash[:elt]
     @element = Element.new(@elt)
+     @element = Element.new(@elt)
+    @element.element_name=@genome.genome_name
     @element.save    
-    @genome.genome_name=flash[:elt][:element_name] 
+    #@genome.genome_name=flash[:elt][:element_name] 
      #permet d'associer elt a genome pour projet::detail elt
     @genome.element_id= Element.last.id
 
@@ -63,7 +65,7 @@ class GenomesController < ApplicationController
         format.html { redirect_to @genome, notice: 'Genome was successfully created.' }
         format.json { render json: @genome, status: :created, location: @genome }
       else
-        Element.last.destroy
+       
         format.html { render action: "new" }
         format.json { render json: @genome.errors, status: :unprocessable_entity }
       end

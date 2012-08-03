@@ -1,0 +1,60 @@
+<%- model_class = @spectro.class -%>
+
+
+<div class="alert alert-success"  id="notice">
+    <button class="close" data-dismiss="alert">×</button>
+    <strong>Well done!</strong> <%= notice %>
+    </div>
+
+
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  
+   <dt><strong><%= model_class.human_attribute_name(:spectro_name) %>:</strong></dt>
+  <dd><%= @spectro.spectro_name %></dd>
+  
+  <dt><strong><%= model_class.human_attribute_name(:date) %>:</strong></dt>
+  <dd><%= display_fields_on_views(Element.find(@spectro.element_id).element_date) %></dd>
+  
+  <dt><strong><%= model_class.human_attribute_name(:projet_associé) %>:</strong></dt>
+  <dd><%=display_fields_on_views( Element.find(@spectro.element_id).projects.collect { |a| a.projectname  }.join(",")) %></dd>
+  
+   <dt><strong><%= model_class.human_attribute_name(:experimentator) %>:</strong></dt>
+  <dd><%= display_fields_on_views(Element.find(@spectro.element_id).users.collect { |a| a.name  }.join(",")) %></dd>
+  
+ 
+  <dt><strong><%= model_class.human_attribute_name(:culture_assoc) %>:</strong></dt>
+  <dd><%=display_fields_on_views( @spectro.culture_assoc) %></dd>
+ 
+  <dt><strong><%= model_class.human_attribute_name(:probe_number) %>:</strong></dt>
+  <dd><%= display_fields_on_views(@spectro.probe_number) %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:analyse_type) %>:</strong></dt>
+  <dd><%= display_fields_on_views(@spectro.analyse_type) %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:sample_type) %>:</strong></dt>
+  <dd><%= display_fields_on_views(@spectro.sample_type )%></dd>
+  <dt><strong><%= model_class.human_attribute_name(:attached_files) %>:</strong></dt>
+  <dd><%= display_fields_on_views(@spectro.attached_files) %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:samples_number) %>:</strong></dt>
+  <dd><%= display_fields_on_views(@spectro.samples_number)%></dd>
+  <dt><strong><%= model_class.human_attribute_name(:gel_number) %>:</strong></dt>
+  <dd><%=display_fields_on_views( @spectro.gel_number) %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:procedure) %>:</strong></dt>
+  <dd><%= display_fields_on_views(@spectro.procedure )%></dd>
+  <dt><strong><%= model_class.human_attribute_name(:comments) %>:</strong></dt>
+  <dd><%= display_fields_on_views(@spectro.comments) %></dd>
+</dl>
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              spectros_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_spectro_path(@spectro), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              spectro_path(@spectro),
+              :method => 'delete',
+              :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
+              :class => 'btn btn-danger' %>
+</div>

@@ -3,7 +3,7 @@ class CreateData < ActiveRecord::Migration
     create_table :data do |t|
       t.string :data_name
       t.text :data_file
-      t.integer :sequencing_id
+      t.string :sequencing_assoc
       t.integer :element_id
 
       t.timestamps

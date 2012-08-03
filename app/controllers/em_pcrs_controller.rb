@@ -55,8 +55,9 @@ class EmPcrsController < ApplicationController
     
     @elt=flash[:elt]
     @element = Element.new(@elt)
+     @element.element_name=@em_pcr.EM_PCR_name
     @element.save    
-    @em_pcr.EM_PCR_name=flash[:elt][:element_name] 
+   # @em_pcr.EM_PCR_name=flash[:elt][:element_name] 
     
     
     
@@ -69,7 +70,7 @@ class EmPcrsController < ApplicationController
         format.html { redirect_to @em_pcr, notice: 'Em pcr was successfully created.' }
         format.json { render json: @em_pcr, status: :created, location: @em_pcr }
       else
-        Element.last.destroy
+     
         format.html { render action: "new" }
         format.json { render json: @em_pcr.errors, status: :unprocessable_entity }
       end

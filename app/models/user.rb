@@ -16,10 +16,10 @@ validates_uniqueness_of :name
 #validates_format_of :email,:with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i,:on => :create
 
 
-def self.authenticate_safely(user_name, password)
-find(:first, :conditions =>
-[ "name = ? AND password = ?", name, password ])
-end
+#def self.authenticate_safely(user_name, password)
+#find(:first, :conditions =>
+#[ "name = ? AND password = ?", name, password ])
+#end
 
 
 #accepts_nested_attributes_for :user_elements, :elements

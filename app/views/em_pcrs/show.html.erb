@@ -13,26 +13,24 @@
 </div>
 
 <dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
-  <dd><%= Element.find(@em_pcr.element_id).element_name %></dd>
+ <dt><strong><%= model_class.human_attribute_name(:EM_PCR_name) %>:</strong></dt>
+  <dd><%= @em_pcr.EM_PCR_name %></dd>
   
   <dt><strong><%= model_class.human_attribute_name(:date) %>:</strong></dt>
-  <dd><%= Element.find(@em_pcr.element_id).element_date %></dd>
+  <dd><%= display_fields_on_views(Element.find(@em_pcr.element_id).element_date) %></dd>
   
   <dt><strong><%= model_class.human_attribute_name(:projet_associé) %>:</strong></dt>
-  <dd><%= Element.find(@em_pcr.element_id).projects.collect { |a| a.projectname  }.join(",") %></dd>
+  <dd><%= display_fields_on_views(Element.find(@em_pcr.element_id).projects.collect { |a| a.projectname  }.join(",")) %></dd>
   
    <dt><strong><%= model_class.human_attribute_name(:experimentator) %>:</strong></dt>
-  <dd><%= Element.find(@em_pcr.element_id).users.collect { |a| a.name  }.join(",") %></dd>
+  <dd><%= display_fields_on_views(Element.find(@em_pcr.element_id).users.collect { |a| a.name  }.join(",")) %></dd>
   
-  <dt><strong><%= model_class.human_attribute_name(:EM_PCR_name) %>:</strong></dt>
-  <dd><%= @em_pcr.EM_PCR_name %></dd>
+  
   <dt><strong><%= model_class.human_attribute_name(:PCR_round) %>:</strong></dt>
-  <dd><%= @em_pcr.PCR_round %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:element_id) %>:</strong></dt>
-  <dd><%= @em_pcr.element_id %></dd>
+  <dd><%= display_fields_on_views(@em_pcr.PCR_round) %></dd>
+ 
   <dt><strong><%= model_class.human_attribute_name(:library_id) %>:</strong></dt>
-  <dd><%= @em_pcr.library_id %></dd>
+  <dd><%= display_fields_on_views(@em_pcr.library_assoc) %></dd>
 </dl>
 
 <div class="form-actions">

@@ -53,8 +53,9 @@ class SubmissionsController < ApplicationController
     
      @elt=flash[:elt]
     @element = Element.new(@elt)
+      @element.element_name=@submission.submission_name
     @element.save    
-    
+     #@submission.submission_name=flash[:elt][:element_name] 
        #permet d'associer elt a sub pour projet::detail elt
     @submission.element_id= Element.last.id
 
@@ -63,7 +64,7 @@ class SubmissionsController < ApplicationController
         format.html { redirect_to @submission, notice: 'Submission was successfully created.' }
         format.json { render json: @submission, status: :created, location: @submission }
       else
-        Element.last.destroy
+       
         format.html { render action: "new" }
         format.json { render json: @submission.errors, status: :unprocessable_entity }
       end

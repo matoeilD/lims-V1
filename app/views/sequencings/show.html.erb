@@ -15,29 +15,27 @@
 </div>
 
 <dl class="dl-horizontal">
-   <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
-  <dd><%= Element.find(@sequencing.element_id).element_name %></dd>
+    <dt><strong><%= model_class.human_attribute_name(:sequencing_name) %>:</strong></dt>
+  <dd><%= @sequencing.sequencing_name %></dd>
   
   <dt><strong><%= model_class.human_attribute_name(:date) %>:</strong></dt>
-  <dd><%= Element.find(@sequencing.element_id).element_date %></dd>
+  <dd><%= display_fields_on_views(Element.find(@sequencing.element_id).element_date) %></dd>
   
   <dt><strong><%= model_class.human_attribute_name(:projet_associé) %>:</strong></dt>
-  <dd><%= Element.find(@sequencing.element_id).projects.collect { |a| a.projectname  }.join(",") %></dd>
+  <dd><%=display_fields_on_views( Element.find(@sequencing.element_id).projects.collect { |a| a.projectname  }.join(",") )%></dd>
   
    <dt><strong><%= model_class.human_attribute_name(:experimentator) %>:</strong></dt>
-  <dd><%= Element.find(@sequencing.element_id).users.collect { |a| a.name  }.join(",") %></dd>
+  <dd><%=display_fields_on_views( Element.find(@sequencing.element_id).users.collect { |a| a.name  }.join(",") )%></dd>
   
   
-  <dt><strong><%= model_class.human_attribute_name(:sequencing_name) %>:</strong></dt>
-  <dd><%= @sequencing.sequencing_name %></dd>
+ 
   <dt><strong><%= model_class.human_attribute_name(:paired_end) %>:</strong></dt>
-  <dd><%= @sequencing.paired_end %></dd>
+  <dd><%= display_fields_on_views(@sequencing.paired_end )%></dd>
   <dt><strong><%= model_class.human_attribute_name(:distance_cassure) %>:</strong></dt>
-  <dd><%= @sequencing.distance_cassure %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:element_id) %>:</strong></dt>
-  <dd><%= @sequencing.element_id %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:empcr_id) %>:</strong></dt>
-  <dd><%= @sequencing.empcr_id %></dd>
+  <dd><%= display_fields_on_views(@sequencing.distance_cassure) %></dd>
+ 
+  <dt><strong><%= model_class.human_attribute_name(:empcr_associé) %>:</strong></dt>
+  <dd><%= display_fields_on_views(@sequencing.empcr_assoc) %></dd>
 </dl>
 
 <div class="form-actions">

@@ -54,8 +54,9 @@ class SequencingsController < ApplicationController
     
      @elt=flash[:elt]
     @element = Element.new(@elt)
+    @element.element_name= @sequencing.sequencing_name
     @element.save    
-    @sequencing.sequencing_name=flash[:elt][:element_name] 
+    #@sequencing.sequencing_name=flash[:elt][:element_name] 
     #permet d'associer elt a seq pour projet::detail elt
     @sequencing.element_id= Element.last.id
 
@@ -64,7 +65,7 @@ class SequencingsController < ApplicationController
         format.html { redirect_to @sequencing, notice: 'Sequencing was successfully created.' }
         format.json { render json: @sequencing, status: :created, location: @sequencing }
       else
-        Element.last.destroy
+    
         format.html { render action: "new" }
         format.json { render json: @sequencing.errors, status: :unprocessable_entity }
       end

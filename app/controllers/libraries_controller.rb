@@ -51,16 +51,17 @@ class LibrariesController < ApplicationController
   
   
   
-   #renseigne l'id de l element associé...si library n est pas sauvé, l'element nouvellement cree est effacé
   
   
   
+  #sauve en parallele library and elt
   def create
     @library = Library.new(params[:library])
      @elt=flash[:elt]
     @element = Element.new(@elt)
+    @element.element_name=@library.library_name
     @element.save    
-    @library.library_name=flash[:elt][:element_name] 
+    #@library.library_name=flash[:elt][:element_name] 
     #permet d'associer elt a em_pcr pour projet::detail elt
     @library.element_id= Element.last.id
 
@@ -69,7 +70,7 @@ class LibrariesController < ApplicationController
         format.html { redirect_to @library, notice: 'Library was successfully created.' }
         format.json { render json: @library, status: :created, location: @library }
       else
-        Element.last.destroy
+       
         format.html { render action: "new" }
         format.json { render json: @library.errors, status: :unprocessable_entity }
       end

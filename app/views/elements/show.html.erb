@@ -3,13 +3,18 @@
   <h1><%=t '.title', :default => model_class.model_name.human %></h1>
 </div>
 
+  <div class="alert alert-success"  id="notice">
+    <button class="close" data-dismiss="alert">×</button>
+    <strong>Well done!</strong> <%= notice %>
+    </div>
+
 <dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:elementname) %>:</strong></dt>
-  <dd><%= @element.elementname %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:elementtype) %>:</strong></dt>
-  <dd><%= @element.elementtype %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:elementnote) %>:</strong></dt>
-  <dd><%= @element.elementnote %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:element_name) %>:</strong></dt>
+  <dd><%= @element.element_name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:element_type) %>:</strong></dt>
+  <dd><%= @element.element_type %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:element_note) %>:</strong></dt>
+  <dd><%= @element.element_note %></dd>
   <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
   <dd><%= @element.user_id %></dd>
   <dt><strong><%= model_class.human_attribute_name(:element_id) %>:</strong></dt>

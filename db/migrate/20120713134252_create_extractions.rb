@@ -3,7 +3,7 @@ class CreateExtractions < ActiveRecord::Migration
     create_table :extractions do |t|
       t.string :extraction_name
       t.integer :element_id
-      t.integer :culture_id
+      t.string :culture_assoc
       t.text :extraction_note
 
       t.timestamps

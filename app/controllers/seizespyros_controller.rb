@@ -52,8 +52,9 @@ class SeizespyrosController < ApplicationController
     
      @elt=flash[:elt]
     @element = Element.new(@elt)
+     @element.element_name= @seizespyro.seize_name
     @element.save    
-    @seizespyro.seize_name=flash[:elt][:element_name] 
+    #@seizespyro.seize_name=flash[:elt][:element_name] 
     
       #permet d'associer elt a seizespyro pour projet::detail elt
     @seizespyro.element_id= Element.last.id
@@ -63,7 +64,7 @@ class SeizespyrosController < ApplicationController
         format.html { redirect_to @seizespyro, notice: 'Seizespyro was successfully created.' }
         format.json { render json: @seizespyro, status: :created, location: @seizespyro }
       else
-        Element.last.destroy
+       
         format.html { render action: "new" }
         format.json { render json: @seizespyro.errors, status: :unprocessable_entity }
       end

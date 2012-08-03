@@ -32,8 +32,7 @@ module ApplicationHelper
         elsif elt_type=="sequencing"
         @z=Sequencing        
         elsif elt_type=="submission"
-        @z=Submission
-        
+        @z=Submission        
          elsif elt_type=="data"
         @z=Datum
          elsif elt_type=="genome"
@@ -44,6 +43,8 @@ module ApplicationHelper
         @z=Seizespyro
          elsif elt_type=="RNAseq"
         @z=Rnaseq
+          elsif elt_type=="mass_spectro"
+        @z=Spectro
       else @z="probleme method to_tablename"
       end
        @z
@@ -104,6 +105,8 @@ def filtre_elt_associe(project_associe_id,elt_type)
           el.seize_name
        elsif elt_type == "RNAseq"
           el.rnaseq_name
+       elsif elt_type == "mass_spectro"
+          el.spectro_name
        else "error method filtre elt associe"
          end
          end
@@ -111,22 +114,19 @@ def filtre_elt_associe(project_associe_id,elt_type)
      
 end
 
-
+#refactoring nil
 def display_fields_on_views(obj)
-  
-  if obj.empty?
-   @z="</br>"
-   raw @z
-  else
-   return obj
-  end
+  #obj.empty? method would not be defined for class Fixnum // obj.NaN? would not work for date
+    if obj.blank? #raccourci de .nil || ou .empty
+       @z="</br>"
+       raw @z
+    else
+      return obj
+    end  
 end
   
 
 
-#def empty_string #so that nil objject do not mess up the views
-#  @s=" "
-#end
 
  
   

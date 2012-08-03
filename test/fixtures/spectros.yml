@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  spectro_name: MyString
+  culture_id: 1
+  element_id: 1
+  probe_number: 1
+  analyse_type: MyString
+  sample_type: MyString
+  attached_files: MyText
+  samples_number: 1
+  gel_number: 1
+  procedure: MyText
+  comments: MyText
+
+two:
+  spectro_name: MyString
+  culture_id: 1
+  element_id: 1
+  probe_number: 1
+  analyse_type: MyString
+  sample_type: MyString
+  attached_files: MyText
+  samples_number: 1
+  gel_number: 1
+  procedure: MyText
+  comments: MyText

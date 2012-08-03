@@ -1,5 +1,7 @@
 Limsv1::Application.routes.draw do
   
+  resources :spectros
+
   resources :rnaseqs
 
   resources :seizespyros
@@ -47,6 +49,7 @@ Limsv1::Application.routes.draw do
   
  
   get "home/index"
+  get "projects/destroy"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
