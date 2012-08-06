@@ -217,7 +217,9 @@ def choix_controller
          elsif e.element_type =="16s_pyro"
          @g+="seizespyros,"
          elsif e.element_type =="RNAseq"
-         @g+="rnaseqs,"        
+         @g+="rnaseqs,"
+        elsif e.element_type =="spectro"
+         @g+="spectros," 
        else @g="probleme_methode_choix_controller"
        end
      end

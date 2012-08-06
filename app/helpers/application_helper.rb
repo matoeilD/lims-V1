@@ -133,8 +133,51 @@ def sortable(column, title = nil)
   link_to title, {:sort => column, :direction => direction}, {:class => css_class}
 end
 
+def project_progression(p)
+if p.choix_controller.include? 'submissions'
+   return "class='bar' style= 'width: 100%; ' "
 
 
+elsif p.choix_controller.include? 'sequencings'
+   return "class='bar' style= 'width: 60%; '"
+elsif p.choix_controller.include? 'libraries'
+   return "class='bar' style= 'width: 40%; '"
+elsif p.choix_controller.include? 'em_pcrs'
+   return "class='bar' style= 'width: 30%; '"
+elsif p.choix_controller.include? 'extractions'
+    return "class='bar' style= 'width: 20%; '"
+elsif p.choix_controller.include? 'cultures'
+  return "class='bar' style= 'width: 10%; '"
+end
+end
  
+def color_bar(p)
+if p.choix_controller.include? 'submissions'
+      return "class='progress progress-success'"
+elsif p.choix_controller.include? 'sequencings'
+      return "class='progress progress-inverse'"
+elsif p.choix_controller.include? 'libraries'
+   return "class='progress progress-danger'"
+elsif p.choix_controller.include? 'em_pcrs'
+   return "class='progress progress-warning'"
+
+elsif p.choix_controller.include? 'extractions'
+   return "class='progress progress-info'"
+   
+elsif p.choix_controller.include? 'cultures'
+  return "class='progress progress-primary'"
+ 
+  end
+end
+
+def done?(p)
+
+if p.choix_controller.include? 'submissions'
+  @z=	"<span class='badge badge-success'>done</span>"
+  raw @z
+end
+end
+
+
   
 end
