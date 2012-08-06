@@ -20,7 +20,7 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
     @element=Element.all
-    @extraction=Extraction.all
+    #@extraction=Extraction.all
      
     
     
@@ -96,3 +96,4 @@ class ProjectsController < ApplicationController
     end
   end
 end
+

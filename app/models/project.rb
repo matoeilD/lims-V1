@@ -1,6 +1,6 @@
 class Project < ActiveRecord::Base
   
-has_many :project_elements
+has_many :project_elements, :dependent => :destroy
 has_many :elements, :through => :project_elements
 #accepts_nested_attributes_for :user_projects
   
@@ -72,7 +72,7 @@ def elt_associe(x)
         Element.find(:all, :conditions=>["id=?",e])     
     end
     
-    #cree une tableau d'eltname     
+    #cree une tableau d'eltname ou autre     
     @name=@e.collect do |test|      
      test.collect do |e|
        if x==1

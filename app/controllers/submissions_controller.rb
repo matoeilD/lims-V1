@@ -54,6 +54,11 @@ class SubmissionsController < ApplicationController
      @elt=flash[:elt]
     @element = Element.new(@elt)
       @element.element_name=@submission.submission_name
+       #cf uniqueness of element_name ds model
+    if  ! (@element.valid?)
+        redirect_to :controller => 'elements', :action => 'new', :notice => 'start again, this name has already been taken'
+        return
+    end
     @element.save    
      #@submission.submission_name=flash[:elt][:element_name] 
        #permet d'associer elt a sub pour projet::detail elt

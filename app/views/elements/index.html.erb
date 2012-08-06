@@ -5,14 +5,15 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:type) %></th>
+      <!--method ds helper + controller -->
+      <th><%= sortable "id" %></th>
+      <th><%= sortable "element_name" %></th>
+      <th><%= sortable "element_type" %></th>
   
-      <th><%= model_class.human_attribute_name(:experimentator) %></th>
+      <th><%= sortable "experimentator" %></th>
 
-      <th><%= model_class.human_attribute_name(:project) %></th>
-      <th><%= model_class.human_attribute_name(:exp_date) %></th>
+      <th><%= sortable "project" %></th>
+      <th><%= sortable "exp_date" %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>

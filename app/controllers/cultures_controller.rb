@@ -52,9 +52,12 @@ class CulturesController < ApplicationController
     @elt=flash[:elt]
     @element = Element.new(@elt)
     @element.element_name=@culture.culture_name
-   @element.save
-  
-    
+    #cf uniqueness of element_name ds model
+    if  ! (@element.valid?)
+        redirect_to :controller => 'elements', :action => 'new', :notice => 'start again, this name has already been taken'
+        return
+    end
+    @element.save
     
     
     #@culture.culture_name=flash[:elt][:element_name]

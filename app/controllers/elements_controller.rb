@@ -1,8 +1,11 @@
 class ElementsController < ApplicationController
   # GET /elements
   # GET /elements.json
+   helper_method :sort_column, :sort_direction
+  
+  
   def index
-    @elements = Element.all
+    @elements = Element.order(sort_column + " " + sort_direction)
     @user_elements=UserElement.all
     #@u=User.test
   
@@ -226,4 +229,17 @@ class ElementsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  
+   private
+  
+  def sort_column
+    Element.column_names.include?(params[:sort]) ? params[:sort] : "element_name"
+  end
+  
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
+  
+  
 end

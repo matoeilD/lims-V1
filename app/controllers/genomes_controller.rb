@@ -55,6 +55,11 @@ class GenomesController < ApplicationController
     @element = Element.new(@elt)
      @element = Element.new(@elt)
     @element.element_name=@genome.genome_name
+     #cf uniqueness of element_name ds model
+    if  ! (@element.valid?)
+        redirect_to :controller => 'elements', :action => 'new', :notice => 'start again, this name has already been taken'
+        return
+    end
     @element.save    
     #@genome.genome_name=flash[:elt][:element_name] 
      #permet d'associer elt a genome pour projet::detail elt
