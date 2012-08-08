@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.3'
 gem 'sqlite3'
 gem 'jquery-rails'
+
 gem 'pry'
 gem 'formtastic', " ~> 2.1.1"
 

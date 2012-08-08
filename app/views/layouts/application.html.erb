@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
  
   <%= javascript_include_tag "application" %>
+   
   
 
   
@@ -14,7 +15,10 @@
 <body>
     <div class="container">
     <div class="row">
-      <div class="span9"><%= yield %></div>
+      <div class="span9">
+        <!-- to make flashes dry  -->
+        <%= render :partial => 'common_partials/flashes' %>
+        <%= yield %></div>
       <div class="span3">
        <h3>LimsV1</h3>
        <p>LimsV1 est une application de gestion complète de projet en mode web, développé en Ruby sur la base du framework Ruby on Rails.

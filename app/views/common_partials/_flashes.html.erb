@@ -1,0 +1,66 @@
+
+<!-- cf layout file , permet de rendre les alertes et notices dynamiques, et dry 
+<% unless flash[:notice].blank? %>
+  <div class="alert-message info">
+    <%= content_tag :div, flash[:notice] %>
+  </div>
+<% end %>
+
+<% unless flash[:error].blank? %>
+  <div class="alert-message error">
+    <%= content_tag :div, flash[:error] %>
+  </div>
+<% end %>
+
+<% unless flash[:alert].blank? %>
+  <div class="alert-message warning">
+    <%= content_tag :div, flash[:alert] %>
+  </div>
+<% end %>-->
+
+<% unless flash[:notice].blank? %>
+    <div  id="notice">
+    <button class="close" data-dismiss="alert">×</button>
+    <h4 class="alert alert-success" ><strong>Well done!</strong> <%= notice %></h4>
+    </div>
+  <%end%>
+  
+  
+<% unless params[:notice].blank? %>
+ <div   id="notice">
+    <button class="close" data-dismiss="alert">×</button>
+    <h4 class="alert alert-error"><strong>Oh, snap!</strong><%= params[:notice] %>   </h4>
+    </div>
+ <% end %>
+    
+      
+ <% unless flash[:error].blank? %>
+    <div class="alert alert-error">
+    <button class="close" data-dismiss="alert">×</button>
+    <strong>Oh, snap!</strong> <%= notice %> <%= error %>
+    </div>
+<% end %>
+
+<% unless flash[:alert].blank? %>
+  <div class="alert-message warning">
+       <button class="close" data-dismiss="alert">×</button>
+    <strong>Warning!</strong> <%= alert %>
+    </div>
+<% end %>
+
+<% unless flash[:info].blank? %>
+  <div class="alert alert-info">
+       <button class="close" data-dismiss="alert">×</button>
+    <strong>Heads up!</strong> <%= info %>
+    </div>
+<% end %>
+
+<% unless flash[:message].blank? %>
+  <div class="alert alert-info">
+       <button class="close" data-dismiss="alert">×</button>
+    <strong>Heads up!</strong> <%= message %>
+    </div>
+<% end %>
+
+   
+ 

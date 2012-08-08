@@ -1,3 +1,10 @@
+GIT
+  remote: http://github.com/paneq/calendar_date_select.git
+  revision: 8e7ec79435a68665df40b14bd90f47e6ac5e9135
+  branch: rails3test
+  specs:
+    calendar_date_select (1.16.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -124,6 +131,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  calendar_date_select!
   coffee-rails
   formtastic (~> 2.1.1)
   formtastic-bootstrap

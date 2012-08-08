@@ -35,6 +35,18 @@ validates_presence_of :projects
 validates_presence_of :element_name
 validates_uniqueness_of :element_name
 
+#cf element_controller and element index view
+def self.search(search)
+  if search
+    where('element_name LIKE ?', "%#{search}%")
+  else
+    scoped
+  end
+end
+
+
+
+
 #recupere le id 
 #def get_id
   

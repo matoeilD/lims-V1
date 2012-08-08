@@ -5,7 +5,8 @@ class ElementsController < ApplicationController
   
   
   def index
-    @elements = Element.order(sort_column + " " + sort_direction)
+    #cf element model for search
+    @elements = Element.search(params[:search]).order(sort_column + " " + sort_direction)
     @user_elements=UserElement.all
     #@u=User.test
   

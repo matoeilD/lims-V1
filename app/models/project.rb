@@ -15,20 +15,12 @@ attr_accessible :projectname, :projectdescription, :projecttype_id, :user_ids, :
 
 
 validates_presence_of :projectname
-validates_uniqueness_of :projectname
+validates_uniqueness_of :projectname,  :message => "already taken"
 
-
-
+#see element view form
 def display_name
-  "#{projectname}"
+ "#{projectname}"
 end
-
-
-
-
-
-
-
 
 #affiche le responsable du projet
 def resp
@@ -41,18 +33,7 @@ unless @t.first.nil?
 
 @t=@t.first.name
 end
- # @t=self.users 
-#@l=User.where(  :name => @t.name).all
-   #@l= User.find_by_id(@t.id).name
-   #@project_id=self.id
-   #@user_associated_object= UserProject.find_by_id(@project_id)   
-  # if (UserProject[:project_id]=self.id)
-   #  read_attribute("id")
-   #end   
-  # @userassociename=User.find_by_id(@userassoscieid).name
-  #def respo
-   # @project.write_attribute("projectheader","bl")
-#end
+ 
   
 end
 
@@ -88,13 +69,7 @@ def elt_associe(x)
        
         
       end    
-    end
-    
-     
-
-    
- 
-   
+    end   
 end
 
 #extrait l'id correspondant a l element pour faire un link_to ds la vue, avec id comme parametre transmis
@@ -189,9 +164,7 @@ def choix_controller
      #elements correspondant recuperés dans table element
     @e= @t.collect do |e|
         Element.find(:all, :conditions=>["id=?",e])     
-    end
-    
-      
+    end     
     
      @g=""
     @type=@e.collect do |test|      
@@ -224,13 +197,7 @@ def choix_controller
        end
      end
     end
-    @g.split(",")
-
-
-    
-    
-   
-   
+    @g.split(",")  
          
 end
 

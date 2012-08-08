@@ -1,7 +1,23 @@
 <%- model_class = Element.new.class -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+  <h1 ><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
 </div>
+
+
+<%= form_tag elements_path, :method => 'get', :id => "elements_search" do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Name Search", :element_name => nil %>
+  </p>
+ 
+<% end %>
+
+
+
+
+
+
+
 <table class="table table-striped">
   <thead>
     <tr>
@@ -31,6 +47,7 @@
         <td>
           <%= link_to t('.show', :default => t("helpers.links.show")),
                       element, :class => 'btn btn-mini' %>
+                      
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_element_path(element), :class => 'btn btn-mini' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),

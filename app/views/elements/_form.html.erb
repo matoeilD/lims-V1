@@ -2,10 +2,7 @@
 
 <%= semantic_form_for @element, :html => { :class => 'form-horizontal' } do |f| %>
 
- <div class="alert alert-error"  id="notice">
-    <button class="close" data-dismiss="alert">×</button>
-    <%= params[:notice] %>
-    </div>
+
 
  <!-- <div class="control-group">
    <%= f.label :element_name, :class => 'control-label' %>
@@ -39,11 +36,13 @@
   
   <div class="control-group">
     <%= f.label :experiment_date, :class => 'control-label' %>
-     <div class="controls">
-      <%= f.date_select :element_date,:label => "date manip", :hint => "as written down in lab book" %>
+     <div class="controls"  style= "width: 220px;">
+      <%= f.date_select :element_date,:label => "date manip", :hint => "as written down in lab book", :order => [:day, :month, :year], :start_year => Date.current.year, :end_year => 2010%>
       as written down in lab book
     </div>     
   </div>
+  
+
   
   <div class="control-group">
     
