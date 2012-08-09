@@ -1,4 +1,10 @@
 class RnaseqsController < ApplicationController
+  
+  
+   #helper from devise
+  before_filter :authenticate_user!
+  
+  
   # GET /rnaseqs
   # GET /rnaseqs.json
   def index

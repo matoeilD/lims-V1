@@ -1,4 +1,10 @@
 class GenomesController < ApplicationController
+  
+  
+   #helper from devise
+  before_filter :authenticate_user!
+  
+  
   # GET /genomes
   # GET /genomes.json
   def index

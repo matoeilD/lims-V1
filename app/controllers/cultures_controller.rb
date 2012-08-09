@@ -1,4 +1,10 @@
 class CulturesController < ApplicationController
+  
+  
+   #helper from devise
+  before_filter :authenticate_user!
+  
+  
   # GET /cultures
   # GET /cultures.json
   def index

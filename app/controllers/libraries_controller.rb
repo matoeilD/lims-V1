@@ -1,4 +1,10 @@
 class LibrariesController < ApplicationController
+  
+   #helper from devise
+  before_filter :authenticate_user!
+  
+  
+  
   # GET /libraries
   # GET /libraries.json
   def index

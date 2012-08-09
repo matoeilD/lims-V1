@@ -1,5 +1,7 @@
 Limsv1::Application.routes.draw do
   
+  devise_for :users
+
   resources :spectros
 
   resources :rnaseqs

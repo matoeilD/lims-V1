@@ -1,4 +1,11 @@
 class MetagenomesController < ApplicationController
+  
+  
+   #helper from devise
+  before_filter :authenticate_user!
+  
+  
+  
   # GET /metagenomes
   # GET /metagenomes.json
   def index

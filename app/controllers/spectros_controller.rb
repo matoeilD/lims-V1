@@ -1,4 +1,10 @@
 class SpectrosController < ApplicationController
+   #helper from devise
+  before_filter :authenticate_user!
+  
+  
+  
+  
   # GET /spectros
   # GET /spectros.json
   def index

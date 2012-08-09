@@ -1,4 +1,9 @@
 class DataController < ApplicationController
+  
+  
+   #helper from devise
+  before_filter :authenticate_user!
+  
   # GET /data
   # GET /data.json
   def index

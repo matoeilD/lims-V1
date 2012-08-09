@@ -1,4 +1,10 @@
 class SequencingsController < ApplicationController
+  
+   #helper from devise
+  before_filter :authenticate_user!
+  
+  
+  
   # GET /sequencings
   # GET /sequencings.json
   def index

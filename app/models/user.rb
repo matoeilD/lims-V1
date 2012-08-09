@@ -1,4 +1,15 @@
 class User < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
+
+  # Setup accessible (or protected) attributes for your model
+  attr_accessible :email, :password, :password_confirmation, :remember_me
+  
+  
+  #above is the devise generated code
+  
 has_many :user_projects
 has_many :projects, :through => :user_projects
 
@@ -6,20 +17,12 @@ has_many :projects, :through => :user_projects
 has_many :user_elements
 has_many :elements, :through => :user_elements
   
-attr_accessible :email, :firstname, :name, :password, :position, :project_ids
+attr_accessible :email, :first_name, :name, :password, :position, :project_ids
 
-validates_presence_of :name
-validates_uniqueness_of :name
-
-#validates_confirmation_of :login, :password
-#validates_confirmation_of :email, :message => "should match confirmation"
-#validates_format_of :email,:with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i,:on => :create
+#validates_presence_of :name
+#validates_uniqueness_of :name
 
 
-#def self.authenticate_safely(user_name, password)
-#find(:first, :conditions =>
-#[ "name = ? AND password = ?", name, password ])
-#end
 
 
 #accepts_nested_attributes_for :user_elements, :elements

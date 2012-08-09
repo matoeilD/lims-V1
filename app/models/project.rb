@@ -23,8 +23,7 @@ def display_name
 end
 
 #affiche le responsable du projet
-def resp
-  
+def resp  
 @t=UserProject.find(:all, :conditions=> ["project_id= ?",self.id])
 unless @t.first.nil?
 @t=@t.first.user_id
@@ -32,10 +31,11 @@ unless @t.first.nil?
 @t=User.find(:all, :conditions=>["id=?",@t])
 
 @t=@t.first.name
+end  
 end
- 
-  
-end
+
+
+
 
 
 #creer un tableau d'elt associé pour l'affichage et display les attributs qu on veut ds projet.show

@@ -1,4 +1,9 @@
 class EmPcrsController < ApplicationController
+  
+   #helper from devise
+  before_filter :authenticate_user!
+  
+  
   # GET /em_pcrs
   # GET /em_pcrs.json
   def index

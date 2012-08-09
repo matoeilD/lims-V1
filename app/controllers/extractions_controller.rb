@@ -1,4 +1,8 @@
 class ExtractionsController < ApplicationController
+  
+   #helper from devise
+  before_filter :authenticate_user!
+  
   # GET /extractions
   # GET /extractions.json
   def index

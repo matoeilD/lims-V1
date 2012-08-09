@@ -1,4 +1,11 @@
 class SeizespyrosController < ApplicationController
+  
+   #helper from devise
+  before_filter :authenticate_user!
+  
+  
+  
+  
   # GET /seizespyros
   # GET /seizespyros.json
   def index

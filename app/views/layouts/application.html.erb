@@ -14,6 +14,12 @@
 </head>
 <body>
     <div class="container">
+      
+ 
+
+
+      
+      
     <div class="row">
       <div class="span9">
         <!-- to make flashes dry  -->
@@ -42,13 +48,32 @@ gestion fine des droits utilisateurs définis par des rôles...blablabla</br>
         </a>
         <a class="brand" href="#">limsv1</a>
         <div class="nav-collapse">
+          
+          
+          
           <ul class="nav">
           <li><%= link_to "home", 'home#index' %></li>
     <li><%= link_to "projects", projects_path %></li>
     <li><%= link_to "users", users_path %></li>
     <li><%= link_to "elements", elements_path %></li>
-    <li><%= link_to "experiments", experiments_path %></li>
-          </ul>
+      </ul>
+   
+        <div align="right" class="nav-collapse">
+  <% if user_signed_in? %>
+  </br>Signed in as <%= current_user.email %>. Not you?
+    <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+  <% else %>
+    <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
+  <% end %>
+     </div>
+   
+   
+   
+       
+          
+          
+           
+          
         </div>
       </div>
     </div>

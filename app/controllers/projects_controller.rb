@@ -1,4 +1,9 @@
 class ProjectsController < ApplicationController
+  
+  #helper from devise
+  before_filter :authenticate_user!  , :except => [ :index]
+  
+  
   # GET /projects
   # GET /projects.json
   def index

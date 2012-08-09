@@ -1,4 +1,9 @@
 class ElementsController < ApplicationController
+  
+   #helper from devise
+  before_filter :authenticate_user!  , :except => [ :index]
+  
+  
   # GET /elements
   # GET /elements.json
    helper_method :sort_column, :sort_direction
