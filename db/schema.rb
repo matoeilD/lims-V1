@@ -238,7 +238,7 @@ ActiveRecord::Schema.define(:version => 20120809155101) do
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "first_name"
-    t.string   "position"
+    t.string   "role"
     t.text     "user_note"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false

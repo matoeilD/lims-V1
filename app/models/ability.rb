@@ -1,0 +1,107 @@
+class Ability
+  include CanCan::Ability
+
+
+#can :destroy, Element, :active => true, :user_id => user.id  pour update et destroy element cree par eux
+
+#cf user view form and user model
+#note that noone can edit user and so define roles except admininstrator and chef_projet
+#this suppose that in the initial step of using this application , the acces must be enable in user controller
+
+#users can read  and create what concerns them
+#resp can update and destroy what concerns them and can create project
+#chef de projet can read, create , update all but can't destroy anything
+#admin manage all including defining roles
+#no role , limited access to read user (in order to sign up )and existing project
+
+  def initialize(user)
+    can :manage, :all if user.role == "admin"
+    
+    #anything except destroy
+    can [:read, :create, :update] , :all  if user.role == "chef_projet"
+    
+    if user.role == "resp_bioinfo"
+      can :read , [ User, Culture, Extraction, EmPcr, Library, Sequencing ]
+      can [:read, :create ] , [ Project, Element, Datum, Genome, Metagenome, Rnaseq, Seizespyro, Submission  ]   
+      can [:update, :destroy], [ Element, Datum, Genome, Metagenome, Rnaseq, Seizespyro, Submission ], :element_type => [  "data", "genome", "metagenome", "RNAseq", "16s_pyro", "submission" ] 
+       
+    elsif user.role == "resp_spectro"
+      can :read , [ User, Culture, Extraction, EmPcr, Library, Sequencing, Datum, Genome, Metagenome, Rnaseq, Seizespyro, Submission ]
+      can [:read, :create ] , [ Project, Element, Spectros ]
+      can [:update, :destroy], [ Element, Spectros ], :element_type => "mass_spectro"  
+      
+      
+    elsif user.role == "resp_sequencing "
+      can :read , [ User, Genome, Metagenome, Rnaseq, Seizespyro, Submission ]
+      can [:read, :create ] , [ Project, Element, Culture, Extraction, EmPcr, Library, Sequencing, Datum ]
+      can [:update, :destroy], [ Element, Culture, Extraction , EmPcr, Library, Sequencing, Datum ], :element_type => [  "culture", "extraction", "EM_PCR", "library", "sequencing", "data" ] 
+      
+      
+    elsif user.role == "user_bioinfo "
+      can :read , [ User, Project ]
+      can [:read, :create] , [ Element, Sequencing, Datum, Genome, Metagenome, Rnaseq, Seizespyro ]
+    
+    elsif user.role == "user_sequencing"
+       can :read , [ User, Project ]
+       can [:read, :create] , [ Element, Culture, Extraction, EmPcr, Library,Sequencing ]
+       
+    elsif user.role == "user_library"
+      can :read , [ User, Project ]
+      can [:read, :create] , [ Element, Culture, Extraction, EmPcr, Library ]
+      
+      
+    elsif user.role == "user_extraction"
+       can :read , [ User, Project ]
+      can [:read, :create] , [ Element, Culture, Extraction ]
+   
+    else
+      can :read, [ User, Project ]
+    end
+  
+     
+        
+     #  user ||= User.new # Guest user
+    #if user.role? :admin     
+     # can :manage, :all
+      
+    #else
+      #can :read, :all      
+      #end
+      
+      #if user.position?(:author)
+       # can :create, Article
+       # can :update, Article do |article|
+       #   article.try(:user) == user
+       # end
+     # end
+    #end
+    
+    
+    
+    
+    
+    
+    # Define abilities for the passed in user here. For example:
+    #
+    #   user ||= User.new # guest user (not logged in)
+    #   if user.admin?
+    #     can :manage, :all
+    #   else
+    #     can :read, :all
+    #   end
+    #
+    # The first argument to `can` is the action you are giving the user permission to do.
+    # If you pass :manage it will apply to every action. Other common actions here are
+    # :read, :create, :update and :destroy.
+    #
+    # The second argument is the resource the user can perform the action on. If you pass
+    # :all it will apply to every resource. Otherwise pass a Ruby class of the resource.
+    #
+    # The third argument is an optional hash of conditions to further filter the objects.
+    # For example, here the user can only update published articles.
+    #
+    #   can :update, Article, :published => true
+    #
+    # See the wiki for details: https://github.com/ryanb/cancan/wiki/Defining-Abilities
+  end
+end

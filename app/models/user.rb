@@ -17,11 +17,13 @@ has_many :projects, :through => :user_projects
 has_many :user_elements
 has_many :elements, :through => :user_elements
   
-attr_accessible :email, :first_name, :name, :password, :position, :project_ids
+attr_accessible :email, :first_name, :name, :password, :role, :project_ids
 
-#validates_presence_of :name
-#validates_uniqueness_of :name
+validates_presence_of :name
+validates_uniqueness_of :name
 
+#for cancan
+ ROLES = %w[admin user_extraction user_library user_sequencing user_bioinfo resp_sequencing resp_spectro resp_bioinfo chef_projet]
 
 
 

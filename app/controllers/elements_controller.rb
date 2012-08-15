@@ -4,6 +4,11 @@ class ElementsController < ApplicationController
   before_filter :authenticate_user!  , :except => [ :index]
   
   
+    #cancan permet d'afficher uniqeuement si authoriser dans ability.rb
+ load_and_authorize_resource
+  
+  
+  
   # GET /elements
   # GET /elements.json
    helper_method :sort_column, :sort_direction

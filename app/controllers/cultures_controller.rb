@@ -4,7 +4,8 @@ class CulturesController < ApplicationController
    #helper from devise
   before_filter :authenticate_user!
   
-  
+      #cancan permet d'afficher uniqeuement si authoriser dans ability.rb
+ load_and_authorize_resource
   # GET /cultures
   # GET /cultures.json
   def index
@@ -58,6 +59,9 @@ class CulturesController < ApplicationController
     @elt=flash[:elt]
     @element = Element.new(@elt)
     @element.element_name=@culture.culture_name
+
+    
+    
     #cf uniqueness of element_name ds model
     if  ! (@element.valid?)
         redirect_to :controller => 'elements', :action => 'new', :notice => ' name already been taken'

@@ -3,7 +3,12 @@ class ProjectsController < ApplicationController
   #helper from devise
   before_filter :authenticate_user!  , :except => [ :index]
   
+
+      #cancan permet d'afficher uniqeuement si authoriser dans ability.rb
+ load_and_authorize_resource
   
+  #cancan  
+ # check_authorization
   # GET /projects
   # GET /projects.json
   def index

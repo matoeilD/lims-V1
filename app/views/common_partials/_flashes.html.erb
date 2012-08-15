@@ -35,11 +35,19 @@
     
       
  <% unless flash[:error].blank? %>
-    <div class="alert alert-error">
+    <div id="error" class="alert alert-error">
     <button class="close" data-dismiss="alert">×</button>
-    <strong>Oh, snap!</strong> <%= notice %> <%= error %>
+    <strong>Oh, snap!</strong>  <%= error %>
     </div>
 <% end %>
+
+ <% unless params[:error].blank? %>
+    <div id="error" class="alert alert-error">
+    <button class="close" data-dismiss="alert">×</button>
+    <strong>Oh, snap!</strong>  <%= params[:error] %>
+    </div>
+<% end %>
+
 
 <% unless flash[:alert].blank? %>
   <div class="alert-message warning">

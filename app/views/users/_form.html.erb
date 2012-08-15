@@ -28,7 +28,8 @@
   <div class="control-group">
    
     <div class="controls">
-      <%= f.input :position, :class => 'text_field' %>
+      <%= f.collection_select :role, User::ROLES, :to_s, :humanize %>
+       <!--</-> <%= f.input :role,:label => "activity", :as => :radio,       :collection => ["extraction","library","sequencing","bioinfo","resp_sequencing","resp_spectro","resp_bioinfo","chef_projet","admin"]%>  -->
     </div>
   </div>
 

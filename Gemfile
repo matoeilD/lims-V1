@@ -11,6 +11,7 @@ gem 'formtastic-bootstrap'
 gem 'twitter-bootstrap-rails'
 
 gem 'devise'
+gem "cancan"
 
 
 # Gems used only for assets and not required

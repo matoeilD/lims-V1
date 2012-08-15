@@ -4,6 +4,8 @@ class RnaseqsController < ApplicationController
    #helper from devise
   before_filter :authenticate_user!
   
+      #cancan permet d'afficher uniqeuement si authoriser dans ability.rb
+ load_and_authorize_resource
   
   # GET /rnaseqs
   # GET /rnaseqs.json
