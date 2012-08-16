@@ -47,6 +47,7 @@ end
 
 
 
+
 #recupere le id 
 #def get_id
   

@@ -59,13 +59,22 @@ class CulturesController < ApplicationController
     @elt=flash[:elt]
     @element = Element.new(@elt)
     @element.element_name=@culture.culture_name
+    
+     
 
     
     
     #cf uniqueness of element_name ds model
     if  ! (@element.valid?)
-        redirect_to :controller => 'elements', :action => 'new', :notice => ' name already been taken'
+      if (@element.projects.blank?)
+        redirect_to :controller => 'elements', :action => 'new', :notice => ' element has not been saved! make sure all required fields (*) has been filled '
         return
+      else
+        redirect_to :controller => 'elements', :action => 'new', :notice => ' element has not been saved! name already used '
+        return
+        
+     
+    end
     end
     @element.save
     

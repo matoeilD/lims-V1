@@ -18,6 +18,7 @@
   </div>
 <% end %>-->
 
+<!-- this is working (for examepl upon creation of elt-->
 <% unless flash[:notice].blank? %>
     <div  id="notice">
     <button class="close" data-dismiss="alert">×</button>
@@ -25,11 +26,11 @@
     </div>
   <%end%>
   
-  
+  <!-- this is working (for example element form with same name-->
 <% unless params[:notice].blank? %>
  <div   id="notice">
     <button class="close" data-dismiss="alert">×</button>
-    <h4 class="alert alert-error"><strong>Oh, snap!</strong><%= params[:notice] %>   </h4>
+    <h4 class="alert alert-error"><strong>Holy guacamole!</strong><%= params[:notice] %>   </h4>
     </div>
  <% end %>
     
@@ -48,23 +49,23 @@
     </div>
 <% end %>
 
-
+<!-- this is working (for example when not authorized, see application controller-->
 <% unless flash[:alert].blank? %>
-  <div class="alert-message warning">
+  <div id="alert" class="alert alert-error">
        <button class="close" data-dismiss="alert">×</button>
     <strong>Warning!</strong> <%= alert %>
     </div>
 <% end %>
 
 <% unless flash[:info].blank? %>
-  <div class="alert alert-info">
+  <div id="info" class="alert alert-error">
        <button class="close" data-dismiss="alert">×</button>
     <strong>Heads up!</strong> <%= info %>
     </div>
 <% end %>
 
 <% unless flash[:message].blank? %>
-  <div class="alert alert-info">
+  <div id="message" class="alert-message warning">
        <button class="close" data-dismiss="alert">×</button>
     <strong>Heads up!</strong> <%= message %>
     </div>

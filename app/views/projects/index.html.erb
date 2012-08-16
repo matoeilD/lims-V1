@@ -6,10 +6,10 @@
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:projectname) %></th>
-      <th><%= model_class.human_attribute_name(:projectdescription) %></th>
-      <th><%= model_class.human_attribute_name(:projectresp) %></th>
-      <th><%= model_class.human_attribute_name(:projetuser) %></th>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:description) %></th>
+      <th><%= model_class.human_attribute_name(:resp) %></th>
+      <th><%= model_class.human_attribute_name(:users) %></th>
       <th><%= model_class.human_attribute_name(:progression) %></th>
      
       
@@ -54,7 +54,7 @@
   </tbody>
 </table>
  
-<%= link_to t('.new', :default => t("helpers.links.new")),
+<%= link_to t('.add_new_project', :default => t("helpers.links.add_new_project")),
             new_project_path,
-            :class => 'btn btn-primary' %>
+            :class => 'btn btn-info' %>
  

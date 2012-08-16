@@ -47,13 +47,13 @@
   
   <%= link_to t('.add_new_element', :default => t("helpers.links.add_new_element")),
             new_element_path,
-            :class => 'btn btn-primary' %>
+            :class => 'btn btn-warning' %>
   
   
 
 
 <div class="form-actions">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
+  <%= link_to t('.back_to_index', :default => t("helpers.links.back_to_index")),
               projects_path, :class => 'btn'  %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
               edit_project_path(@project), :class => 'btn' %>

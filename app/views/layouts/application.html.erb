@@ -51,16 +51,26 @@ gestion fine des droits utilisateurs définis par des rôles...blablabla</br>
           
           
           
-          <ul class="nav">
+          <ul class="nav ">
           <li><%= link_to "home", 'home#index' %></li>
     <li><%= link_to "projects", projects_path %></li>
     <li><%= link_to "users", users_path %></li>
     <li><%= link_to "elements", elements_path %></li>
+     <form class="navbar-search pull-left">
+        
+        <%= form_tag elements_path, :method => 'get', :id => "elements_search" do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "search element by name", :element_name => nil %>
+  </p>
+ 
+<% end %>
+     </form>
       </ul>
    
         <div align="right" class="nav-collapse">
   <% if user_signed_in? %>
-  </br>Signed in as <%= current_user.email %>. Not you?
+  </br><small>Hi <%= current_user.name %></small> | sign out?
     <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
   <% else %>
     <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>

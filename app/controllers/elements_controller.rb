@@ -33,6 +33,7 @@ class ElementsController < ApplicationController
   # GET /elements/1.json
   def show
     @element = Element.find(params[:id])
+   
   
     
      #redirige vers la methode show approprie
@@ -156,6 +157,7 @@ class ElementsController < ApplicationController
      @current_project_id=params[:element][:project_ids][1]
      @z=@e
         
+       
     
     
     if params[:element][:element_type]=="culture"

@@ -3,11 +3,13 @@
   <h1 ><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
 </div>
 
-
+<!-- cf element model an element index view -->
 <%= form_tag elements_path, :method => 'get', :id => "elements_search" do %>
   <p>
     <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Name Search", :element_name => nil %>
+    <%= submit_tag "Search by name", :element_name => nil %>
+     <%= submit_tag "Search by type", :element_type => nil %>
+  
   </p>
  
 <% end %>
@@ -56,6 +58,6 @@
   </tbody>
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
+<%= link_to t('.add_new_element', :default => t("helpers.links.add_new_element")),
             new_element_path,
-            :class => 'btn btn-primary' %>
+            :class => 'btn btn-warning' %>

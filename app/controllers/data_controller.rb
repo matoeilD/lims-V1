@@ -65,10 +65,18 @@ class DataController < ApplicationController
      @elt=flash[:elt]
     @element = Element.new(@elt)
      @element.element_name=@datum.data_name
-      #cf uniqueness of element_name ds model
+    
+    #cf uniqueness of element_name ds model
     if  ! (@element.valid?)
-        redirect_to :controller => 'elements', :action => 'new', :notice => 'start again, this name has already been taken'
+      if (@element.projects.blank?)
+        redirect_to :controller => 'elements', :action => 'new', :notice => ' element has not been saved! make sure all required fields (*) has been filled '
         return
+      else
+        redirect_to :controller => 'elements', :action => 'new', :notice => ' element has not been saved! name already used '
+        return
+        
+     
+    end
     end
      
     @element.save    
