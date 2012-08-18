@@ -137,8 +137,7 @@ class ElementsController < ApplicationController
   # GET /elements/1/edit
   def edit
     @element = Element.find(params[:id])
-    @culture = Culture.find(params[:id])
-    
+   
  
   end
 

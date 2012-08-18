@@ -5,7 +5,7 @@
   <div class="control-group">
    
     <div class="controls">
-    <%= f.input :projectname, :class => 'text_field' %>
+    <%= f.input :project_name, :class => 'text_field' %>
     </div>
   </div>
   <div class="control-group">
@@ -17,19 +17,19 @@
   <div class="control-group">
     
     <div class="controls">
-    <%= f.input :numero_id_interne, :class => 'number_field' %>
+    <%= f.input :identifiant_interne, :class => 'text_field' %>
     </div>
   </div>
   <div class="control-group">
     
     <div class="controls">
-      <%= f.input :projectdescription, :class => 'text_area' %>
+      <%= f.input :project_description, :class => 'text_area' %>
     </div>
   </div>
   <div class="control-group">
     
     <div class="controls">
-      <%= f.input :projecttype, :as => :radio, :collection => ["genomique", "transcriptomique"], :class => 'number_field' %>
+      <%= f.input :project_type_id, :as => :radio, :collection => ["genomique", "transcriptomique"], :class => 'number_field' %>
     </div>
   </div>
   <div class="control-group">

@@ -4,7 +4,15 @@ class Extraction < ActiveRecord::Base
   belongs_to :culture
   attr_accessible :culture_assoc, :element_id, :extraction_name, :extraction_note
   
-   # validates_presence_of :extraction_name
+  
+   validates_presence_of :culture_assoc
+   
+   #see extraction form_edit
+def display_name
+ "#{extraction_name}"
+end
+  
+   #validates_presence_of :extraction_name
 #validates_uniqueness_of :extraction_name
   
   # deplace ds helper

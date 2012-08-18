@@ -21,8 +21,8 @@
       <% @projects.each do |project| %>
       <tr>
         <td><%= link_to project.id, project_path(project) %></td>
-        <td><%= project.projectname %></td>
-        <td><%= project.projectdescription %></td>
+        <td><%= project.project_name %></td>
+        <td><%= project.project_description %></td>
         <td><%= project.resp %></td>
          <% @a= project.users.collect { |a| a.name unless a.name == project.resp }.compact!%>
          <td><%= @a.join(",") unless @a.nil? %></td>

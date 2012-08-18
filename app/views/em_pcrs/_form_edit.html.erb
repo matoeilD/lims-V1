@@ -1,29 +1,26 @@
-<%= semantic_form_for @library, :html => { :class => 'form-horizontal' } do |f| %>
- 
+<%= semantic_form_for @em_pcr, :html => { :class => 'form-horizontal' } do |f| %>
+  
+  
   <div class="control-group">
-    <%= f.label :library_name, :class => 'control-label' %>
+    <%= f.label :EM_PCR_name, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :library_name, :class => 'text_field'  %>
+      <%= @em_pcr.EM_PCR_name %>
     </div>
   </div>
   
   <div class="control-group">
-   
+  
     <div class="controls">
        <!--method ds helper -->
-    <%= f.input :extraction_assoc, :as => :radio, :collection => filtre_elt_associe(@project_associe_id,"extraction") %>
-       </div>
-  </div>
-  <div class="control-group">
-    
-    <div class="controls">
-      <%= f.input :fragmentation %>
+    <%= f.input :library_assoc, :as => :radio, :collection => Library.all.collect {|el| el.library_name}
+ %>
     </div>
   </div>
   <div class="control-group">
     
     <div class="controls">
-      <%= f.input :strategy %>
+       
+      <%= f.input :PCR_round, :as => :radio, :collection => ["1st round","2nd round"] %>
     </div>
   </div>
 

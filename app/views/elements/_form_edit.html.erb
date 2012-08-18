@@ -1,0 +1,62 @@
+
+
+<%= semantic_form_for @element, :html => { :class => 'form-horizontal' } do |f| %>
+
+
+
+ <!-- <div class="control-group">
+   <%= f.label :element_name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :element_name, :class => 'text_field', :hint => "Example: cult_md_15july2012,seq_gf_18july2012" %>
+    </div>
+  </div> -->
+  
+  
+  
+  <div class="control-group">
+    
+    <div class="controls" >
+      <%= f.label :element_type %>
+      <%= @element.element_type %>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    
+    <div class="controls">
+      <%= f.input :projects, :label => "projet associé", :required => true %> 
+    </div>
+  </div>
+  
+  <div class="control-group">
+   
+    <div class="controls">
+      <%= f.input :users, :label => "responsable"%>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <%= f.label :experiment_date, :class => 'control-label' %>
+     <div class="controls"  style= "width: 220px;">
+      <%= f.date_select :element_date,:label => "date manip", :hint => "as written down in lab book", :order => [:day, :month, :year], :start_year => Date.current.year, :end_year => 2010%>
+      as written down in lab book
+    </div>     
+  </div>
+  
+
+  
+  <div class="control-group">
+    
+    <div class="controls">
+      <%= f.input :element_note %>
+    </div>
+  </div>
+  
+
+
+  <div class="form-actions">
+    <%= f.submit 'next', :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                elements_path, :class => 'btn' %>
+  </div>
+<% end %>

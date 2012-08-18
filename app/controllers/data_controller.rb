@@ -79,6 +79,12 @@ class DataController < ApplicationController
     end
     end
      
+       #cf presence of _assoc ds model
+    if  ! (@datum.valid?)
+        redirect_to :controller => 'elements', :action => 'new', :notice => ' element has not been saved! make sure all required fields (*) has been filled '
+        return
+    end
+     
     @element.save    
    # @datum.data_name=flash[:elt][:element_name] 
     

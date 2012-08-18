@@ -10,6 +10,12 @@ class Culture < ActiveRecord::Base
 #validates_uniqueness_of :culture_name
 
 
+#see culture form_edit
+def display_name
+ "#{culture_name}"
+end
+
+
 def self.eltpara
   hello
 end

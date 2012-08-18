@@ -68,10 +68,16 @@ class SpectrosController < ApplicationController
       else
         redirect_to :controller => 'elements', :action => 'new', :notice => ' element has not been saved! name already used '
         return
-        
-     
+         end
     end
+    
+       #cf presence of _assoc ds model
+    if  ! (@spectro.valid?)
+        redirect_to :controller => 'elements', :action => 'new', :notice => ' element has not been saved! make sure all required fields (*) has been filled '
+        return
     end
+    
+    
     @element.save    
     #@spectro.spectro_name=flash[:elt][:element_name] 
     #permet d'associer elt a spectro pour projet::detail elt

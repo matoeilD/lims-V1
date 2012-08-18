@@ -76,6 +76,8 @@ class CulturesController < ApplicationController
      
     end
     end
+    
+   
     @element.save
     
     

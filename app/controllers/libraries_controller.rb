@@ -76,10 +76,15 @@ class LibrariesController < ApplicationController
       else
         redirect_to :controller => 'elements', :action => 'new', :notice => ' element has not been saved! name already used '
         return
-        
-     
+        end
     end
+    
+       #cf presence of _assoc ds model
+    if  ! (@library.valid?)
+        redirect_to :controller => 'elements', :action => 'new', :notice => ' element has not been saved! make sure all required fields (*) has been filled '
+        return
     end
+    
     @element.save    
     #@library.library_name=flash[:elt][:element_name] 
     #permet d'associer elt a em_pcr pour projet::detail elt

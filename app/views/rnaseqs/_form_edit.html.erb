@@ -4,7 +4,7 @@
     <div class="control-group">
     <%= f.label :rnaseq_name, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :rnaseq_name, :class => 'text_field'  %>
+      <%= @rnaseq.rnaseq_name  %>
     </div>
   </div>
     
@@ -12,7 +12,8 @@
     <div class="control-group">     
     <div class="controls">
         <!--method ds helper -->
-    <%= f.input :data_assoc, :as => :radio, :collection => filtre_elt_associe(@project_associe_id,"data") %>
+    <%= f.input :data_assoc, :as => :radio, :collection => Datum.all.collect {|el| el.data_name}
+ %>
        </div>
   </div>
   

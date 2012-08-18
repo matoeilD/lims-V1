@@ -4,7 +4,7 @@
  <div class="control-group">
     <%= f.label :spectro_name, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :spectro_name, :class => 'text_field'  %>
+      <%= @spectro.spectro_name %>
     </div>
   </div>
  
@@ -12,7 +12,8 @@
   <div class="control-group">    
     <div class="controls">
      <!--method ds helper -->
-    <%= f.input :culture_assoc, :as => :radio, :collection => filtre_elt_associe(@project_associe_id,"culture") %>       
+    <%= f.input :culture_assoc, :as => :radio, :collection => Culture.all.collect {|el| el.culture_name}
+ %>       
     </div>
   </div>
  
@@ -69,6 +70,6 @@
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                elements_path, :class => 'btn' %>
+               elements_path, :class => 'btn' %>
   </div>
 <% end %>

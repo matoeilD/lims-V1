@@ -70,16 +70,32 @@ class SequencingsController < ApplicationController
         return
       else
         redirect_to :controller => 'elements', :action => 'new', :notice => ' element has not been saved! name already used '
+        return     
+    end
+    end
+    
+    
+       #cf presence of _assoc ds model
+    if  ! (@sequencing.valid?)
+        redirect_to :controller => 'elements', :action => 'new', :notice => ' element has not been saved! make sure all required fields (*) has been filled '
         return
-        
-     
     end
-    end
+    
+    
+    if (@sequencing.paired_end=="no" &&  ! (@sequencing.distance_cassure.blank?))
+    redirect_to :controller => 'elements', :action => 'new', :notice => " element has not been saved - 'distance cassure' can be filled only if PET seq "
+        return
+    
+  end
+    
     @element.save    
     #@sequencing.sequencing_name=flash[:elt][:element_name] 
     #permet d'associer elt a seq pour projet::detail elt
     @sequencing.element_id= Element.last.id
-
+  
+  
+  
+  
     respond_to do |format|
       if @sequencing.save
         format.html { redirect_to @sequencing, notice: 'Sequencing was successfully created.' }

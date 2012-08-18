@@ -3,7 +3,7 @@
   <div class="control-group">
     <%= f.label :sequencing_name, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :sequencing_name, :class => 'text_field'  %>
+      <%= @sequencing.sequencing_name  %>
     </div>
   </div>
   
@@ -12,25 +12,22 @@
   <div class="control-group">    
     <div class="controls">
      <!--method ds helper -->
-    <%= f.input :empcr_assoc, :as => :radio, :collection => filtre_elt_associe(@project_associe_id,"EM_PCR") %>       
+    <%= f.input :empcr_assoc, :as => :radio, :collection => EmPcr.all.collect {|el| el.EM_PCR_name}
+ %>       
     </div>
   </div>
   
-
-  
-   <div class="control-group">  
-    <div class="controls"  >
-    <%=   f.input :paired_end, :as => :radio, :collection => ["yes","no"], :button_html => {:class => "btn primary", :onclick => addRow} %>
+  <div class="control-group">  
+    <div class="controls">
+    <%= f.input :paired_end, :as => :radio, :collection => ["yes","no"] %>
     </div>
   </div>
   
-
   <div class="control-group">    
     <div class="controls">
          <%= f.input :distance_cassure %>
     </div>
   </div>
-
 
 
   <div class="form-actions">

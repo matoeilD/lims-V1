@@ -44,6 +44,15 @@ def self.search(search)
   end
 end
 
+def self.search(search)
+  if search
+    where('element_type LIKE ?', "%#{search}%")
+  else
+    scoped
+  end
+end
+
+
 
 
 

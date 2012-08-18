@@ -78,6 +78,12 @@ class EmPcrsController < ApplicationController
     end
     end
      
+        #cf presence of _assoc ds model
+    if  ! (@em_pcr.valid?)
+        redirect_to :controller => 'elements', :action => 'new', :notice => ' element has not been saved! make sure all required fields (*) has been filled '
+        return
+    end
+     
     @element.save    
    # @em_pcr.EM_PCR_name=flash[:elt][:element_name] 
     

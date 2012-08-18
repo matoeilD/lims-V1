@@ -1,9 +1,10 @@
-<%= semantic_form_for @library, :html => { :class => 'form-horizontal' } do |f| %>
+<%= semantic_form_for @datum, :html => { :class => 'form-horizontal' } do |f| %>
  
+  
   <div class="control-group">
-    <%= f.label :library_name, :class => 'control-label' %>
+    <%= f.label :data_name, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :library_name, :class => 'text_field'  %>
+      <%= @datum.data_name  %>
     </div>
   </div>
   
@@ -11,22 +12,18 @@
    
     <div class="controls">
        <!--method ds helper -->
-    <%= f.input :extraction_assoc, :as => :radio, :collection => filtre_elt_associe(@project_associe_id,"extraction") %>
+    <%= f.input :sequencing_assoc, :as => :radio, :collection => Sequencing.all.collect {|el| el.sequencing_name}
+ %>
        </div>
   </div>
+  
+  
   <div class="control-group">
-    
     <div class="controls">
-      <%= f.input :fragmentation %>
+      <%= f.input :data_file, :class => 'text_area' %>
     </div>
   </div>
-  <div class="control-group">
-    
-    <div class="controls">
-      <%= f.input :strategy %>
-    </div>
-  </div>
-
+ 
 
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>

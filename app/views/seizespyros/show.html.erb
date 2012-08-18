@@ -14,7 +14,7 @@
   <dd><%= display_fields_on_views(Element.find(@seizespyro.element_id).element_date) %></dd>
   
   <dt><strong><%= model_class.human_attribute_name(:projet_associé) %>:</strong></dt>
-  <dd><%= display_fields_on_views(Element.find(@seizespyro.element_id).projects.collect { |a| a.projectname  }.join(",")) %></dd>
+  <dd><%= display_fields_on_views(Element.find(@seizespyro.element_id).projects.collect { |a| a.project_name  }.join(",")) %></dd>
   
    <dt><strong><%= model_class.human_attribute_name(:experimentator) %>:</strong></dt>
   <dd><%= display_fields_on_views(Element.find(@seizespyro.element_id).users.collect { |a| a.name  }.join(",")) %></dd>

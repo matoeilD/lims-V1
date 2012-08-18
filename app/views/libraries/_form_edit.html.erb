@@ -3,7 +3,7 @@
   <div class="control-group">
     <%= f.label :library_name, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :library_name, :class => 'text_field'  %>
+      <%= @library.library_name %>
     </div>
   </div>
   
@@ -11,7 +11,8 @@
    
     <div class="controls">
        <!--method ds helper -->
-    <%= f.input :extraction_assoc, :as => :radio, :collection => filtre_elt_associe(@project_associe_id,"extraction") %>
+    <%= f.input :extraction_assoc, :as => :radio, :collection => Extraction.all.collect {|el| el.extraction_name}
+ %>
        </div>
   </div>
   <div class="control-group">

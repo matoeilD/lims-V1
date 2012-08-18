@@ -3,14 +3,15 @@
     <div class="control-group">
     <%= f.label :submission_name, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :submission_name, :class => 'text_field'  %>
+      <%= @submission.submission_name  %>
     </div>
   </div>
   
   <div class="control-group">
     <div class="controls">
         <!--method ds helper -->
-    <%= f.input :sequencing_assoc, :as => :radio, :collection => filtre_elt_associe(@project_associe_id,"sequencing") %>
+    <%= f.input :sequencing_assoc, :as => :radio, :collection => Sequencing.all.collect {|el| el.sequencing_name}
+ %>
        </div>
   </div>
   
@@ -47,6 +48,6 @@
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                elements_path, :class => 'btn' %>
+               elements_path, :class => 'btn' %>
   </div>
 <% end %>

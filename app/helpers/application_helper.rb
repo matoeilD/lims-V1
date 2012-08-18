@@ -1,5 +1,10 @@
 module ApplicationHelper
   
+  
+  def addRow
+  render :text => "mierda"
+  end
+  
   def test
     a = "hello"
   end

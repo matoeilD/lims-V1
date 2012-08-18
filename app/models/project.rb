@@ -10,16 +10,16 @@ has_many :users, :through => :user_projects
 
 belongs_to :projecttype
   
-attr_accessible :projectname, :projectdescription, :projecttype_id, :user_ids, :element_ids, :element_name, :numero_smartlab, :numero_id_interne
+attr_accessible :project_name, :project_description, :project_type_id, :user_ids, :element_ids, :element_name, :numero_smartlab, :identifiant_interne
 
 
 
-validates_presence_of :projectname
-validates_uniqueness_of :projectname,  :message => "already taken"
+validates_presence_of :project_name
+validates_uniqueness_of :project_name,  :message => "name already taken"
 
 #see element view form
 def display_name
- "#{projectname}"
+ "#{project_name}"
 end
 
 #affiche le responsable du projet

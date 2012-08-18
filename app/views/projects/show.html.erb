@@ -9,10 +9,17 @@
 
 <dl class="hero-unit" class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
-  <dd><%= @project.projectname %></dd></br>  
-  <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
-  <dd><%= @project.projectdescription %></dd></br></br>  
+  <dd><%= @project.project_name %></dd></br>  
+    <dt><strong><%= model_class.human_attribute_name(:numero_smartlab) %>:</strong></dt>
+  <dd><%= @project.numero_smartlab %></dd></br></br>
+   <dt><strong><%= model_class.human_attribute_name(:identifiant_interne) %>:</strong></dt>
+  <dd><%= @project.identifiant_interne %></dd></br></br>
+   <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
+  <dd><%= @project.project_description %></dd></br></br>
   </dl>
+
+
+
 
   <dt><strong><%= model_class.human_attribute_name(:elements) %>:</strong></dt></br>
   <table class="table table-striped">

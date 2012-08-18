@@ -56,15 +56,31 @@ gestion fine des droits utilisateurs définis par des rôles...blablabla</br>
     <li><%= link_to "projects", projects_path %></li>
     <li><%= link_to "users", users_path %></li>
     <li><%= link_to "elements", elements_path %></li>
-     <form class="navbar-search pull-left">
+     <form class="navbar-search">
         
-        <%= form_tag elements_path, :method => 'get', :id => "elements_search" do %>
-  <p>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "search element by name", :element_name => nil %>
-  </p>
- 
+     
+     <!-- cf element model and element index view -->
+<%= form_tag elements_path, :method => 'get', :id => "elements_search" do %>
+  <div class="btn-group" align="left">
+   <a> <%= text_field_tag :search, params[:search] %></a> 
+
+<a align="right" class="btn btn-inverse dropdown-toggle"  data-toggle="dropdown">search element
+<span class="caret"></span>
+</a>
+<ul class="dropdown-menu">
+<li> <%= submit_tag "Search by name", :element_name => nil %></li>
+<li> <%= submit_tag "Search by type", :element_type => nil %></li>
+
+</ul>
+</div>
 <% end %>
+     
+     
+     
+     
+     
+     
+     
      </form>
       </ul>
    

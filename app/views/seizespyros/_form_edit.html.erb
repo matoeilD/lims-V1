@@ -4,14 +4,15 @@
    <div class="control-group">
     <%= f.label :seize_name, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :seize_name, :class => 'text_field'  %>
+      <%= @seizespyro.seize_name  %>
     </div>
   </div>
    
    <div class="control-group">     
     <div class="controls">
         <!--method ds helper -->
-    <%= f.input :data_assoc, :as => :radio, :collection => filtre_elt_associe(@project_associe_id,"data") %>
+    <%= f.input :data_assoc, :as => :radio, :collection => Datum.all.collect {|el| el.data_name}
+ %>
        </div>
   </div>
   
@@ -38,6 +39,6 @@
   <div class="form-actions">
     <%= f.submit 'create 16S_pyro', :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                elements_path, :class => 'btn' %>
+               elements_path, :class => 'btn' %>
   </div>
 <% end %>

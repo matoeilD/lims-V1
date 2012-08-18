@@ -133,18 +133,14 @@ ActiveRecord::Schema.define(:version => 20120809155101) do
   add_index "project_elements", ["project_id"], :name => "index_project_elements_on_project_id"
 
   create_table "projects", :force => true do |t|
-    t.string  "projectname"
-    t.text    "projectdescription"
+    t.string  "project_name"
+    t.text    "project_description"
     t.integer "numero_smartlab"
-    t.integer "numero_id_interne"
-    t.integer "projecttype_id"
+    t.string  "identifiant_interne"
+    t.integer "project_type_id"
     t.integer "user_id"
     t.integer "element_id"
   end
-
-  add_index "projects", ["element_id"], :name => "index_projects_on_element_id"
-  add_index "projects", ["projecttype_id"], :name => "index_projects_on_projecttype_id"
-  add_index "projects", ["user_id"], :name => "index_projects_on_user_id"
 
   create_table "projecttypes", :force => true do |t|
     t.string   "projecttypename"
