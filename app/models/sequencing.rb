@@ -9,6 +9,5 @@ class Sequencing < ActiveRecord::Base
 def display_name
  "#{sequencing_name}"
 end
-  #  validates_presence_of :sequencing_name
-#validates_uniqueness_of :sequencing_name
+
 end

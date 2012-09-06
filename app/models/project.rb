@@ -2,16 +2,17 @@ class Project < ActiveRecord::Base
   
 has_many :project_elements, :dependent => :destroy
 has_many :elements, :through => :project_elements
-#accepts_nested_attributes_for :user_projects
+
   
 has_many :user_projects
 has_many :users, :through => :user_projects
-#,:foreign_key => "user_id",
+
 
 belongs_to :projecttype
   
 attr_accessible :project_name, :project_description, :project_type_id, :user_ids, :element_ids, :element_name, :numero_smartlab, :identifiant_interne
 
+ 
 
 
 validates_presence_of :project_name
@@ -135,22 +136,7 @@ def detail_element
          el.id
          end
      @t
-     
-  
- 
-          #cree une table cle, valeur => type d exp , id     
-    #@elt_asso=""
-    #@type=@e.collect do |test|      
-     #test.collect do |e|
-      # if e.elementtype =="1"
-       #  @i=Culture.find(:all, :conditions=> ["element_id= ?",e.id] )
-       #end
-        #  @elt_asso+="#{e.elementtype},#{@i}"    
-      #end    
-    #end    
-     # @elt_asso
-
-end
+     end
 
 # methode appelle dans project controller pour afficher le detail des elements associes
 def choix_controller

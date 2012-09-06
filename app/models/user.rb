@@ -27,13 +27,6 @@ validates_uniqueness_of :name
 
 
 
-#accepts_nested_attributes_for :user_elements, :elements
-
-#def display_name
-#puts "#{name}"
-#end
-
-#scope :firstname
 
 
  def getresponsableUser

@@ -31,8 +31,10 @@
 </br>Il a été créé par Mathieu DANDONNEAU sous la direction de Ghislain FOURNOUS
       </p>
        <h4>Principales fonctionnalitées</h4>
-       <p>gestion multi-projets</br>
-gestion fine des droits utilisateurs définis par des rôles...blablabla</br>
+       <p>gestion de bases de données multi-projets</br>
+       
+       système d'authentification</br>
+système d'accès differentiel aux ressources selon l'utilisateur</br>
 </p>
       </div>
     </div>
@@ -53,9 +55,15 @@ gestion fine des droits utilisateurs définis par des rôles...blablabla</br>
           
           <ul class="nav ">
           <li><%= link_to "home", 'home#index' %></li>
+          <% if can? :read, Project %>
     <li><%= link_to "projects", projects_path %></li>
+          <% end %>
+           <% if can? :read, User %>
     <li><%= link_to "users", users_path %></li>
+        <% end %>
+        <% if can? :read, Element %>
     <li><%= link_to "elements", elements_path %></li>
+         
      <form class="navbar-search">
         
      
@@ -75,7 +83,7 @@ gestion fine des droits utilisateurs définis par des rôles...blablabla</br>
 </div>
 <% end %>
      
-     
+     <% end %>
      
      
      

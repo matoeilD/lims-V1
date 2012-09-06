@@ -16,8 +16,5 @@ def display_name
 end
 
 
-def self.eltpara
-  hello
-end
   
 end

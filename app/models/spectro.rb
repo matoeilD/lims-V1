@@ -10,6 +10,5 @@ def display_name
  "#{spectro_name}"
 end
  
-#  validates_presence_of :spectro_name
-#validates_uniqueness_of :spectro_name
+
 end

@@ -10,6 +10,5 @@ class Metagenome < ActiveRecord::Base
 def display_name
  "#{meta_name}"
 end
-  #  validates_presence_of :meta_name
-#validates_uniqueness_of :meta_name
+  
 end

@@ -9,6 +9,5 @@ def display_name
  "#{library_name}"
 end
   
-   # validates_presence_of :library_name
-#validates_uniqueness_of :library_name
+   
 end
