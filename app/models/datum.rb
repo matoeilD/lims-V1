@@ -4,8 +4,6 @@ class Datum < ActiveRecord::Base
   
    validates_presence_of :sequencing_assoc
   
- # validates_presence_of :data_name
-#validates_uniqueness_of :data_name
 
 
 #see data form_edit
