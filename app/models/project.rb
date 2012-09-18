@@ -12,6 +12,7 @@ belongs_to :projecttype
   
 attr_accessible :project_name, :project_description, :project_type_id, :user_ids, :element_ids, :element_name, :numero_smartlab, :identifiant_interne
 
+ 
 
 
 validates_presence_of :project_name

@@ -35,13 +35,13 @@ class Ability
       can [:update, :destroy], [ Element, Spectros ], :element_type => "mass_spectro"  
       
       
-    elsif user.role == "resp_sequencing"
+    elsif user.role == "resp_sequencing "
       can :read , [ User, Genome, Metagenome, Rnaseq, Seizespyro, Submission ]
       can [:read, :create ] , [ Project, Element, Culture, Extraction, EmPcr, Library, Sequencing, Datum ]
       can [:update, :destroy], [ Element, Culture, Extraction , EmPcr, Library, Sequencing, Datum ], :element_type => [  "culture", "extraction", "EM_PCR", "library", "sequencing", "data" ] 
       
       
-    elsif user.role == "user_bioinfo"
+    elsif user.role == "user_bioinfo "
       can :read , [ User, Project ]
       can [:read, :create] , [ Element, Sequencing, Datum, Genome, Metagenome, Rnaseq, Seizespyro ]
     

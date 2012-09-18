@@ -68,17 +68,20 @@ class GenomesController < ApplicationController
     #cf uniqueness of element_name ds model
     if  ! (@element.valid?)
       if (@element.projects.blank?)
-        redirect_to :controller => 'elements', :action => 'new', :notice => ' element has not been saved! make sure all required fields (*) has been filled '
+        redirect_to :controller => 'elements', :action => 'new', :notice => ' element has not been saved!
+        make sure all required fields (*) has been filled '
         return
       else
-        redirect_to :controller => 'elements', :action => 'new', :notice => ' element has not been saved! name already used '
+        redirect_to :controller => 'elements', :action => 'new', :notice => ' element has not been saved!
+        name already used '
         return    
     end
     end
     
        #cf presence of _assoc ds model
     if  ! (@genome.valid?)
-        redirect_to :controller => 'elements', :action => 'new', :notice => ' element has not been saved! make sure all required fields (*) has been filled '
+        redirect_to :controller => 'elements', :action => 'new', :notice => ' element has not been saved!
+        make sure all required fields (*) has been filled '
         return
     end
     
