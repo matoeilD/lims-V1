@@ -12,6 +12,4 @@ def display_name
  "#{rnaseq_name}"
 end
 
-#  validates_presence_of :rnaseq_name
-#validates_uniqueness_of :rnaseq_name
 end

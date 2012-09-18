@@ -8,6 +8,5 @@ class Seizespyro < ActiveRecord::Base
 def display_name
  "#{seize_name}"
 end
- #   validates_presence_of :seize_name
-#validates_uniqueness_of :seize_name
+ 
 end

@@ -1,13 +1,7 @@
 module ApplicationHelper
   
   
-  def addRow
-  render :text => "mierda"
-  end
   
-  def test
-    a = "hello"
-  end
   
   #retourne les utilisateurs avec le statut (position) "responsable" mais pas pour un projet donné
   def getresponsableUser

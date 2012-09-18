@@ -4,8 +4,7 @@ class EmPcr < ActiveRecord::Base
   
   
    validates_presence_of :library_assoc
-#validates_presence_of :EM_PCR_name
-#validates_uniqueness_of :EM_PCR_name
+
   
   #see empcr form_edit
 def display_name

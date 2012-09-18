@@ -9,6 +9,5 @@ validates_presence_of :sequencing_assoc
 def display_name
  "#{submission_name}"
 end
-#validates_presence_of :submission_name
-#validates_uniqueness_of :submission_name
+
 end

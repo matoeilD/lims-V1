@@ -9,6 +9,5 @@ def display_name
  "#{genome_name}"
 end
  
- # validates_presence_of :genome_name
-#validates_uniqueness_of :genome_name
+
 end
