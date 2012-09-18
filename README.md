@@ -14,19 +14,20 @@ Description
 - coded in Ruby on Rails
 
 - include a :
+
     + CRUD DBMS ( create/read/update/delete databases management system) for tables related to genomic projects
     + Devise-based authentication system
     + Cancan role-based administration system
     + Intuitive and ergonomic interface designed with twitter bootstrap
     + Forms have been designed with Formtastic
-          
+    
 - screencast : http://www.youtube.com/watch?v=C9C6babXuXQ&feature=relmfu
 
 - this project management system is particularely adapted to biology laboratories projects
 
-- i believe it is rather easily modifiable for your own need .. you basically need to replace the element tables with your own
+- i believe it is rather easily modifiable for your own need .. it is basically needed to replace the element tables with your own
 
--it represents an lighter and more simple alternative to open-source project management projects such as redmine or teambox
+- it represents a lighter and more simple alternative to open-source project management projects such as Redmine or Teambox
 
 Installation Instructions
 ------------------------
@@ -34,7 +35,8 @@ Installation Instructions
 -install Ruby 1.9 and Rails 3
 
 -Clone the repo :
-<git clone git@github.com:matoeilD/lims-V1.git>
+
+    git clone git@github.com:matoeilD/lims-V1.git
 
 -create a database.yml file in config folder and fill as a start with:
 
@@ -131,7 +133,7 @@ Contributor guidelines
 
 - do code refactoring
 
-- ameliorate ajax that is fonctional ( partially ) at this stage only for elements index view
+- ameliorate ajax that is ( partially ) fonctional at this stage only for elements index view
 
 - add a metasearch system
 
