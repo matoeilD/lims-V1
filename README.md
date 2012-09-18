@@ -13,11 +13,12 @@ Description
 
 - coded in Ruby on Rails
 
-- include a CRUD DBMS ( create/read/update/delete databases management system) for tables related to genomic projects
-          a Devise-based authentication system
-          a cancan role-based administration system
-          an intuitive and ergonomic interface designed with twitter bootstrap
-          the forms have been designed with formtastic
+- include a :
+    + CRUD DBMS ( create/read/update/delete databases management system) for tables related to genomic projects
+    + Devise-based authentication system
+    + Cancan role-based administration system
+    + Intuitive and ergonomic interface designed with twitter bootstrap
+    + Forms have been designed with Formtastic
           
 - screencast : http://www.youtube.com/watch?v=C9C6babXuXQ&feature=relmfu
 
