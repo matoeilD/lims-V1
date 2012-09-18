@@ -82,6 +82,7 @@ Signing up as administrator  (initial step)
 -in app\controllers\user_controller.rb
 
 remove these lines of code
+
           #helper from devise
           before_filter :authenticate_user!
   
@@ -103,18 +104,19 @@ few guidelines on how to use the application
 - create a project
 
 - add elements to it to choose between the following tables :
-    +culture
-    +extraction
-    +library
-    +EM_PCR
-    +sequencing
-    +submission
-    +data
-    +genome
-    +metagenome
-    +16s_pyro
-    +RNAseq
-    +mass_spectro
+
+    + culture
+    + extraction
+    + library
+    + EM_PCR
+    + sequencing
+    + submission
+    + data
+    + genome
+    + metagenome
+    + 16s_pyro
+    + RNAseq
+    + mass_spectro
 
 that's pretty it !
 ----------------------
