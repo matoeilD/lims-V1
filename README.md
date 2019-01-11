@@ -5,7 +5,7 @@ by Mathieu Dandonneau
 Description
 ---------------
 
-- an open source LIMS type teamlab project management web server
+- an open source LIMS type teamlab project management web application
 
 - designed originally for the URMITE laboratory http://www.ifr48.com/spip.php?article9
 
